@@ -16,9 +16,9 @@
    docsify  init docs
    ```
 
-5. ![初始化后的目录文件](C:\Users\Sparks\AppData\Roaming\Typora\typora-user-images\1559959199726.png)
+5. ![初始化后的目录文件](image/initdocsify.png)
 
-6. ![初始化结果](C:\Users\Sparks\AppData\Roaming\Typora\typora-user-images\1559959265832.png)
+6. ![初始化结果](image/docsify_serve.png)
 
 7. 此时再哪个目录运行如下命令，就可以再浏览器浏览了，
 
@@ -69,4 +69,15 @@ docsify init docs
 ```
 
 
+
+##  关于图片显示
+
+1. 在docs目录下创建一个image文件夹
+2. 把需要的图片放到image目录中
+3. 在需要引入文件的地址使用markdown图片引入就可以了，不过这里的图片路径是docs下的image路径。
+
+``` markdow
+# 图片导入的markdown语法
+![图片标题](图片路径)
+```
 
