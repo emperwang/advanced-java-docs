@@ -9,6 +9,6 @@
 ### 并发编程锁
 
 * [AQS概述](JDK/并发编程之锁/AQS-概述.md)
-* [AQS之独占锁](JDK/并发编程之锁/AQS-独占锁.md)
-* AQS之共享锁
+* [AQS之独占锁](JDK/并发编程之锁/AQS-独占锁(ReentrantLock).md)
+* [AQS之共享锁](JDK/并发编程之锁/AQS共享锁(semaphore).md)
 
