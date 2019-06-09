@@ -1,4 +1,4 @@
-# AQS之独占锁
+# AQS之独占锁(ReentrantLock)
 
 java中synchronized关键字和1.5并发包之后的lock锁，都是并发下常用到同步机制。synchronized关键字属于jvm层的锁，需要查看jvm源码。不过今天来分析一下java层实现的锁机制。
 
