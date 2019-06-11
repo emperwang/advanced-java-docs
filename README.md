@@ -19,6 +19,6 @@
 ### 线程及线程池
 
 - [Thread解析](docs/JDK/线程及线程池/Thread解析.md)
-- [FutureTask])(docs/JDK/线程及线程池/FutureTask.md)
+- [FutureTask](docs/JDK/线程及线程池/FutureTask.md)
 - [Executors](docs/JDK/线程及线程池/Exceutors.md)
 - [ThreadPoolExecutor](docs/JDK/线程及线程池/ThreadPoolExecutor.md)
