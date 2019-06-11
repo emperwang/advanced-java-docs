@@ -348,7 +348,7 @@
 
 ## 提交一个由返回值的任务
 
-可以查看[FutureTask](JDK/线程及线程池/FutureTask.md)相关的解析.
+可以查看[FutureTask](FutureTask.md)相关的解析.
 
 ```java
     // 可以看到提交由返回值的任务时，使用submit函数，返回一个Future接口，通过Future接口可以获取到任务运行的结果值
