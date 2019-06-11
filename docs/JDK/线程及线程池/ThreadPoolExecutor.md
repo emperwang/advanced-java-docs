@@ -346,6 +346,47 @@
 
 
 
+## 提交一个由返回值的任务
+
+可以查看[FutureTask](JDK/线程及线程池/FutureTask.md)相关的解析.
+
+```java
+    // 可以看到提交由返回值的任务时，使用submit函数，返回一个Future接口，通过Future接口可以获取到任务运行的结果值
+
+	public Future<?> submit(Runnable task) {
+        if (task == null) throw new NullPointerException();
+        RunnableFuture<Void> ftask = newTaskFor(task, null);
+        execute(ftask);
+        return ftask;
+    }
+
+    public <T> Future<T> submit(Runnable task, T result) {
+        if (task == null) throw new NullPointerException();
+        RunnableFuture<T> ftask = newTaskFor(task, result);
+        execute(ftask);
+        return ftask;
+    }
+
+    public <T> Future<T> submit(Callable<T> task) {
+        if (task == null) throw new NullPointerException();
+        RunnableFuture<T> ftask = newTaskFor(task);
+        execute(ftask);
+        return ftask;
+    }
+	// 创建FutureTask函数
+    protected <T> RunnableFuture<T> newTaskFor(Runnable runnable, T value) {
+        return new FutureTask<T>(runnable, value);
+    }
+
+    protected <T> RunnableFuture<T> newTaskFor(Callable<T> callable) {
+        return new FutureTask<T>(callable);
+    }
+
+// 然后调用FutureTask的get()就可以得到计算的值
+```
+
+
+
 
 
 ## 拒绝策略
