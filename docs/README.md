@@ -32,7 +32,7 @@
 
 * [springboot启动流程分析一(总流程分析)](Spring/springboot启动分析一.md)
 * [springboot启动流程分析二(实例化初始化类和监听器)](Spring/springboot启动分析二.md)
-* [springboot启动流程分析三](Spring/springboot启动分析三.md)
+* [springboot启动流程分析三(调用listener处理ApplicationStartingEvent事件)](Spring/springboot启动分析三.md)
 
 ## Mybatis
 
