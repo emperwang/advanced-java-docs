@@ -292,3 +292,4 @@ org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration,\
 	}
 ```
 
+你实例化初始化类和监听器，接下来咱们看一下run是如何把项目启动起来的。
