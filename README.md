@@ -29,6 +29,7 @@
 ### 容器
 
 * [IdentityHashMap](docs/JDK/容器/IdentityHashMap.md)
+* [HashTable](docs/JDK/容器/HashTable.md)
 
 ## Spring
 
