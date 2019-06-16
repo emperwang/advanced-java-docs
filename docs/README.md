@@ -30,6 +30,7 @@
 
 * [IdentityHashMap](JDK/容器/IdentityHashMap.md)
 * [HashTable](JDK/容器/HashTable.md)
+* [HashSet](JDK/容器/HashSet.md)
 
 #### 并发包
 
