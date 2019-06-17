@@ -34,6 +34,7 @@
 * [HashTable](docs/JDK/容器/HashTable.md)
 * [HashSet](docs/JDK/容器/HashSet.md)
 * [LinkedHashMap](docs/JDK/容器/LinkedHashMap.md)
+* [LinkedHashSet](docs/JDK/容器/LinkedHashSet.md)
 * [Properties](docs/JDK/容器/Properties.md)
 * [EnumMap](docs/JDK/容器/EnumMap.md)
 * [EnumSet](docs/JDK/容器/EnumSet.md)
