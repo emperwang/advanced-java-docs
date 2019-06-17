@@ -33,6 +33,7 @@
 * [HashSet](JDK/容器/HashSet.md)
 * [LinkedHashMap](JDK/容器/LinkedHashMap.md)
 * [Properties](JDK/容器/Properties.md)
+* [EnumMap](JDK/容器/EnumMap.md)
 
 #### 并发包
 
