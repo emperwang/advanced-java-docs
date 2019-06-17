@@ -34,6 +34,7 @@
 * [HashTable](docs/JDK/容器/HashTable.md)
 * [HashSet](docs/JDK/容器/HashSet.md)
 * [LinkedHashMap](docs/JDK/容器/LinkedHashMap.md)
+* [Properties](docs/JDK/容器/Properties.md)
 
 #### 并发包
 
