@@ -33,6 +33,7 @@
 * [IdentityHashMap](docs/JDK/容器/IdentityHashMap.md)
 * [HashTable](docs/JDK/容器/HashTable.md)
 * [HashSet](docs/JDK/容器/HashSet.md)
+* [LinkedHashMap](docs/JDK/容器/LinkedHashMap.md)
 
 #### 并发包
 
