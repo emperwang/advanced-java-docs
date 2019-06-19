@@ -39,10 +39,16 @@
 * [TreeMap](JDK/容器/TreeMap.md)
 * [TreeSet](JDK/容器/TreeSet.md)
 * [ArrayList](JDK/容器/ArrayList.md)
-* [ArrayList](JDK/容器/LinkedList.md)
+* [LinkedList](JDK/容器/LinkedList.md)
 * [Vector](JDK/容器/Vector.md)
 
 #### 并发包
+
+
+
+#### 引用
+
+* [Reference示例](JDK/reference/Reference的使用.md)
 
 ## spring
 
