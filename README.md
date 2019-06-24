@@ -47,6 +47,8 @@
 
 #### 并发包
 
+* [ConcurrentLinkedQueue](docs/JDK/容器/ConcurrentLinkedQueue.md)
+
 #### 引用
 
 * [Reference示例](docs/JDK/reference/Reference的使用.md)
