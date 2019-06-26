@@ -48,6 +48,7 @@
 
 * [ConcurrentLinkedQueue](JDK/容器/ConcurrentLinkedQueue.md)
 * [LinkedBlockingDeque](JDK/容器/LinkedBlockingDeque.md)
+* [ConcurrentHashMap](JDK/容器/ConcurrentHashMap.md)
 * [CopyOnWriteArrayList](JDK/容器/CopyOnWriteArrayList.md)
 * [CopyOnWriteArraySet](JDK/容器/CopyOnWriteArraySet.md)
 * [LinkedBlockingQueue](JDK/容器/LinkedBlockingQueue.md)
