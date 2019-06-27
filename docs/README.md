@@ -54,6 +54,7 @@
 * [LinkedBlockingQueue](JDK/容器/LinkedBlockingQueue.md)
 * [LinkedTransferQueue](JDK/容器/LinkedTransferQueue.md)
 * [DelayQueue](JDK/容器/DelayQueue.md)
+* [SynchronousQueue](JDK/容器/SynchronousQueue.md)
 
 #### 引用
 
