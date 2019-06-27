@@ -52,6 +52,7 @@
 * [CopyOnWriteArrayList](JDK/容器/CopyOnWriteArrayList.md)
 * [CopyOnWriteArraySet](JDK/容器/CopyOnWriteArraySet.md)
 * [LinkedBlockingQueue](JDK/容器/LinkedBlockingQueue.md)
+* [LinkedTransferQueue](JDK/容器/LinkedTransferQueue.md)
 
 #### 引用
 
