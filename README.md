@@ -48,16 +48,16 @@
 
 #### 并发包
 
-* [ConcurrentLinkedQueue](docs/JDK/容器/ConcurrentLinkedQueue.md)
-* [LinkedBlockingDeque](docs/JDK/容器/LinkedBlockingDeque.md)
-* [ConcurrentHashMap](docs/JDK/容器/ConcurrentHashMap.md)
-* [CopyOnWriteArrayList](docs/JDK/容器/CopyOnWriteArrayList.md)
-* [CopyOnWriteArraySet](docs/JDK/容器/CopyOnWriteArraySet.md)
-* [LinkedBlockingQueue](docs/JDK/容器/LinkedBlockingQueue.md)
-* [LinkedTransferQueue](docs/JDK/容器/LinkedTransferQueue.md)
+* [ConcurrentLinkedQueue](docs/JDK/并发容器/ConcurrentLinkedQueue.md)
+* [LinkedBlockingDeque](docs/JDK/并发容器/LinkedBlockingDeque.md)
+* [ConcurrentHashMap](docs/JDK/并发容器/ConcurrentHashMap.md)
+* [CopyOnWriteArrayList](docs/JDK/并发容器/CopyOnWriteArrayList.md)
+* [CopyOnWriteArraySet](docs/JDK/并发容器/CopyOnWriteArraySet.md)
+* [LinkedBlockingQueue](docs/JDK/并发容器/LinkedBlockingQueue.md)
+* [LinkedTransferQueue](docs/JDK/并发容器/LinkedTransferQueue.md)
 * [ArrayBlockingQueue](docs/JDK/并发容器/ArrayBlockingQueue.md)
-* [DelayQueue](docs/JDK/容器/DelayQueue.md)
-* [SynchronousQueue](docs/JDK/容器/SynchronousQueue.md)
+* [DelayQueue](docs/JDK/并发容器/DelayQueue.md)
+* [SynchronousQueue](docs/JDK/并发容器/SynchronousQueue.md)
 
 #### 引用
 
