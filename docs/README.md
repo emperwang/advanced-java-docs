@@ -53,6 +53,7 @@
 * [CopyOnWriteArraySet](JDK/容器/CopyOnWriteArraySet.md)
 * [LinkedBlockingQueue](JDK/容器/LinkedBlockingQueue.md)
 * [LinkedTransferQueue](JDK/容器/LinkedTransferQueue.md)
+* [ArrayBlockingQueue](JDK/并发容器/ArrayBlockingQueue.md)
 * [DelayQueue](JDK/容器/DelayQueue.md)
 * [SynchronousQueue](JDK/容器/SynchronousQueue.md)
 
