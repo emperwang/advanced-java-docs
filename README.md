@@ -81,4 +81,5 @@
 ## Docker
 
 * [镜像管理](docs/docker/镜像管理.md)
+* [ubuntu_sshd镜像](docs/docker/ubuntu_sshd镜像.md)
 
