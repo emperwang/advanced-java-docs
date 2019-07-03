@@ -64,6 +64,8 @@
 * [Reference示例](docs/JDK/reference/Reference的使用.md)
 * [Reference](docs/JDK/reference/Reference.md)
 * [ReferenceQueue](docs/JDK/reference/ReferenceQueue.md)
+* [AtomicMarkableReference](JDK/Atomic/AtomicMarkableReference.md)
+* [AtomicStampedReference](JDK/Atomic/AtomicStampedReference.md)
 ### IO
 
 * [File](docs/JDK/IO/File.md)

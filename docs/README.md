@@ -72,6 +72,8 @@
 * [AtomicInteger](JDK/Atomic/AtomicInteger.md)
 * [AtomicIntegerFieldUpdater](JDK/Atomic/AtomicIntegerFieldUpdater.md)
 * [AtomicReference](JDK/Atomic/AtomicReference.md)
+* [AtomicMarkableReference](JDK/Atomic/AtomicMarkableReference.md)
+* [AtomicStampedReference](JDK/Atomic/AtomicStampedReference.md)
 
 ## spring
 
