@@ -71,6 +71,7 @@
 ### Atomic
 
 * [AtomicInteger](docs/JDK/Atomic/AtomicInteger.md)
+* [AtomicIntegerFieldUpdater](docs/JDK/Atomic/AtomicIntegerFieldUpdater.md)
 
 
 ## Spring
