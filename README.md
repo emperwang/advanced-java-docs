@@ -90,6 +90,7 @@
 
 * [G1收集器](docs/JVM/G1收集介绍.md)
 * [CMS收集介绍](docs/JVM/CMS收集介绍.md)
+* [垃圾收集器](docs/JVM/垃圾收集器.md)
 
 ## Docker
 
