@@ -91,6 +91,7 @@
 * [垃圾收集器](docs/JVM/垃圾收集器.md)
 * [CMS收集介绍](docs/JVM/CMS收集介绍.md)
 * [G1收集器](docs/JVM/G1收集介绍.md)
+* [JVM内存区](docs/JVM/JVM内存区.md)
 
 ## Docker
 
