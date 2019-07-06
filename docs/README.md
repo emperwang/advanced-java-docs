@@ -88,6 +88,7 @@
 * [CMS收集介绍](JVM/CMS收集介绍.md)
 * [G1收集器](JVM/G1收集介绍.md)
 * [JVM内存区](JVM/JVM内存区.md)
+* [类加载阶段解析](JVM/类加载阶段解析.md)
 
 ## Docker
 
