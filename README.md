@@ -93,6 +93,7 @@
 * [G1收集器](docs/JVM/G1收集介绍.md)
 * [JVM内存区](docs/JVM/JVM内存区.md)
 * [类加载阶段解析](docs/JVM/类加载阶段解析.md)
+* [HotSpot栈帧组成](docs/JVM/HotSpot栈帧组成.md)
 
 ## Docker
 
