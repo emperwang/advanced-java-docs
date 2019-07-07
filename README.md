@@ -101,5 +101,6 @@
 * [镜像管理](docs/docker/镜像管理.md)
 * [容器管理](docs/docker/容器管理.md)
 * [数据卷管理](docs/docker/数据卷管理.md)
+* [dockerfile-cmd](docs/docker/dockerfile-cmd.md)
 * [ubuntu_sshd镜像](docs/docker/ubuntu_sshd镜像.md)
 

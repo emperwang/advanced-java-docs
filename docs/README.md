@@ -97,6 +97,7 @@
 * [镜像管理](docker/镜像管理.md)
 * [容器管理](docker/容器管理.md)
 * [数据卷管理](docker/数据卷管理.md)
+* [dockerfile-cmd](docker/dockerfile-cmd.md)
 * [ubuntu_sshd镜像](docker/ubuntu_sshd镜像.md)
 
 
