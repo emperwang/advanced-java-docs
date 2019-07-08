@@ -71,6 +71,13 @@
 * [ByteArrayOutputStream](JDK/IO/OuputStream/ByteArrayOutputStream.md)
 * [FileOutputStream](JDK/IO/OuputStream/FileOutputStream.md)
 * [FilterOutputStream](JDK/IO/OuputStream/FilterOutputStream.md)
+* [Reader](JDK/IO/Reader/Reader.md)
+* [BufferedReader](JDK/IO/Reader/BufferedReader.md)
+* [CharArrayReader](JDK/IO/Reader/CharArrayReader.md)
+* [FilterReader](JDK/IO/Reader/FilterReader.md)
+* [InputStreamReader](JDK/IO/Reader/InputStreamReader.md)
+* [PipedReader](JDK/IO/Reader/PipedReader.md)
+* [StringReader](JDK/IO/Reader/StringReader.md)
 
 ### Atomic
 
