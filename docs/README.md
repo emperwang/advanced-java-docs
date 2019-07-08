@@ -66,6 +66,11 @@
 ### IO
 
 * [File](JDK/IO/File.md)
+* [FilterInputStream](JDK/IO/InputStream/FilterInputStream.md)
+* [SequenceInputStream](JDK/IO/InputStream/SequenceInputStream.md)
+* [ByteArrayOutputStream](JDK/IO/OuputStream/ByteArrayOutputStream.md)
+* [FileOutputStream](JDK/IO/OuputStream/FileOutputStream.md)
+* [FilterOutputStream](JDK/IO/OuputStream/FilterOutputStream.md)
 
 ### Atomic
 
