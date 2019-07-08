@@ -78,6 +78,7 @@
 * [InputStreamReader](JDK/IO/Reader/InputStreamReader.md)
 * [PipedReader](JDK/IO/Reader/PipedReader.md)
 * [StringReader](JDK/IO/Reader/StringReader.md)
+* [PipedWriter](JDK/IO/Writer/PipedWriter.md)
 
 ### Atomic
 
