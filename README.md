@@ -115,6 +115,8 @@
 * [PlainSocketImpl](docs/JDK/net/PlainSocketImpl.md)
 * [DualStackPlainSocketImpl](docs/JDK/net/DualStackPlainSocketImpl.md)
 * [TwoStacksPlainSocketImpl](docs/JDK/net/TwoStacksPlainSocketImpl.md)
+* [SocketInputStream](docs/JDK/net/SocketInputStream.md)
+* [SocketOutputStream](docs/JDK/net/SocketOutputStream.md)
 
 ## Spring
 
