@@ -66,8 +66,12 @@
 ### IO
 
 * [File](JDK/IO/File.md)
+* [InputStream](JDK/IO/InputStream/InputStream.md)
 * [FilterInputStream](JDK/IO/InputStream/FilterInputStream.md)
 * [SequenceInputStream](JDK/IO/InputStream/SequenceInputStream.md)
+* [ByteArrayInputStream](JDK/IO/InputStream/ByteArrayInputStream.md)
+* [FileInputStream](JDK/IO/InputStream/FileInputStream.md)
+* [PipedInputStream](JDK/IO/InputStream/PipedInputStream.md)
 * [ByteArrayOutputStream](JDK/IO/OuputStream/ByteArrayOutputStream.md)
 * [FileOutputStream](JDK/IO/OuputStream/FileOutputStream.md)
 * [FilterOutputStream](JDK/IO/OuputStream/FilterOutputStream.md)
