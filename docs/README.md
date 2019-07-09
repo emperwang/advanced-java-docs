@@ -79,6 +79,12 @@
 * [PipedReader](JDK/IO/Reader/PipedReader.md)
 * [StringReader](JDK/IO/Reader/StringReader.md)
 * [PipedWriter](JDK/IO/Writer/PipedWriter.md)
+* [BufferedWriter](JDK/IO/Writer/BufferedWriter.md)
+* [CharArrayWriter](JDK/IO/Writer/CharArrayWriter.md)
+* [FilterWriter](JDK/IO/Writer/FilterWriter.md)
+* [OutputStreamWriter](JDK/IO/Writer/OutputStreamWriter.md)
+* [PrintWriter](JDK/IO/Writer/PrintWriter.md)
+* [StringWriter](JDK/IO/Writer/StringWriter.md)
 
 ### Atomic
 
