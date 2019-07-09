@@ -66,6 +66,7 @@
 ### IO
 
 * [File](JDK/IO/File.md)
+* [FileDescriptor](JDK/IO/FileDescriptor.md)
 * [InputStream](JDK/IO/InputStream/InputStream.md)
 * [FilterInputStream](JDK/IO/InputStream/FilterInputStream.md)
   * [BufferedInputStream](JDK/IO/InputStream/FilterInputStream/BufferedInputStream.md)
