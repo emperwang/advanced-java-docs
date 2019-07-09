@@ -109,6 +109,11 @@
 ### net
 
 * [socket](docs/JDK/net/Socket.md)
+* [SocketImpl](docs/JDK/net/SocketImpl.md)
+* [AbstractPlainSocketImpl](docs/JDK/net/AbstractPlainSocketImpl.md)
+* [PlainSocketImpl](docs/JDK/net/PlainSocketImpl.md)
+* [DualStackPlainSocketImpl](docs/JDK/net/DualStackPlainSocketImpl.md)
+* [TwoStacksPlainSocketImpl](docs/JDK/net/TwoStacksPlainSocketImpl.md)
 
 ## Spring
 
