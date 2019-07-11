@@ -32,6 +32,8 @@
 * [ClassLoader](docs/JDK/类加载器/ClassLoader.md)
 * [Launcher](docs/JDK/类加载器/Launcher.md)  
 * [URLClassLoader](docs/JDK/类加载器/URLClassLoader.md)
+* [URLClassPath](docs/JDK/类加载器/URLClassPath.md)
+* [Class](docs/JDK/类加载器/Class.md)
 
 ### 容器
 
