@@ -178,3 +178,6 @@
 * [Docker_security](docs/docker/Docker_security.md)
 * [ubuntu_sshd镜像](docs/docker/ubuntu_sshd镜像.md)
 
+## other
+
+* [自动更新配置文件](docs/other/自动更新配置文件.md)
