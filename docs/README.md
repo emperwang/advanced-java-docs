@@ -171,6 +171,7 @@
 * [JVM内存区](JVM/JVM内存区.md)
 * [类加载阶段解析](JVM/类加载阶段解析.md)
 * [HotSpot栈帧组成](JVM/HotSpot栈帧组成.md)
+* [JVM字节码](JVM/JVM字节码.md)
 
 ## Docker
 
