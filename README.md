@@ -182,3 +182,9 @@
 ## other
 
 * [自动更新配置文件](docs/other/自动更新配置文件.md)
+
+## logBack
+
+* [logback初始化](docs/other/logback/logback初始化.md)
+* [getLogger操作](docs/other/logback/getLogger操作.md)
+* [Log打印](docs/other/logback/Log打印.md)
