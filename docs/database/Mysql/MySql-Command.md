@@ -229,6 +229,9 @@ Syntax:
 下面给出一些示例：
 ### Example
 #### 1. 创建动作
+
+**注意**mysql中临时表只在当前连接中存在，当连接断开，临时表会被清理掉；这就导致不同连接可以创建同名的临时表。
+
 ```shell
 # 创建数据库
 mysql> create database if not exists sqlcom \
@@ -300,34 +303,75 @@ mysql> select * from people;
 +----------+------+---------+
 2 rows in set (0.00 sec)
 
-# 创建索引
+# 给表添加索引(此命令都是在命令行运行测试的，所以列名都直接写，如果是其他第三方需要添加单引号)
+mysql> ALTER TABLE user1 add INDEX idx_address_1  (address);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
 
+# 添加唯一键 (此命令都是在命令行运行测试的，所以列名都直接写，如果是其他第三方需要添加单引号)
+mysql> alter table user1 add UNIQUE unq_name_1 (name);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+# 添加主键 (此命令都是在命令行运行测试的，所以列名都直接写，如果是其他第三方需要添加单引号)
+ALTER TABLE user1 ADD PRIMARY KEY (id)
+
+# 添加全文检错
+ALTER TABLE user1 ADD FULLTEXT(column)
+#### 第三方图形界面 需要写这个
+ALTER TABLE user1 ADD FULLTEXT('column')
+
+# 添加多列索引
+ALTER TABLE user1 ADD INDEX index_name ('column1','column2','column3'..)
 ```
 #### 2. 修改动作
 ```shell
-# 修改数据库
+## 表结构:
+user1 | CREATE TABLE `user1` (
+  `id` int(11) NOT NULL auto_increment,
+  `age` int(11) default NULL,
+  `name` varchar(50) default NULL,
+  `address` varchar(100) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
+# 修改上表结构
+## 修改一个字段的属性（把字段salary从int修改为varchar类型，并修改列的位置）
+mysql> alter table user1 modify COLUMN salary varchar(100) after name;
+Query OK, 2 rows affected (0.04 sec)
+Records: 2  Duplicates: 0  Warnings: 0
 
-# 修改表
-## 修改一个字段的属性
+## 修改表字段，并修改表字段的名字,以及位置
+mysql> alter table user1 change column salary salary1 int after name;
+Query OK, 2 rows affected (0.04 sec)
+Records: 2  Duplicates: 0  Warnings: 0
 
-## 添加一个字段
+## 添加一个字段(在user1表的address后添加)
+mysql> alter table user1 add COLUMN salary int after address;
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
 
 ## 删除一个字段
+mysql> alter table user1 drop column salary1;
+Query OK, 2 rows affected (0.04 sec)
+Records: 2  Duplicates: 0  Warnings: 0
 
 # 修改视图
 
 # 表重命名
-
+mysql> rename TABLE user1 TO user11;
+Query OK, 0 rows affected (0.01 sec)
 ```
 
 #### 3. 删除动作
 ```shell
 # 删除索引
-
+mysql> ALTER TABLE user1 DROP INDEX idx_address_1;
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
 # 删除视图
-
+drop view viewName
 # 删除表
-
+drop talbe tblName
 # 删除数据库
 mysql> drop database if exists sqlcom;
 Query OK, 0 rows affected (0.01 sec)
@@ -335,7 +379,9 @@ Query OK, 0 rows affected (0.01 sec)
 
 ## DML(Data manipulation language)
 
-老规矩，看一下DML都有一些什么操作:
+### 1. 支持的动作
+
+老规矩，看一下DML都有一些什么操作：
 
 ```shell
 # 一下就是可用的DML操作
@@ -412,6 +458,8 @@ topics:
    UNION
    UPDATE
 ```
+
+#### 1.1.show使用
 
 先看一下show的用法，平时查询信息用的要多些:
 
@@ -616,7 +664,8 @@ with_option:
 	MAX_UPDATES_PER_HOUR count
 	MAX_CONNECTIONS_PER_HOUR count
 	MAX_USER_CONNECTIONS count
-
+priv_type:
+	权限的类型
 Privileges levels:
 	Global level:
 		GRANT ALL ON *.*     | REVOKE ALL ON *.*
@@ -628,9 +677,44 @@ Privileges levels:
 		对行列的权限存储在mysql.colums_priv 表中，修改对表进行修改
 	Routine level:
 		这些权限存储在mysql.procs_priv表中
+		
+		
+Example:
+# 赋予root用户所有权限
+GRANT ALL ON *.* TO root IDENTIFIED BY PASSWORD('admin');
 ```
 
+MySql权限的类型：(show privileges)
 
+| Privilege(权限)         | Context(作用范围)                     | comment(注释)                                                |
+| ----------------------- | ------------------------------------- | ------------------------------------------------------------ |
+| Alter                   | Tables                                | 修改表                                                       |
+| Alter routine           | Functions,Procedures                  | 修改和和删除 functions/procedures                            |
+| Create                  | Databases,Tables,Indexes              | 创建新的数据库和表                                           |
+| Create routine          | Functions,Procedures                  | 创建 functions/procedures                                    |
+| Create temporary tables | Databases                             | 创建临时表                                                   |
+| Create view             | Tables                                | 创建视图                                                     |
+| Create user             | Server admin                          | 创建新的用户                                                 |
+| Delete                  | Tables                                | 删除存在的列                                                 |
+| Drop                    | Databases,tables                      | 删除数据库，表，视图                                         |
+| Execute                 | Functions,Procedures                  | 执行存储过程                                                 |
+| File                    | File access on server                 | 读写在server上的文件                                         |
+| Grant option            | Databases,Tables,Functions,Procedures | 能够赋予他人权限，但是只能赋予自己拥有的权限                 |
+| Index                   | Tables                                | 创建和删除索引                                               |
+| Insert                  | Tables                                | 插入数据到表中                                               |
+| Lock Tables             | Databases                             | 使用LOCAKTABLES权限                                          |
+| Process                 | Server Admin                          | 查看当前执行查询的脚本(view theplain text of currently executing queries) |
+| References              | Databases,Tables                      | 查看数据库和表                                               |
+| Reload                  | Server Admin                          | To reload or refresh tables, logs and privileges             |
+| Replication client      | Server Admin                          | To ask where the slave or master servers are                 |
+| Replication slave       | Server Admin                          | To read binary log events from the master                    |
+| Select                  | Tables                                | 查询表中内容                                                 |
+| Show databases          | Server Admin                          | 可以查看有哪些数据库                                         |
+| show view               | Tables                                | To see views with SHOW CREATE VIEW                           |
+| shutdown                | Server Admin                          | 关闭服务                                                     |
+| super                   | Server Admin                          | To use KILLthread, SET GLOBAL, CHANGE MASTER, etc.           |
+| update                  | Tables                                | To update existing rows                                      |
+| usage                   | Server Admin                          | No privileges - allow connect only                           |
 
 #### 2.去除授权
 
@@ -639,6 +723,10 @@ Syntax:
 REVOKE priv_type [{column_list}] [,priv_type [{column_list}]]...
 ON [object_type] {tbl_name | * | *.* | db_name.*}
 FROM user [,user]......
+
+Example:
+# 去除root用户的所有权限
+REVOKE Execute ON *.* FROM root;
 ```
 
 
