@@ -375,6 +375,14 @@ drop talbe tblName
 # 删除数据库
 mysql> drop database if exists sqlcom;
 Query OK, 0 rows affected (0.01 sec)
+
+# 删除存储过程
+mysql> drop procedure if exists sp4;
+Query OK, 0 rows affected (0.01 sec)
+
+# 删除触发器
+mysql> drop trigger t1;
+Query OK, 0 rows affected (0.01 sec)
 ```
 
 ## DML(Data manipulation language)
