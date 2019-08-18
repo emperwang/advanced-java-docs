@@ -340,3 +340,32 @@ pg_basebackup [option]
 
 
 
+## 常用其他命令
+
+## 1.修改
+
+```shell
+# 修改列名字
+alter table am_collector_host_info RENAME COLUMN heartbeat_time To heart_beat_time;
+# 修改表明
+alter  table am_collection_source rename TO am_collector_source;
+# 添加字段
+ALTER TABLE studs ADD COLUMN  id int;
+# 删除字段
+ALTER TABLE studs DROP COLUMN name;
+# 增加约束
+ALTER TABLE studs ALTER COLUMN name SET NOT NULL;
+# 删除约束
+ALTER TABLE studs DROP CONSTRAINT some_name;
+ALTER TABLE studs ALTER COLUMN name DROP NOT NULL;
+# 改变默认值
+ALTER TABLE studs ALTER COLUMN name SET DEFAULT 'zhangsan'
+```
+
+查看sql语句的帮助文档：
+
+```shell
+# 查看帮助文档
+\h  sql-command
+```
+
