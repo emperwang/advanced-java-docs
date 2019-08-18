@@ -100,7 +100,23 @@ create table [IF NOT EXISTS] new_user1 as select * from user;
 
 create table [IF NOT EXISTS] new_user like user;
 ```
-#### 1.3 创建视图
+#### 1.3 创建索引
+
+```shell
+Syntax:
+	CREATE [UNIQE | FULLTEXT | SPATIAL] INDEX index_name 
+		[index_type]
+		ON tbl_name {index_column_name}
+	
+	index_column_name:
+		col_name [(length)] [ASC | DESC]
+	index_type:
+		{BTREE | HASH}
+```
+
+
+
+#### 1.4 创建视图
 
 ```shell
 Syntax:
