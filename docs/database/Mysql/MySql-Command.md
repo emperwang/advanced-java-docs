@@ -114,6 +114,12 @@ Syntax:
 		{BTREE | HASH}
 ```
 
+```shell
+mysql> create index idx_sname_1 on student (sname);
+Query OK, 6 rows affected (0.11 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+```
+
 
 
 #### 1.4 创建视图
@@ -128,6 +134,81 @@ ELSE
 CALL p2();
 END IF;
 ```
+
+#### 1.5 创建分区表
+
+```shell
+create table tblName(
+	col_define
+)engine=innodb PARTITION BY HASH(column_name) PARTITIONS num;
+
+alter table tbl_name add partition (partition p3 VALUES LESS THEN MAX-VALUE);
+
+分区类型：
+range 分区：基于一个给定的连续区间范围，把数据分配到不同的分区
+list 分区：类似range分区，区别在于list分区是基于枚举的值列表分区
+hash 分区：基于给定分区个数，把数据分配到不同的分区
+key 分区：类似于hash分区
+注意:在mysql5.1，range，list，hash都必须使用int作为分区键，只有key可以使用其他类型的列(blob或text)作为分区键。在mysql5.5及以上已经支持非整数的range和list的
+
+无论是哪种mysql分区类型，要么分区表上没有主键/唯一键约束，要么分区表的主键/唯一键都必须包含分区键，也就是说不能使用主键/唯一键之外的字段分区
+```
+
+example:
+
+```shell
+#
+CREATE TABLE emp(id int,
+	ename varchar(30),
+	hired DATA NOT NULL DEFAULT '1970-01-01',
+	separated DATA NOT NULL DEFAULT '9999-01-01',
+	job varchar(30) NOT NULL,
+	store_id INT NOT NULL
+	# primary key (id)  # 加上此字段报错
+	)PARTITION BY RANGE(store_id)(
+	PARTITION p0 VALUES LESS THAN (10),
+	PARTITION p1 VALUES LESS THAN (20),
+	PARTITION P2 VALUES LESS THAN MAX-VALUES
+	);
+#
+CREATE TABLE emp(id int,
+	ename varchar(30),
+	hired DATA NOT NULL DEFAULT '1970-01-01',
+	separated DATA NOT NULL DEFAULT '9999-01-01',
+	job varchar(30) NOT NULL,
+	store_id INT NOT NULL
+	)PARTITION BY LIST(store_id)(
+	PARTITION p0 VALUES IN (3,5),
+	PARTITION p1 VALUES IN (1,10),
+	PARTITION p2 VALUES IN (4，9),
+	);
+# hash 分区
+CREATE TABLE emp(id int,
+	ename varchar(30),
+	hired DATA NOT NULL DEFAULT '1970-01-01',
+	separated DATA NOT NULL DEFAULT '9999-01-01',
+	job varchar(30) NOT NULL,
+	store_id INT NOT NULL
+	)PARTITION BY HASH(expr) PARTITIONS num;
+	
+CREATE TABLE emp(id int,
+	ename varchar(30),
+	hired DATA NOT NULL DEFAULT '1970-01-01',
+	separated DATA NOT NULL DEFAULT '9999-01-01',
+	job varchar(30) NOT NULL,
+	store_id INT NOT NULL
+	)PARTITION BY LINEAR HASH(expr) PARTITIONS num;
+# key 分区
+CREATE TABLE emp(id int,
+	ename varchar(30),
+	hired DATA NOT NULL DEFAULT '1970-01-01',
+	separated DATA NOT NULL DEFAULT '9999-01-01',
+	job varchar(30) NOT NULL,
+	store_id INT NOT NULL
+	)PARTITION BY KEY(job) PARTITIONS 4;
+```
+
+
 
 ### 2. 修改
 
@@ -189,6 +270,15 @@ alter_specification:
 		 USING {BTREE | HASH}
 ```
 
+```shell
+# 修改表的字符集
+mysql> ALTER TABLE studs default character set UTF8;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+```
+
+
+
 #### 2.3 修改视图
 
 ```shell
@@ -227,6 +317,19 @@ Syntax:
 ```shell
 Syntax:
 	drop VIEW [IF EXISTS] view_name [,view_name]...  [RESTRICT | CA]
+```
+
+#### 3.4 删除索引
+
+```shell
+Syntax:
+	DROP [ONLINE | OFFLINE] INDEX index_name ON tbl_name;
+```
+
+```shell
+mysql> drop index idx_sname_1 on student;
+Query OK, 6 rows affected (0.00 sec)
+Records: 6  Duplicates: 0  Warnings: 0
 ```
 
 
@@ -300,6 +403,14 @@ mysql> show create table user3;
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
 
 1 row in set (0.00 sec)
+
+### 创建分区表
+create table emp(
+	empid int,
+	salary decimal(7,2),
+	birthday data)ENGINE=InnoDB partition by HASH(MONTH(birthday)) partitions 6;
+使用birthday此类的月的hash值进行分区，分区数为6；
+
 # 插入两条数据
 mysql> insert into user1(age,name,address) values(20,'zhangsan','bj'),(25,'lisi'
 ,'sh');
