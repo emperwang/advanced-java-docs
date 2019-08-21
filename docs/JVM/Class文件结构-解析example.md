@@ -308,13 +308,68 @@ SourceFile: "ClazzTest.java"		# sourceFile 属性
 
 000000CA-000000CD:00 00 00 05, (code length) code的长度
 
-000000CE--0000D3:2A B7 00 01 B1, (code)表示虚拟机指令码
+000000CE--0000D2:2A B7 00 01 B1, (code)表示虚拟机指令码
 
-000000D4--000000D5:00 00 , (exception_table_length) 没有异常
+000000D3--000000D4:00 00 , (exception_table_length) 没有异常
+
+000000D5--000000D6:00 01 ,表示有一个属性
+
+000000D7-000000D8: 00 0A ,(attribute_name_index)为LineNumberTable
+
+000000D9-000000DC：00 00 00 06 ，(attribute_length),属性长度
+
+000000DD-000000DE:00 01 表示 line_number_info的个数
+
+000000DF-000000E2:00 00 00 03 ,表示start_pc==0  对应 line_number=3
+
+第二个方法：
+
+000000E3-000000E4: 00 01 表示 access_flags
+
+000000E5-000000E6: 00 0B 表示name_index,表示inc
+
+000000E7-000000E8:00 0C 表示descriptor_index ,为  ()I  (此处为大写的i)
+
+000000E9-000000EA:00 01  attribute_count  表示有一个属性
+
+000000EB-000000EC:00 09,attribute_name_index,表示Code，表示此为一个code属性
+
+000000ED-000000F0: 00 00 00 1F, 属性长度为31
+
+000000F1-000000F2: 00 02  max_stack 最大为2
+
+000000F3-000000F4: 00 01  max_locals 为1
+
+000000F5-000000F8: 00 00 00 07 ,code_length 表示code长度，为7
+
+000000F9-000000FF: 2A B4 00 02 04 60 AC ,对应的虚拟机的指令
+
+00000100-00000101:00 00  表示exception_table_count 为0
+
+00000102-00000103: 00 01 表示有一个属性
+
+下一个属性
+
+00000104-00000105: 00 0A ,attribute_name_index,表示LineNumberTable
+
+00000106-00000109: 00 00 00 06 ,表示 attribute_length 属性长度
+
+0000010A-0000010B:00 01, line_number_table_length, 表示line_number_info的个数,有一个
+
+0000010C-0000010F:00 00 00 07 表示start_pc=00  line_number=7
 
 ## 13. attributes_count
 
-
+00000110-0000111:00 01 表示属性有一个
 
 ## 14. attributes
 
+00000112-00000113:00 0D,attribute_name_index为SourceFile
+
+00000114-00000117:00 00 00 02  attribute_length为2
+
+00000118-0000119:00 0E sourcefile_index,常量池中的索引，此处值为 ClazzTest.java
+
+
+
+到此一个简单的class文件就分析完成了。虽然有些枯燥，但还是有些价值的。
