@@ -113,11 +113,47 @@ int indexOf(char[] source,int sourceOffset,int sourceCount,char[] target,int tar
 						([CII[CIII)I
 ```
 
-
-
 ### 1.7 methods
 
+方法表结构如同字段表一样，一次包括了访问标志(access_flag)、名称索引(name_index)、描述符索引(descriptor_index)、属性表集合(attributes)几项。
 
+方法表结构:
+
+![](../image/jvm_class/method_info.jpg)
+
+方法访问标志:
+
+![](../image/jvm_class/method-access.jpg)
+
+方法里的java代码，经过编译器编译成字节码指令之后，存放在方法属性表集合中一个名为"code"的属性里面。
+
+在java中，重载一个函数就是除了与原方法有相同的简单名称外，还要求拥有一个与原方法不同的**特征签名**，**特征签名**就是一个方法中各个参数在常量池中的字段符号引用的集合，也就是因为返回值不会包含在特征前面之中，因此java语言里面是无法仅仅依靠返回值的不同来对一个已有方法进行重载的。 但是在class文件中，特征签名的范围更大一些，只要描述符不是完全一致的两个方法也可以共存。也就是说，如果两个方法有相同的名称和特征签名，但返回值不同，那么也是可以合法共存于同一个class文件中的。
 
 ### 1.8 attributes
+
+在class文件、字段表、方法表中都可以携带自己的属性表集合，以用于描述某些场景专有的信息。
+
+与class文件中其他的数据项目要求严格的顺序、长度和内容不同，属性表集合的限制稍微宽松一些，不再要求各个属性表具有颜色的顺序，并且只要不与已有的属性名重复，任何人实现的编译器都可以向属性表中写入自定义的属性信息，java虚拟机运行时会忽略掉它不认识的属性。
+
+虚拟机规范定义的属性:
+
+![](../image/jvm_class/attribute-type.jpg)
+
+#### 1.8.1 code属性
+
+java程序方法体里面的代码经过javac编译器处理之后，最终变为字节码指令存储在code属性里面。
+
+Code属性出现在方法表的属性集合中，但并非所有的方法表都必须存在这个属性，譬如接口或抽象类中的方法就不存在code属性。
+
+属性表结构：
+
+![](../image/jvm_class/attribute_info.jpg)
+
+attribute_name_index：是一项指向constant_utf8_info型常量的索引，常量值固定为"code"，代表了该属性的属性名称，attribute_length指示了属性值的长度，由于属性名称索引与属性长度一共是6个字节，所以属性值的长度固定为整个属性表的长度减去6个字节。
+
+max_stack：代表了操作数栈(operand stacks)深度的最大值。在方法执行的任意时刻，操作数栈都不会超过这个深度。虚拟机运行的时候需要根据这个值来分配栈帧(frame)中的操作栈深度
+
+max_locals：代表了局部变量表所需的存储空间。在这里，max_locals的单位是slot，slot是虚拟机为局部变量分配内存所使用的最小单位。对于byte、char、short、int、boolean、reference和returnAddress等长度不超过32为的数据类型，每个局部变量占用1个slot，而double和long这两种64位数据类型需要2个slot来存放。方法参数(包括实例方法中隐藏参数this)、显示异常处理器的参数(Exception Handler Paramter 即try - catch语句中定义的catch块所定义的异常)、方法体中定义的局部变量都需要使用局部变量类存放。并不是在方法体中使用到了多少局部变量，就把这些局部 变量所占用的slot之和作为max_locals的值，原因是局部变量表中的slot可以重用，当代码执行超出一个局部变量的作用域时，这个局部变量所占的slot就可以被其他局部变量所使用，编译器会根据变量的作用域来分类slot并分配给各个变量使用，然后计算出max_locals的大小。
+
+code_length 和code：用来存储java源程序编译后生成的字节码指令。code_length代表字节码长度， code是用于存储字节码指令的一系列字节流。还有一个**注意点**，虽然code_length是32位，理论上可以达到2^32-1,但是虚拟机规范限制一个方法不允许超过65535条字节码指令，如果超过这个限制，javac编译器就会拒绝编译。
 
