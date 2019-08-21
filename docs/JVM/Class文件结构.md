@@ -157,3 +157,89 @@ max_locals：代表了局部变量表所需的存储空间。在这里，max_loc
 
 code_length 和code：用来存储java源程序编译后生成的字节码指令。code_length代表字节码长度， code是用于存储字节码指令的一系列字节流。还有一个**注意点**，虽然code_length是32位，理论上可以达到2^32-1,但是虚拟机规范限制一个方法不允许超过65535条字节码指令，如果超过这个限制，javac编译器就会拒绝编译。
 
+#### 1.8.2 Exception
+
+Exception属性的作用是列举出方法中可能抛出的受查异常(checked exception)，也就是方法上throws关键字后面列举的异常。
+
+表结构
+
+![](../image/jvm_class/Exception.jpg)
+
+此属性中的number_of_exception项表示方法可能抛出多少种受查异常，每一种异常使用一个exception_index_table项表示，exception_index_table是一个指向常量池中constant_class_info型常量的索引，代表了该受查异常的类型。
+
+#### 1.8.3 LineNumberTable
+
+LineNumberTable属性用于描述java源码行号与字节码行号(字节码偏移量)之间的对应关系。此属性并不是运行时必需的属性，但默认会生成到class文件中，可以在javac 中使用 **-g:none 或 -g:lines**选项来取消或要求生成这项信息。如果选择不生成这项信息，对程序产生的最主要影响就是在抛出异常时，堆栈中不会显示出错的行号，并且在调试程序的时候无法按照源码来设置断点。
+
+表结构：
+
+![](../image/jvm_class/LineNumberTable.jpg)
+
+line_number_info表包括了start_pc和line_number两个u2类型的数据项，前者是字节码行号，后者是java源码行号。
+
+#### 1.8.4 LocalVariableTable
+
+LocalvariableTable属性用于描述栈帧中局部变量表中的变量与java源码中定义的变量之间的关系，它不是运行时必需的属性，默认也不会生成到class文件之中，可以在javac中使用 **-g:none 或 -g:vars**选项来取消或要求生成这项信息。如果没有生成此属性，最大的影响就是当其他人引用这个方法时，所有的参数名都将丢失，IDE可能会使用诸如arg0，arg1之类的占位符来代替原有的参数名，这对程序运行没有影响，但是会给代码编写带来比较大的不便，而且在调试期间调试器无法根据参数名称从运行上下文中获得参数值。
+
+表结构:
+
+![](../image/jvm_class/LocalVariableTable.jpg)
+
+其中Local_variable_info项目代表了一个栈帧与源码中的局部变量的关联，表结构如下:
+
+![Local_variable_info](../image/jvm_class/local_variable_info.jpg)
+
+start_pc和length属性分别代表了这个局部变量的生命周期看是的字节码偏移量及其作用范围覆盖的长度，两者结合起来就是这个*局部变量在字节码之中的作用于范围*。
+
+name_index和descriptor_index都是指向常量池中constant_utf8_info型常量的索引，分别代表了局部变量的名称和该局部变量的描述符。
+
+index是这个局部变量在栈帧局部变量表中slot的位置。当这个变量的数据类型是64位时，它占用的slot为index和index+1两个位置。
+
+在JDK1.5引入泛型后，LocalVariableTable增加了一个"姐妹属性"：LocalVariableTypeTable，这个属性结构和LocalVariableTable非常相似，仅仅是把记录的字段描述符descriptor_index替换为了字段特征签名(Signature)，对于非泛型类型来说，描述符和特征签名能描述的信息基本一致，但是引入泛型后，由于描述符中泛型的参数化类型被擦除掉了，描述符就不能准确描述泛型类型了，因此出现了LocalVariableTypeTable。
+
+#### 1.8.5 SourceFile
+
+此属性用于记录生成这个class文件的源码文件名称。这个属性也是可选的，可以使用javac的 -g:none 或 -g:source选项来关闭或要求生成这项信息。java中，大多数类名和文件名是一致的，但是有一些特殊情况(内部类)例外。如果不生成此项属性，当抛出异常时，堆栈中将不会显示出错误代码所属文件名。
+
+结构如下:
+
+![SourceFile](../image/jvm_class/sourceFile.jpg)
+
+#### 1.8.6 ConstantValue
+
+此属性的作用是通知虚拟机自动为静态变量赋值。只有被static关键字修饰的变量(类变量)才可以使用这项属性。对于非static类型的变量赋值是在实例构造器<init>方法中；类变量有两种方式：·1.赋值在类构造器<cinit>中进行，2.使用constantValue属性赋值。
+
+目前是：被final和static修饰的常量使用constantValue属性类初始化，如果没有使用final修饰，选择在<cinit>中进行初始化。 虽然有final关键字更符合constantValue语义，但是虚拟机并没有要求使用constantValue属性必须添加ACC_FINAL标志，只要求有constantValue字段必须设置ACC_STATIC标志。
+
+表结构：
+
+![constntValue](../image/jvm_class/constantValue.jpg)
+
+#### 1.8.7  InnerClass
+
+此属性用于记录内部类与宿主类之间的关联，如果一个类中定义了内部类，那编译器将会为它及内部所包含的内部类生成InnerClass类。
+
+属性结构:
+
+![内部类](../image/jvm_class/inner-class-info.jpg)
+
+inner_class_info_index和out_class_info_index 都是指向常量池中constant_class_info型常量的索引，分别代表了内部类和宿主类的符号引用。
+
+inner_name_index:是指向常量池中constant_utf8-info型常量的索引，代表这个内部类的名称，如果是匿名内部类，则此值为0。
+
+inner_class_access_flags是内部类访问标志，类似于类的acc_flags，额取值范围如下:
+
+![inner_class_access_flag](../image/jvm_class/inner-class-access-flag.jpg)
+
+#### 1.8.8 Deprecated and Synthetic
+
+这两个属性都是布尔属性，只存在有和没有区别，没有属性值的概念。
+
+Deparecated属性用于表示某个类、字段或方法，已经被程序作者定位不推荐使用。
+
+Synthetic属性代表此字段或方法并不是由java源码直接产生的，而是由编译器自定添加的，在JDK1.5之后，标识一个类、字段、或方法时编译器自动产生的，也可以设置访问标志中的ACC_SYNTHETIC标志位，其中最典型的例子就是Bridge Method。所有由非用户代码生成的类、方法、及字段都应当至少设置Synthetic属性和ACC_SYNTHETIC标志位中的一项，唯一例外的是实例构造器<init> 和类构造器<cinit>。
+
+Deprecated 和 Synthetic属性的结构如下:
+
+![](../image/jvm_class/Deprecated.jpg)
+
