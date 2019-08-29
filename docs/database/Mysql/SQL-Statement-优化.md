@@ -189,5 +189,74 @@ id=1 group by state order by total_r desc;
 
 ![](../../image/Mysql/show-profile-source.png)
 
-## 5.索引优化
+## 5.打开trace
 
+MySQL5.6之后提供了对SQL的跟踪trace，通过trace文件能够进一步了解为什么优化器选择A计划而不是选择B计划，帮助我们更好的理解优化器的行为。
+
+使用方式：首先打开trace，设置格式为json，设置trace最大能够使用的内存大小，避免解析过程中因为默认内存过小而不能完整显示。
+
+```shell
+	# 打开配置  以及 设置内存大小
+	mysql-> SET OPTIMIZER_TRACE='enable=on',END_MARKERS_IN_JSON=on;
+	mysql-> SET OPTIMIZER_TRACE_MAX_MEM_SIZE=1000000;
+	
+	# 随便执行一条sql语句，以便后面查看
+	mysql-> select * from user1,user2 where user1.id=user2.id and user1.id=1;
+	
+	# 最后检查INFORMATION_SCHEMA.OPTIMIZER_TRACE 就可以知道MySql是如何执行sql的。
+	mysql->SELECT * from INFORMATION_SCHEMA.OPTIMIZER_TRACE;
+```
+
+
+
+## 6.索引优化
+
+### 6.1 索引存储类型
+
+MySQL目前提供了以下4中索引：
+
+1.B-Tree索引：最常见的索引类型，大部分都是支持B树索引
+
+2.HASH索引：只有Memory引擎支持，使用场景简单。
+
+3.R-Tree索引(空间索引)：空间索引时MyISM的一个特殊索引类型，主要用于第地理空间数据类型，通常使用较少。
+
+4.Full-text(全文索引)：全文检索也是MyISM的一个特殊索引类型，主要用于全文检索，InnoDB从mysql 5.6开始提供对全文索引的支持。
+
+各种引擎对索引的支持情况:
+
+![](../../image/Mysql/index-support.jpg)
+
+Hash索引相对简单，只有Memory/Heap引擎支持Hash索引。Hash索引适用于Key-Value查询，通过Hash索引要比通过B-Tree索引查询更迅速；Hash索引不适用于范围查询，如：<,>,<=,>=等此类操作。如果使用memory/Heap引擎且where条件中不使用"=" 进行索引列，那么不会使用到索引。
+
+Btree索引结构：
+
+![](../../image/Mysql/BTressStruct.jpg)
+
+### 6.2 使用索引的情况
+
+1) 匹配全值(Match the full value)，对索引中所有列都指定具体的值，即使对索引中的所有列都有等值匹配的条件。
+
+2) 匹配值的范围查询(match a range of values)，对索引的值能够进行范围查找。
+
+3) 匹配最左前缀(Match a leftmost prefix)，仅仅使用索引中的最左边列进行查找。
+
+如：在col1 + col2 + col3字段上添加联合索引，查询时能够被包含col1，col1+col2，col1+col3，col1+col2+col3等值的查询利用到，可是不能够被col2，col2+col3等查询利用到。
+
+**最左匹配原则**可以算是B-Tree索引中使用的首要原则。
+
+4) 
+
+5)
+
+6)
+
+7)
+
+8)
+
+9)
+
+10)
+
+### 6.3 索引失效情况
