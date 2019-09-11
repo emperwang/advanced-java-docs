@@ -41,10 +41,6 @@ The Surefire Plugin is used during the test phase of the build lifecycle to exec
     </project>
 ```
 
-
-
-
-
 ```shell
 # 命令设置
 mvn install -DskipTests
