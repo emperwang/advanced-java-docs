@@ -1,0 +1,113 @@
+[default]
+name = root-ca                                  # 根证书名字
+domain_suffix = eomp.ericsson.se                # 域名
+aia_url = http://$domain_suffix/$name.crt
+crl_url = http://$domain_suffix/$name.crl
+ocsp_url = http://$domain_suffix:9080
+default_ca = ca_default                        # 根证书的一些默认配置
+name_opt = utf8,esc_ctrl,multiline,lname,align     # 名字的额外配置
+
+
+[ca_dn]                                        # 证书的 domain name
+countryName = "CN"
+organizationName = "CMCC"
+commonName = "DUMMY CMCC CA"
+
+# 此处一些目录 需要先创建出来
+[ca_default]
+home = .
+database = $home/db/index                    # 排序数据库，用来跟踪已经颁发的证书
+serial = $home/db/serial                     # 证书序列号
+crlnumber = $home/db/crlnumber               # the current crl number
+certificate = $home/$name.crt                # CA 根证书
+private_key = $home/private/$name.key        # CA 私钥生成的位置
+RANDFILE = $home/private/random              # private random number file
+new_certs_dir = $home/certs                  # 新生成证书的存放位置
+unique_subject = no
+copy_extensions = none
+default_days = 3650
+default_crl_days = 365
+default_md = sha256
+policy = policy_c_o_match
+
+
+[policy_c_o_match]
+countryName = match
+stateOrProvinceName = optional
+organizationName = match
+organizationalUnitName = optional
+commonName = supplied
+emailAddress = optional
+
+# 证书请求的一些配置
+[req]
+default_bits = 4096                # 长度
+encrypt_key = yes                  # 是否加密
+default_md = sha256                # 指纹算法
+utf8 = yes
+string_mask = utf8only
+prompt = no
+distinguished_name = ca_dn
+req_extensions = ca_ext
+
+
+[ca_ext]                            # 根证书的一些扩展
+basicConstraints = critical,CA:true
+keyUsage = critical,keyCertSign,cRLSign
+subjectKeyIdentifier = hash
+
+
+[sub_ca_ext]                        # ca根证书的 子扩展
+authorityInfoAccess = @issuer_info
+authorityKeyIdentifier = keyid:always
+basicConstraints = critical,CA:true,pathlen:0
+crlDistributionPoints = @crl_info
+extendedKeyUsage = clientAuth,serverAuth
+keyUsage = critical,keyCertSign,cRLSign
+nameConstraints = @name_constraints
+subjectKeyIdentifier = hash
+
+
+[crl_info]
+URI.0 = $crl_url
+
+
+[issuer_info]
+caIssuers;URI.0 = $aia_url
+OCSP;URI.0 = $ocsp_url
+
+
+[name_constraints]
+permitted;DNS.0=example.com
+permitted;DNS.1=example.org
+excluded;IP.0=0.0.0.0/0.0.0.0
+excluded;IP.1=0:0:0:0:0:0:0:0/0:0:0:0:0:0:0:0
+
+
+[ocsp_ext]
+authorityKeyIdentifier = keyid:always
+basicConstraints = critical,CA:false
+extendedKeyUsage = OCSPSigning
+keyUsage = critical,digitalSignature
+subjectKeyIdentifier = hash
+
+
+[crt_ext]                                # 证书的扩展
+basicConstraints = CA:TRUE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+authorityInfoAccess = @issuer_info
+authorityKeyIdentifier = keyid:always
+crlDistributionPoints = @crl_info
+
+
+[vnfm_ext1]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+
+[alt_names]                # 用于证书中的hostname验证
+IP.0=192.168.72.1
+IP.1=192.168,72.18
+DNS.1=*.ericsson.se
