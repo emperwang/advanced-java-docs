@@ -200,12 +200,57 @@
 - [SSL-TLS协议简介](docs/https/SSL-TLS协议简介.md)
 - [wireShark解析https报文](docs/https/wireShark解析https报文.md)
 
+## Java_command
+
+- [记录JDB调试程序](docs/java_command/记录JDB调试程序.md)
+
+## maven
+
+- [0-maven-lifecycle](docs/maven/plugins/0-maven-lifecycle.md)
+- [1-maven-resources](docs/maven/plugins/1-maven-resources.md)
+- [2-maven-surefire](docs/maven/plugins/2-maven-surefire.md)
+- [3-maven-jar](docs/maven/plugins/3-maven-jar.md)
+- [4-maven-dependency](docs/maven/plugins/4-maven-dependency.md)
+- [5-maven-shade](docs/maven/plugins/5-maven-shade.md)
+- [6-maven-assembly](docs/maven/plugins/6-maven-assembly.md)
+- [6-maven-assembly-example](docs/maven/plugins/6-maven-assembly-example.md)
+- [7-maven-springboot-plugins](docs/maven/plugins/7-maven-springboot-plugins.md)
+
+
+
+## mybatis
+
+- [0-mybatis概述](docs/mybatis/0-mybatis概述.md)
+- [1配置文件解析](docs/mybatis/1配置文件解析.md)
+- [2-接口和xml文件的对应关系](docs/mybatis/2-接口和xml文件的对应关系.md)
+- [3-一个接口函数的执行流程](docs/mybatis/3-一个接口函数的执行流程.md)
+- [4-sql参数的配置](docs/mybatis/4-sql参数的配置.md)
+- [5-连接池](docs/mybatis/5-连接池.md)
+- [6-事务管理](docs/mybatis/6-事务管理.md)
+- [7-查询结果如何映射到java类中](docs/mybatis/7-查询结果如何映射到java类中.md)
+
 ## other
 
 * [自动更新配置文件](docs/other/自动更新配置文件.md)
 
-## logBack
+### logBack
 
 * [logback初始化](docs/other/logback/logback初始化.md)
 * [getLogger操作](docs/other/logback/getLogger操作.md)
 * [Log打印](docs/other/logback/Log打印.md)
+
+### kafka
+
+* [kafka集群模式安装](docs/other/kafka/kafka集群模式安装.md)
+
+### nginx
+
+* [Nginx-install](docs/other/nginx/Nginx-install.md)
+
+### redis
+
+* [redis集群模式安装](docs/other/redis/redis集群模式安装.md)
+
+### zookeeper
+
+* [zookeeper集群模式安装](docs/other/zookeeper/zookeeper集群模式安装.md) 
