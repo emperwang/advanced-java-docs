@@ -155,3 +155,16 @@ make 参数:
 
 ## 5. Makefile的隐式规则
 
+在隐式规则的命令中，基本上都是使用了一些预先设置的变量。可以在Makefile中改变这些变量的值，或是在make的命令行中传入这些值，或是在环境变量中设置这些值，无论怎么样，只要设置了这些特定的变量，那么它们就会对隐式规则启作用。当然，可以利用make的 "-R" 或 "--no-buildin-variables"参数类取消所定义的变量对隐式规则的作用。
+
+看一下内置的变量:
+
+![](../../image/makefile/build-in-variable.jpg)
+
+预先定义的一些flag:
+
+![](../../image/makefile/build-in-flag.jpg)
+
+自动化变量:
+
+![](../../image/makefile/auto-variable.jpg)
