@@ -62,7 +62,13 @@ create user fcaps_sm password 'pwd';
 \c fcapsdb;
 create schema authorization fcaps_am;
 create schema authorization fcaps_sm;
+
+## 设置不同用户的search path,这样默认查找自己schema中的表
+alter role fcaps_am SET search_path=fcaps_am;
+alter role fcaps_sm SET search_path=fcaps_sm;
 ```
+
+
 
 ![](../../image/postgresql/schema1.png)
 
