@@ -27,5 +27,3 @@
 ![](../image/jvm_byte_code/7.jpg)
 
 
-
-![](../image/jvm_byte_code/jpg)
