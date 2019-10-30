@@ -1140,3 +1140,191 @@ public static void main(java.lang.String[]);
 SourceFile: "JVMSwitch2.java"
 ```
 
+## 九.接口方法调用(invokeInterface)
+
+```java
+package com.wk.jvm_instruction.service;
+public interface TestService {
+    void printInfo();
+}
+
+/*************************实现类******************************/
+
+package com.wk.jvm_instruction;
+import com.wk.jvm_instruction.service.TestService;
+public class TestServiceImpl implements TestService {
+    @Override
+    public void printInfo() {
+        System.out.println("this is interface instance ...");
+    }
+}
+```
+
+```java
+public interface com.wk.jvm_instruction.service.TestService
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+Constant pool:
+  #1 = Class              #7              // com/wk/jvm_instruction/service/TestService
+  #2 = Class              #8              // java/lang/Object
+  #3 = Utf8               printInfo
+  #4 = Utf8               ()V
+  #5 = Utf8               SourceFile
+  #6 = Utf8               TestService.java
+  #7 = Utf8               com/wk/jvm_instruction/service/TestService
+  #8 = Utf8               java/lang/Object
+{
+  public abstract void printInfo();
+    descriptor: ()V
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+}
+SourceFile: "TestService.java"
+```
+
+```java
+public class com.wk.jvm_instruction.TestServiceImpl implements com.wk.jvm_instruction.service.TestService
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #6.#18         // java/lang/Object."<init>":()V
+   #2 = Fieldref           #19.#20        // java/lang/System.out:Ljava/io/PrintStream;
+   #3 = String             #21            // this is interface instance ...
+   #4 = Methodref          #22.#23        // java/io/PrintStream.println:(Ljava/lang/String;)V
+   #5 = Class              #24            // com/wk/jvm_instruction/TestServiceImpl
+   #6 = Class              #25            // java/lang/Object
+   #7 = Class              #26            // com/wk/jvm_instruction/service/TestService
+   #8 = Utf8               <init>
+   #9 = Utf8               ()V
+  #10 = Utf8               Code
+  #11 = Utf8               LineNumberTable
+  #12 = Utf8               LocalVariableTable
+  #13 = Utf8               this
+  #14 = Utf8               Lcom/wk/jvm_instruction/TestServiceImpl;
+  #15 = Utf8               printInfo
+  #16 = Utf8               SourceFile
+  #17 = Utf8               TestServiceImpl.java
+  #18 = NameAndType        #8:#9          // "<init>":()V
+  #19 = Class              #27            // java/lang/System
+  #20 = NameAndType        #28:#29        // out:Ljava/io/PrintStream;
+  #21 = Utf8               this is interface instance ...
+  #22 = Class              #30            // java/io/PrintStream
+  #23 = NameAndType        #31:#32        // println:(Ljava/lang/String;)V
+  #24 = Utf8               com/wk/jvm_instruction/TestServiceImpl
+  #25 = Utf8               java/lang/Object
+  #26 = Utf8               com/wk/jvm_instruction/service/TestService
+  #27 = Utf8               java/lang/System
+  #28 = Utf8               out
+  #29 = Utf8               Ljava/io/PrintStream;
+  #30 = Utf8               java/io/PrintStream
+  #31 = Utf8               println
+  #32 = Utf8               (Ljava/lang/String;)V
+{
+  public com.wk.jvm_instruction.TestServiceImpl();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 5: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/wk/jvm_instruction/TestServiceImpl;
+
+  public void printInfo();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: ldc           #3                  // String this is interface instance ...
+         5: invokevirtual #4 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         8: return
+      LineNumberTable:
+        line 9: 0
+        line 10: 8
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Lcom/wk/jvm_instruction/TestServiceImpl;
+}
+SourceFile: "TestServiceImpl.java"
+```
+
+```java
+public class com.wk.jvm_instruction.InterfaceMethodInvoke
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #6.#22         // java/lang/Object."<init>":()V
+   #2 = Class              #23            // com/wk/jvm_instruction/TestServiceImpl
+   #3 = Methodref          #2.#22         // com/wk/jvm_instruction/TestServiceImpl."<init>":()V
+   #4 = InterfaceMethodref #24.#25        // com/wk/jvm_instruction/service/TestService.printInfo:()V
+   #5 = Class              #26            // com/wk/jvm_instruction/InterfaceMethodInvoke
+   #6 = Class              #27            // java/lang/Object
+   #7 = Utf8               <init>
+   #8 = Utf8               ()V
+   #9 = Utf8               Code
+  #10 = Utf8               LineNumberTable
+  #11 = Utf8               LocalVariableTable
+  #12 = Utf8               this
+  #13 = Utf8               Lcom/wk/jvm_instruction/InterfaceMethodInvoke;
+  #14 = Utf8               main
+  #15 = Utf8               ([Ljava/lang/String;)V
+  #16 = Utf8               args
+  #17 = Utf8               [Ljava/lang/String;
+  #18 = Utf8               testService
+  #19 = Utf8               Lcom/wk/jvm_instruction/service/TestService;
+  #20 = Utf8               SourceFile
+  #21 = Utf8               InterfaceMethodInvoke.java
+  #22 = NameAndType        #7:#8          // "<init>":()V
+  #23 = Utf8               com/wk/jvm_instruction/TestServiceImpl
+  #24 = Class              #28            // com/wk/jvm_instruction/service/TestService
+  #25 = NameAndType        #29:#8         // printInfo:()V
+  #26 = Utf8               com/wk/jvm_instruction/InterfaceMethodInvoke
+  #27 = Utf8               java/lang/Object
+  #28 = Utf8               com/wk/jvm_instruction/service/TestService
+  #29 = Utf8               printInfo
+{
+  public com.wk.jvm_instruction.InterfaceMethodInvoke();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 5: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/wk/jvm_instruction/InterfaceMethodInvoke;
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: new           #2                  // class com/wk/jvm_instruction/TestServiceImpl
+         3: dup
+         4: invokespecial #3   // Method com/wk/jvm_instruction/TestServiceImpl."<init>":()V
+         7: astore_1
+         8: aload_1
+         9: invokeinterface #4,  1            // InterfaceMethod com/wk/jvm_instruction/service/TestService.printInfo:()V
+        14: return
+      LineNumberTable:
+        line 7: 0
+        line 8: 8
+        line 9: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  args   [Ljava/lang/String;
+            8       7     1 testService   Lcom/wk/jvm_instruction/service/TestService;
+}
+SourceFile: "InterfaceMethodInvoke.java"
+```
+
