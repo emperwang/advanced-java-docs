@@ -532,3 +532,184 @@ public int getNumIdle() {
 
 
 
+这样关于池的基本方法就分析完了，总体思路还是比较清晰的。
+
+不过这里还有一个后台检测对象的动作，咱们也顺道看一看吧。
+
+这个后台线程呢，就是在设置检测时间时启动的：
+
+```java
+public final void setTimeBetweenEvictionRunsMillis(
+    final long timeBetweenEvictionRunsMillis) {
+    this.timeBetweenEvictionRunsMillis = timeBetweenEvictionRunsMillis;
+    // 在这里启动了后台检测
+    startEvictor(timeBetweenEvictionRunsMillis);
+}
+```
+
+```java
+final void startEvictor(final long delay) {
+    synchronized (evictionLock) {
+        EvictionTimer.cancel(evictor, evictorShutdownTimeoutMillis, TimeUnit.MILLISECONDS);
+        evictor = null;
+        evictionIterator = null;
+        if (delay > 0) {
+            // 创建线程，并使用线程池运行
+            evictor = new Evictor();
+            // 定时任务调度的线程池
+            EvictionTimer.schedule(evictor, delay, delay);
+        }
+    }
+}
+```
+
+```java
+public void run() {
+    final ClassLoader savedClassLoader =
+        Thread.currentThread().getContextClassLoader();
+    try {
+        if (factoryClassLoader != null) {
+            // Set the class loader for the factory
+            final ClassLoader cl = factoryClassLoader.get();
+            if (cl == null) {
+                // The pool has been dereferenced and the class loader
+                // GC'd. Cancel this timer so the pool can be GC'd as
+                // well.
+                cancel();
+                return;
+            }
+            Thread.currentThread().setContextClassLoader(cl);
+        }
+
+        // Evict from the pool
+        try {
+            // 执行具体的检测
+            evict();
+        } catch(final Exception e) {
+            swallowException(e);
+        } catch(final OutOfMemoryError oome) {
+            // Log problem but give evictor thread a chance to continue
+            // in case error is recoverable
+            oome.printStackTrace(System.err);
+        }
+        // Re-create idle instances.
+        try {
+            // 保证最小化的idle数量
+            ensureMinIdle();
+        } catch (final Exception e) {
+            // 向listener传播异常
+            swallowException(e);
+        }
+    } finally {
+        // Restore the previous CCL
+        Thread.currentThread().setContextClassLoader(savedClassLoader);
+    }
+}
+```
+
+```java
+public void evict() throws Exception {
+    assertOpen();
+    if (idleObjects.size() > 0) {
+        PooledObject<T> underTest = null;
+        // 对象过期的策略
+        final EvictionPolicy<T> evictionPolicy = getEvictionPolicy();
+        synchronized (evictionLock) {
+            final EvictionConfig evictionConfig = new EvictionConfig(
+                getMinEvictableIdleTimeMillis(),
+                getSoftMinEvictableIdleTimeMillis(),
+                getMinIdle());
+            // idle状态的对象是否检测
+            final boolean testWhileIdle = getTestWhileIdle();
+            for (int i = 0, m = getNumTests(); i < m; i++) {
+                // 获取idleObjects的遍历器
+                if (evictionIterator == null || !evictionIterator.hasNext()) {
+                    evictionIterator = new EvictionIterator(idleObjects);
+                }
+                if (!evictionIterator.hasNext()) {
+                    // Pool exhausted, nothing to do here
+                    return;
+                }
+                try {
+                    // 获取下一个要遍历的对象
+                    underTest = evictionIterator.next();
+                } catch (final NoSuchElementException nsee) {
+                    // Object was borrowed in another thread
+                    // Don't count this as an eviction test so reduce i;
+                    i--;
+                    evictionIterator = null;
+                    continue;
+                }
+				
+                if (!underTest.startEvictionTest()) {
+                    // Object was borrowed in another thread
+                    // Don't count this as an eviction test so reduce i;
+                    i--;
+                    continue;
+                }
+
+                // User provided eviction policy could throw all sorts of
+                // crazy exceptions. Protect against such an exception
+                // killing the eviction thread.
+                boolean evict;
+                try {
+                    // 判断对象是否符合 销毁的条件(此evict是具体的判断逻辑)
+                    evict = evictionPolicy.evict(evictionConfig, underTest,
+                                                 idleObjects.size());
+                } catch (final Throwable t) {
+                    // Slightly convoluted as SwallowedExceptionListener
+                    // uses Exception rather than Throwable
+                    PoolUtils.checkRethrow(t);
+                    // 分发异常
+                    swallowException(new Exception(t));
+                    // Don't evict on error conditions
+                    evict = false;
+                }
+
+                if (evict) {// 如果符合了销毁的条件
+                    destroy(underTest); // 则进行销毁
+                    // 记录统计数
+                    destroyedByEvictorCount.incrementAndGet();
+                } else {
+                    if (testWhileIdle) { // 如何idle情况下可以test
+                        boolean active = false;
+                        try {
+                            // 则激活对象
+                            factory.activateObject(underTest);
+                            active = true;
+                        } catch (final Exception e) {
+                            // 激活时 如果出异常,则销毁
+                            destroy(underTest);
+                            destroyedByEvictorCount.incrementAndGet();
+                        }
+                        if (active) {// 如果激活了,则进行校验,校验出错,则也进行销毁
+                            if (!factory.validateObject(underTest)) {
+                                destroy(underTest);
+                                destroyedByEvictorCount.incrementAndGet();
+                            } else {
+                                try {
+                                    factory.passivateObject(underTest);
+                                } catch (final Exception e) {
+                                    destroy(underTest);
+                                    destroyedByEvictorCount.incrementAndGet();
+                                }
+                            }
+                        }
+                    }
+                    // 结果evict
+                    if (!underTest.endEvictionTest(idleObjects)) {
+                        // TODO - May need to add code here once additional
+                        // states are used
+                    }
+                }
+            }
+        }
+    }
+    final AbandonedConfig ac = this.abandonedConfig;
+    if (ac != null && ac.getRemoveAbandonedOnMaintenance()) {
+        removeAbandoned(ac);
+    }
+}
+```
+
+好了，到这里就分析完了。
