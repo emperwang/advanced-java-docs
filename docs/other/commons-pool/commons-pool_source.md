@@ -712,4 +712,4 @@ public void evict() throws Exception {
 }
 ```
 
-好了，到这里就分析完了。
+好了，到这里就分析完了。关于SoftReferenceObjectPool容器的源码，也很简单，大家私下有兴趣就看一看吧。
