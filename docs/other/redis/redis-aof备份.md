@@ -96,7 +96,7 @@ no-appendfsync-on-rewrite no
 #
 # Specify a percentage of zero in order to disable the automatic AOF
 # rewrite feature.
-### aof文件大于64M且是上次文件的一倍，则进行rewrite
+### aof文件大于64M且是上次rewrite文件的一倍，则进行rewrite
 ### rewrite去除一些无用的指令，只保留能恢复当前数据集的最小指令集
 auto-aof-rewrite-percentage 100
 auto-aof-rewrite-min-size 64mb
@@ -138,6 +138,7 @@ aof-load-truncated yes
 #
 # This is currently turned off by default in order to avoid the surprise
 # of a format change, but will at some point be used as the default.
+### 此选项是用于rdb aop同时打开时(混合模式)的配置
 aof-use-rdb-preamble no
 
 ```
@@ -175,11 +176,15 @@ AOF is valid
 
 ```
 
+工作流程：
 
+![](../../image/redis/aof.png)
 
 ## 3. 恢复
 
 把文件放置到备份目录，重新启动应用就可以进行数据的恢复。
 
+恢复的流程：
 
+![](../../image/redis/load-rdb-aof.png)
 

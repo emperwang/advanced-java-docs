@@ -86,8 +86,6 @@ dir /mnt/redis/redis-5.0/redis-cluster/9001/data
 
 ## 2.备份
 
-使用save备份时，会导致redis集群在备份期间暂停响应。
-
 ```shell
 ## 后台开一个线程去进行备份,不会导致不响应
 $ bgsave
@@ -122,7 +120,9 @@ $ redis-check-rdb 9001/data/dump.rdb
 [info] 0 already expired
 ```
 
+工作流程：
 
+![](../../image/redis/rdb.png)
 
 ## 3.恢复
 
