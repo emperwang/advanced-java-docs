@@ -173,13 +173,7 @@
 
 ## JVM
 
-* [垃圾收集器](JVM/垃圾收集器.md)
-* [CMS收集介绍](JVM/CMS收集介绍.md)
-* [G1收集器](JVM/G1收集介绍.md)
-* [JVM内存区](JVM/JVM内存区.md)
-* [类加载阶段解析](JVM/类加载阶段解析.md)
-* [HotSpot栈帧组成](JVM/HotSpot栈帧组成.md)
-* [JVM字节码](JVM/JVM字节码.md)
+* [JVM-index](JVM/0-index.md)
 
 ## Docker
 
