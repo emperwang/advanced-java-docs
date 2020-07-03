@@ -58,7 +58,7 @@ public class KafkaBootstrapConfiguration {
 	public KafkaListenerAnnotationBeanPostProcessor kafkaListenerAnnotationProcessor() {
 		return new KafkaListenerAnnotationBeanPostProcessor();
 	}
-   // 
+   	// 此会保存kafka的 containter 以及 kafkaListenerContainer 信息
 	@Bean(name = KafkaListenerConfigUtils.KAFKA_LISTENER_ENDPOINT_REGISTRY_BEAN_NAME)
 	public KafkaListenerEndpointRegistry defaultKafkaListenerEndpointRegistry() {
 		return new KafkaListenerEndpointRegistry();
@@ -128,7 +128,7 @@ public Object postProcessAfterInitialization(final Object bean, final String bea
             for (Map.Entry<Method, Set<KafkaListener>> entry : annotatedMethods.entrySet()) {
                 Method method = entry.getKey();
                 for (KafkaListener listener : entry.getValue()) {
-                    // 方法上带主机的进行处理  -- 咱们从这里看下去
+                    // 方法上带注解的进行处理  -- 咱们从这里看下去
                     processKafkaListener(listener, method, bean, beanName);
                 }
             }
@@ -193,7 +193,7 @@ protected void processListener(MethodKafkaListenerEndpoint<?, ?> endpoint, Kafka
     if (StringUtils.hasText(autoStartup)) {
         endpoint.setAutoStartup(resolveExpressionAsBoolean(autoStartup, "autoStartup"));
     }
-	// 
+	// containerFactory的工厂类
     KafkaListenerContainerFactory<?> factory = null;
     String containerFactoryBeanName = resolve(kafkaListener.containerFactory());
     if (StringUtils.hasText(containerFactoryBeanName)) {
@@ -621,7 +621,7 @@ new OffsetMetadata(topicPartition.initialOffset(), topicPartition.isRelativeToCu
 
 ```java
 // 主要看两个点：1.消费  2.调用处理的逻辑
-// 其他很多代码都是关于异常的处理,如果看不懂,那么夜不影响下面的分析
+// 其他很多代码都是关于异常的处理,如果看不懂,那么也不影响下面的分析
 @Override
 public void run() {
     this.consumerThread = Thread.currentThread();
