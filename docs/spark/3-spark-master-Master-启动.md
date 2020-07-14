@@ -347,7 +347,7 @@ private[master] class MasterArguments(args: Array[String], conf: SparkConf) exte
 
 1. 创建SecurityManager
 2. 创建RpcEnv
-3. 设置创建的RpcEnv的Endpoint为创建的Master
+3. 创建的MasterEndpoint并进行注册
 4. masterEndpoint 发送消息
 5. 返回创建的RpcEnv  webUIPort  restPort
 
@@ -416,6 +416,7 @@ def create(config: RpcEnvConfig): RpcEnv = {
         }
         try {
             // 真正上面创建的启动server的地方; 启动master的Rpc
+            // 换句话说,也就是启动master
             Utils.startServiceOnPort(config.port, startNettyRpcEnv, sparkConf, config.name)._1
         } catch {
             case NonFatal(e) =>
@@ -427,21 +428,472 @@ def create(config: RpcEnvConfig): RpcEnv = {
 }
 ```
 
+这里对于webUi的启动及绑定，以及master的具体启动，后面单独拎出来讲，本篇主要说一下这个master的启动流程。
+
+#### master的创建
+
+>  val masterEndpoint = rpcEnv.setupEndpoint(ENDPOINT_NAME,
+>       new Master(rpcEnv, rpcEnv.address, webUiPort, securityMgr, conf))
+
+master的创建，以及创建masterEndpoint。
+
+这里咱们看一下具体的master的创建：
+
+```scala
+/// 主构造函数
+private[deploy] class Master(
+    override val rpcEnv: RpcEnv,
+    address: RpcAddress,
+    webUiPort: Int,
+    val securityMgr: SecurityManager,
+    val conf: SparkConf)
+  extends ThreadSafeRpcEndpoint with Logging with LeaderElectable 
+
+/// 构造函数体---初始化一系列的容器 以及 环境变量
+  // 创建了一个线程池
+  private val forwardMessageThread =
+    ThreadUtils.newDaemonSingleThreadScheduledExecutor("master-forward-message-thread")
+  // hadoop相关的配置
+  private val hadoopConf = SparkHadoopUtil.get.newConfiguration(conf)
+
+  // For application IDs
+  // 时间格式化 格式
+  private def createDateFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.US)
+  // 默认是  60s; woker的超时时间
+  private val WORKER_TIMEOUT_MS = conf.getLong("spark.worker.timeout", 60) * 1000
+  // 保存的 application数量,默认是200
+  private val RETAINED_APPLICATIONS = conf.getInt("spark.deploy.retainedApplications", 200)
+  // 保存的driver数量,默认是200
+  private val RETAINED_DRIVERS = conf.getInt("spark.deploy.retainedDrivers", 200)
+  //
+  private val REAPER_ITERATIONS = conf.getInt("spark.dead.worker.persistence", 15)
+  // HA 恢复的模式
+  private val RECOVERY_MODE = conf.get("spark.deploy.recoveryMode", "NONE")
+  // executor 重试的次数
+  private val MAX_EXECUTOR_RETRIES = conf.getInt("spark.deploy.maxExecutorRetries", 10)
+  // 所有的worker 信息
+  val workers = new HashSet[WorkerInfo]
+  // id 到 app 的映射关系
+  val idToApp = new HashMap[String, ApplicationInfo]
+  // 等待中的app的信息
+  private val waitingApps = new ArrayBuffer[ApplicationInfo]
+  // 所有的app 信息
+  val apps = new HashSet[ApplicationInfo]
+  // id 和 worker之间的映射关系
+  private val idToWorker = new HashMap[String, WorkerInfo]
+  // rpc地址到 worker之间的映射关系
+  private val addressToWorker = new HashMap[RpcAddress, WorkerInfo]
+  // RpcEndPoint 到  applicaiton 的映射关系
+  private val endpointToApp = new HashMap[RpcEndpointRef, ApplicationInfo]
+  // rpc 地址到 application的映射关系
+  private val addressToApp = new HashMap[RpcAddress, ApplicationInfo]
+  // 完成的 application的容器
+  private val completedApps = new ArrayBuffer[ApplicationInfo]
+  // 下一个app的 序列号
+  private var nextAppNumber = 0
+  // 所有的driver的信息
+  private val drivers = new HashSet[DriverInfo]
+  // 所有完成的driver的信息
+  private val completedDrivers = new ArrayBuffer[DriverInfo]
+  // Drivers currently spooled for scheduling
+  // 等待中的driver的信息
+  private val waitingDrivers = new ArrayBuffer[DriverInfo]
+  // 下一个driver的序列号
+  private var nextDriverNumber = 0
+  // host地址的检测
+  Utils.checkHost(address.host)
+  // 监测系统
+  private val masterMetricsSystem = MetricsSystem.createMetricsSystem("master", conf, securityMgr)
+  private val applicationMetricsSystem = MetricsSystem.createMetricsSystem("applications", conf,
+    securityMgr)
+  // masterSource 对当前Master的包装
+  private val masterSource = new MasterSource(this)
+
+  // After onStart, webUi will be set
+  private var webUi: MasterWebUI = null
+  // master的地址
+  private val masterPublicAddress = {
+    val envVar = conf.getenv("SPARK_PUBLIC_DNS")
+    if (envVar != null) envVar else address.host
+  }
+  // master的url
+  private val masterUrl = address.toSparkURL
+  // _ 表示默认初始值;
+  private var masterWebUiUrl: String = _
+  // 初始状态,为 STANDBY
+  private var state = RecoveryState.STANDBY
+  // 序列化引擎
+  private var persistenceEngine: PersistenceEngine = _
+  // leader 选举
+  private var leaderElectionAgent: LeaderElectionAgent = _
+  // 恢复的 task
+  private var recoveryCompletionTask: ScheduledFuture[_] = _
+  // 检测 worker是否超时的 task
+  private var checkForWorkerTimeOutTask: ScheduledFuture[_] = _
+
+  // As a temporary workaround before better ways of configuring memory, we allow users to set
+  // a flag that will perform round-robin scheduling across the nodes (spreading out each app
+  // among all the nodes) instead of trying to consolidate each app onto a small # of nodes.
+  // 在有更好配置内存方法前的临时方法, 允许用户设置一个flag, 该flag会使能在所有节点上循环调度app,
+  // 而不是把app整合在一个小的 节点上
+  private val spreadOutApps = conf.getBoolean("spark.deploy.spreadOut", true)
+
+  // Default maxCores for applications that don't specify it (i.e. pass Int.MaxValue)
+  // 默认可用的 core 核数
+  private val defaultCores = conf.getInt("spark.deploy.defaultCores", Int.MaxValue)
+  // 反向代理
+  val reverseProxy = conf.getBoolean("spark.ui.reverseProxy", false)
+  if (defaultCores < 1) {
+    throw new SparkException("spark.deploy.defaultCores must be positive")
+  }
+
+  // Alternative application submission gateway that is stable across Spark versions
+  // 是否使用 restServer; 提供给外部通过 REST api的方式来提交任务
+  private val restServerEnabled = conf.getBoolean("spark.master.rest.enabled", false)
+  // restServer
+  private var restServer: Option[StandaloneRestServer] = None
+  // restServer绑定的端口
+  private var restServerBoundPort: Option[Int] = None
+
+  {
+    val authKey = SecurityManager.SPARK_AUTH_SECRET_CONF
+    require(conf.getOption(authKey).isEmpty || !restServerEnabled,
+      s"The RestSubmissionServer does not support authentication via ${authKey}.  Either turn " +
+        "off the RestSubmissionServer with spark.master.rest.enabled=false, or do not use " +
+        "authentication.")
+  }
+```
+
+#### 注册创建的master endpoint
+
+注册endpoint
+
+> org.apache.spark.rpc.netty.NettyRpcEnv#setupEndpoint
+
+```scala
+  override def setupEndpoint(name: String, endpoint: RpcEndpoint): RpcEndpointRef = {
+    dispatcher.registerRpcEndpoint(name, endpoint)
+  }
+```
+
+```scala
+// 注册endpoint
+def registerRpcEndpoint(name: String, endpoint: RpcEndpoint): NettyRpcEndpointRef = {
+    val addr = RpcEndpointAddress(nettyEnv.address, name)
+    val endpointRef = new NettyRpcEndpointRef(nettyEnv.conf, addr, nettyEnv)
+    synchronized {
+        if (stopped) {
+            throw new IllegalStateException("RpcEnv has been stopped")
+        }
+        // 把信息存储到 endpoints中
+        // 在创建 EndpointData 时,就会放入一个 OnStart消息
+        if (endpoints.putIfAbsent(name, new EndpointData(name, endpoint, endpointRef)) != null) {
+            throw new IllegalArgumentException(s"There is already an RpcEndpoint called $name")
+        }
+        // 把存储后的信息取出
+        val data = endpoints.get(name)
+        // 在 endpointRefs放入一份
+        endpointRefs.put(data.endpoint, data.ref)
+        // 因为创建的新的data 是有消息的,故这里吧有消息的EndpointData 放入receivers中
+        receivers.offer(data)  // for the OnStart message
+    }
+    endpointRef
+}
+```
+
+#### masterEndpoint 消息发送
+
+注册号endpoint之后，会发送消息：
+
+```scala
+ // 发送消息
+ val portsResponse = masterEndpoint.askSync[BoundPortsResponse](BoundPortsRequest)
+```
+
+> org.apache.spark.rpc.RpcEndpointRef#askSync
+
+```scala
+def askSync[T: ClassTag](message: Any): T = askSync(message, defaultAskTimeout)
+
+def askSync[T: ClassTag](message: Any, timeout: RpcTimeout): T = {
+    val future = ask[T](message, timeout)
+    timeout.awaitResult(future)
+}
+
+> org.apache.spark.rpc.netty.NettyRpcEndpointRef#ask
+
+override def ask[T: ClassTag](message: Any, timeout: RpcTimeout): Future[T] = {
+    nettyEnv.ask(new RequestMessage(nettyEnv.address, this, message), timeout)
+}
+
+// 发送消息 并等待回复
+private[netty] def ask[T: ClassTag](message: RequestMessage, timeout: RpcTimeout): Future[T] = {
+    val promise = Promise[Any]()
+    val remoteAddr = message.receiver.address
+    // 失败的回调函数
+    def onFailure(e: Throwable): Unit = {
+        if (!promise.tryFailure(e)) {
+            e match {
+                case e : RpcEnvStoppedException => logDebug (s"Ignored failure: $e")
+                case _ => logWarning(s"Ignored failure: $e")
+            }
+        }
+    }
+    // 成的回调函数
+    def onSuccess(reply: Any): Unit = reply match {
+        case RpcFailure(e) => onFailure(e)
+        case rpcReply =>
+        if (!promise.trySuccess(rpcReply)) {
+            logWarning(s"Ignored message: $reply")
+        }
+    }
+
+    try {
+        if (remoteAddr == address) {
+            val p = Promise[Any]()
+            p.future.onComplete {
+                case Success(response) => onSuccess(response)
+                case Failure(e) => onFailure(e)
+            }(ThreadUtils.sameThread)
+            // 发送消息
+            dispatcher.postLocalMessage(message, p)
+        } else {
+            val rpcMessage = RpcOutboxMessage(message.serialize(this),
+            onFailure,(client, response) => onSuccess(deserialize[Any](client, response)))
+            // 发送消息到 Outbox
+            postToOutbox(message.receiver, rpcMessage)
+            promise.future.failed.foreach {
+                case _: TimeoutException => rpcMessage.onTimeout()
+                case _ =>
+            }(ThreadUtils.sameThread)
+        }
+        // 定时 任务
+        val timeoutCancelable = timeoutScheduler.schedule(new Runnable {
+            override def run(): Unit = {
+                onFailure(new TimeoutException(s"Cannot receive any reply from ${remoteAddr} " +
+                                               s"in ${timeout.duration}"))
+            }
+        }, timeout.duration.toNanos, TimeUnit.NANOSECONDS)
+        promise.future.onComplete { v =>
+            timeoutCancelable.cancel(true)
+        }(ThreadUtils.sameThread)
+    } catch {
+        case NonFatal(e) =>
+        onFailure(e)
+    }
+    promise.future.mapTo[T].recover(timeout.addMessageIfTimeout)(ThreadUtils.sameThread)
+}
+```
+
+> dispatcher.postLocalMessage
+
+```scala
+// 发送消息到 本地
+def postLocalMessage(message: RequestMessage, p: Promise[Any]): Unit = {
+    val rpcCallContext =
+    new LocalNettyRpcCallContext(message.senderAddress, p)
+    val rpcMessage = RpcMessage(message.senderAddress, message.content, rpcCallContext)
+    // 发送消息
+    postMessage(message.receiver.name, rpcMessage, (e) => p.tryFailure(e))
+}
+
+private def postMessage(
+    endpointName: String,
+    message: InboxMessage,
+    callbackIfStopped: (Exception) => Unit): Unit = {
+    val error = synchronized {
+        val data = endpoints.get(endpointName)
+        if (stopped) {
+            Some(new RpcEnvStoppedException())
+        } else if (data == null) {
+            Some(new SparkException(s"Could not find $endpointName."))
+        } else {
+            // 把消息放到  inbox
+            data.inbox.post(message)
+            // 保存接收到消息的 data
+            receivers.offer(data)
+            None
+        }
+    }
+    // We don't need to call `onStop` in the `synchronized` block
+    error.foreach(callbackIfStopped)
+}
+```
+
+发送消息到外部:
+
+> // 发送消息到 Outbox
+>             postToOutbox(message.receiver, rpcMessage)
+
+```scala
+// 发送消息到 Outbox
+private def postToOutbox(receiver: NettyRpcEndpointRef, message: OutboxMessage): Unit = {
+    // 如果已经有了 Client,则直接发送
+    if (receiver.client != null) {
+        message.sendWith(receiver.client)
+    } else {
+        require(receiver.address != null,
+                "Cannot send message to client endpoint with no listen address.")
+        // 创建outbox
+        val targetOutbox = {
+            val outbox = outboxes.get(receiver.address)
+            if (outbox == null) {
+                val newOutbox = new Outbox(this, receiver.address)
+                val oldOutbox = outboxes.putIfAbsent(receiver.address, newOutbox)
+                if (oldOutbox == null) {
+                    newOutbox
+                } else {
+                    oldOutbox
+                }
+            } else {
+                outbox
+            }
+        }
+        // 如果已经停止,则进行停止
+        if (stopped.get) {
+            // It's possible that we put `targetOutbox` after stopping. So we need to clean it.
+            outboxes.remove(receiver.address)
+            targetOutbox.stop()
+        } else {
+            // 具体的发送消息
+            targetOutbox.send(message)
+        }
+    }
+}
+```
+
+```scala
+// 发送消息到 外部的 box
+def send(message: OutboxMessage): Unit = {
+    val dropped = synchronized {
+        if (stopped) {
+            true
+        } else {
+            messages.add(message)
+            false
+        }
+    }
+    if (dropped) {
+        message.onFailure(new SparkException("Message is dropped because Outbox is stopped"))
+    } else {
+        // 具体的消息发送
+        drainOutbox()
+    }
+}
+```
+
+```scala
+private def drainOutbox(): Unit = {
+    var message: OutboxMessage = null
+    synchronized {
+      if (stopped) {
+        return
+      }
+      if (connectFuture != null) {
+        // We are connecting to the remote address, so just exit
+        return
+      }
+      if (client == null) {
+        // There is no connect task but client is null, so we need to launch the connect task.
+        // 创建client
+        launchConnectTask()
+        return
+      }
+      if (draining) {
+        // There is some thread draining, so just exit
+        return
+      }
+      message = messages.poll()
+      if (message == null) {
+        return
+      }
+      draining = true
+    }
+    // 村换发送消息,直到把所有消息发送完毕
+    while (true) {
+      try {
+        val _client = synchronized { client }
+        if (_client != null) {
+          // 发送消息
+          message.sendWith(_client)
+        } else {
+          assert(stopped == true)
+        }
+      } catch {
+        case NonFatal(e) =>
+          handleNetworkFailure(e)
+          return
+      }
+      synchronized {
+        if (stopped) {
+          return
+        }
+        message = messages.poll()
+        if (message == null) {
+          draining = false
+          return
+        }
+      }
+    }
+  }
+```
+
+```scala
+  private def launchConnectTask(): Unit = {
+    connectFuture = nettyEnv.clientConnectionExecutor.submit(new Callable[Unit] {
+
+      override def call(): Unit = {
+        try {
+          // 创建 netty客户端
+          val _client = nettyEnv.createClient(address)
+          outbox.synchronized {
+            // 记录创建的客户端
+            client = _client
+            if (stopped) {
+              closeClient()
+            }
+          }
+        } catch {
+          case ie: InterruptedException =>
+            // exit
+            return
+          case NonFatal(e) =>
+            outbox.synchronized { connectFuture = null }
+            handleNetworkFailure(e)
+            return
+        }
+        outbox.synchronized { connectFuture = null }
+        // It's possible that no thread is draining now. If we don't drain here, we cannot send the
+        // messages until the next message arrives.
+        // 创建好了client 再次进行消息的发送
+        drainOutbox()
+      }
+    })
+  }
+
+```
 
 
 
+### master启动完成
 
+到此master就启动完成了，最后就循环等待，防止程序退出：
 
+> ```scala
+> rpcEnv.awaitTermination()
+> ```
 
+```scala
+override def awaitTermination(): Unit = {
+    dispatcher.awaitTermination()
+}
 
+def awaitTermination(): Unit = {
+    threadpool.awaitTermination(Long.MaxValue, TimeUnit.MILLISECONDS)
+}
+```
 
-
-
-
-
-
-
-
+读者读到这里，真心不容易。现在可以放下心，master启动到这里就完成了。继续进行下面的源码之旅吧。
 
 
 
