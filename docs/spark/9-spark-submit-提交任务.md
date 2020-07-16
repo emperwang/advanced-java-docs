@@ -47,7 +47,7 @@ Spark properties used, including those specified through
     
 20/07/16 17:08:17 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Main class:
-org.apache.spark.examples.SparkPi		# client模式下,直接就是目标任务; driver启动是在 sparkContext中启动的
+org.apache.spark.examples.SparkPi		# client模式下,直接就是目标任务; driver启动是在 
 Arguments:
 5
 Spark config:
