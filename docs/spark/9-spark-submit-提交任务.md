@@ -8,6 +8,59 @@ client模式提交任务的命令:
 sh -x spark-submit --class org.apache.spark.examples.SparkPi --master spark://name2:7077 ../examples/jars/spark-examples_2.11-2.4.6.jar  5
 ```
 
+client模式提交任务 spark的详细打印信息
+
+```shell
+[root@name2 bin]# ./spark-submit -v --class org.apache.spark.examples.SparkPi --master spark://name2:7077 ../examples/jars/spark-examples_2.11-2.4.6.jar  5
+Using properties file: /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/spark-defaults.conf
+Parsed arguments:
+  master                  spark://name2:7077
+  deployMode              null
+  executorMemory          null
+  executorCores           null
+  totalExecutorCores      null
+  propertiesFile          /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/spark-defaults.conf
+  driverMemory            null
+  driverCores             null
+  driverExtraClassPath    null
+  driverExtraLibraryPath  null
+  driverExtraJavaOptions  null
+  supervise               false
+  queue                   null
+  numExecutors            null
+  files                   null
+  pyFiles                 null
+  archives                null
+  mainClass               org.apache.spark.examples.SparkPi
+  primaryResource         file:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/../examples/jars/spark-examples_2.11-2.4.6  name                    org.apache.spark.examples.SparkPi
+  childArgs               [5]
+  jars                    null
+  packages                null
+  packagesExclusions      null
+  repositories            null
+  verbose                 true
+
+Spark properties used, including those specified through
+ --conf and those from the properties file /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/spark-defaults.conf:
+  
+
+    
+20/07/16 17:08:17 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Main class:
+org.apache.spark.examples.SparkPi		# client模式下,直接就是目标任务; driver启动是在 sparkContext中启动的
+Arguments:
+5
+Spark config:
+(spark.app.name,org.apache.spark.examples.SparkPi)
+(spark.master,spark://name2:7077)
+(spark.submit.deployMode,client)
+(spark.jars,file:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/../examples/jars/spark-examples_2.11-2.4.6.jar)
+Classpath elements:
+file:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/../examples/jars/spark-examples_2.11-2.4.6.jar
+```
+
+
+
 执行log:
 
 ```shell
@@ -114,11 +167,277 @@ Pi is roughly 3.1403342806685615
 20/07/15 16:15:13 INFO ShutdownHookManager: Deleting directory /tmp/spark-c5d3ad5e-fa77-4bd3-a6e1-19523a2f922c
 ```
 
+最终的任务提交命令：
+
+```shell
+ exec /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/spark-class org.apache.spark.deploy.SparkSubmit --class org.apache.spark.examples.SparkPi --master spark://name2:7077 ../examples/jars/spark-examples_2.11-2.4.6.jar 5
+```
+
+执行过程:
+
+```shell
+[root@name2 bin]# sh -x spark-class org.apache.spark.deploy.SparkSubmit --class org.apache.spark.examples.SparkPi --master spark://name2:7077 ../examples/jars/spark-examples_2.11-2.4.6.jar 10
++ '[' -z '' ']'
+++ dirname spark-class
++ source ./find-spark-home
+++++ dirname spark-class
++++ cd .
++++ pwd
+++ FIND_SPARK_HOME_PYTHON_SCRIPT=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/find_spark_home.py
+++ '[' '!' -z '' ']'
+++ '[' '!' -f /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/find_spark_home.py ']'
+++++ dirname spark-class
++++ cd ./..
++++ pwd
+++ export SPARK_HOME=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6
+++ SPARK_HOME=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6
++ . /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/load-spark-env.sh
+++ '[' -z /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6 ']'
+++ '[' -z '' ']'
+++ export SPARK_ENV_LOADED=1
+++ SPARK_ENV_LOADED=1
+++ export SPARK_CONF_DIR=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf
+++ SPARK_CONF_DIR=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf
+++ '[' -f /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/spark-env.sh ']'
+++ set -a
+++ . /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/spark-env.sh
++++ export 'SPARK_DAEMON_JAVA_OPTS=-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=name2:2181,name3:2181,name4:2181 -Dspark.deploy.zookeeper.dir=/spark-cluster'
++++ SPARK_DAEMON_JAVA_OPTS='-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=name2:2181,name3:2181,name4:2181 -Dspark.deploy.zookeeper.dir=/spark-cluster'
++++ SPARK_MASTER_PORT=7077
++++ SPARK_MASTER_WEBUI_PORT=8080
++++ SPARK_PID_DIR=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/work
++++ SPARK_WORKER_CORES=1
++++ SPARK_WORKER_MEMORY=1g
++++ SPARK_WORKER_PORT=7078
++++ SPARK_WORKER_DIR=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/work
++++ SPARK_WORKER_WEBUI_PORT=8081
+++ set +a
+++ '[' -z '' ']'
+++ ASSEMBLY_DIR2=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/assembly/target/scala-2.11
+++ ASSEMBLY_DIR1=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/assembly/target/scala-2.12
+++ [[ -d /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/assembly/target/scala-2.11 ]]
+++ '[' -d /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/assembly/target/scala-2.11 ']'
+++ export SPARK_SCALA_VERSION=2.12
+++ SPARK_SCALA_VERSION=2.12
++ '[' -n /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64 ']'
++ RUNNER=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64/bin/java
++ '[' -d /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/jars ']'
++ SPARK_JARS_DIR=/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/jars
++ '[' '!' -d /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/jars ']'
++ LAUNCH_CLASSPATH='/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/jars/*'
++ '[' -n '' ']'
++ [[ -n '' ]]
++ set +o posix
++ CMD=()
++ IFS=
++ read -d '' -r ARG
+++ build_command org.apache.spark.deploy.SparkSubmit --class org.apache.spark.examples.SparkPi --master spark://name2:7077 ../examples/jars/spark-examples_2.11-2.4.6.jar 10
+++ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64/bin/java -Xmx128m -cp '/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/jars/*' org.apache.spark.launcher.Main org.apache.spark.deploy.SparkSubmit --class org.apache.spark.examples.SparkPi --master spark://name2:7077 ../examples/jars/spark-examples_2.11-2.4.6.jar 10
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
+++ printf '%d\0' 0
++ CMD+=("$ARG")
++ IFS=
++ read -d '' -r ARG
++ COUNT=12
++ LAST=11
++ LAUNCHER_EXIT_CODE=0
++ [[ 0 =~ ^[0-9]+$ ]]
++ '[' 0 '!=' 0 ']'
++ CMD=("${CMD[@]:0:$LAST}")
++ exec /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64/bin/java -cp '/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/jars/*' -Xmx1g org.apache.spark.deploy.SparkSubmit --master spark://name2:7077 --class org.apache.spark.examples.SparkPi ../examples/jars/spark-examples_2.11-2.4.6.jar 10
+20/07/16 09:35:48 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+20/07/16 09:35:50 INFO SparkContext: Running Spark version 2.4.6
+20/07/16 09:35:50 INFO SparkContext: Submitted application: Spark Pi
+20/07/16 09:35:51 INFO SecurityManager: Changing view acls to: root
+20/07/16 09:35:51 INFO SecurityManager: Changing modify acls to: root
+20/07/16 09:35:51 INFO SecurityManager: Changing view acls groups to: 
+20/07/16 09:35:51 INFO SecurityManager: Changing modify acls groups to: 
+20/07/16 09:35:51 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+20/07/16 09:35:52 INFO Utils: Successfully started service 'sparkDriver' on port 39198.
+20/07/16 09:35:52 INFO SparkEnv: Registering MapOutputTracker
+20/07/16 09:35:52 INFO SparkEnv: Registering BlockManagerMaster
+20/07/16 09:35:52 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+20/07/16 09:35:53 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+20/07/16 09:35:53 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-504e4c3e-9e60-4691-966a-b0041e99055d
+20/07/16 09:35:53 INFO MemoryStore: MemoryStore started with capacity 413.9 MB
+20/07/16 09:35:53 INFO SparkEnv: Registering OutputCommitCoordinator
+20/07/16 09:35:54 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+20/07/16 09:35:54 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://name2:4040
+20/07/16 09:35:54 INFO SparkContext: Added JAR file:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/../examples/jars/spark-examples_2.11-2.4.6.jar at spark://name2:39198/jars/spark-examples_2.11-2.4.6.jar with timestamp 1594863354723
+20/07/16 09:35:55 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://name2:7077...
+20/07/16 09:35:55 INFO TransportClientFactory: Successfully created connection to name2/192.168.72.35:7077 after 263 ms (0 ms spent in bootstraps)
+20/07/16 09:35:56 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20200716093556-0001
+20/07/16 09:35:56 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46220.
+20/07/16 09:35:56 INFO NettyBlockTransferService: Server created on name2:46220
+20/07/16 09:35:56 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20200716093556-0001/0 on worker-20200716093409-192.168.72.36-7078 (192.168.72.36:7078) with 1 core(s)
+20/07/16 09:35:56 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+20/07/16 09:35:56 INFO StandaloneSchedulerBackend: Granted executor ID app-20200716093556-0001/0 on hostPort 192.168.72.36:7078 with 1 core(s), 1024.0 MB RAM
+20/07/16 09:35:56 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20200716093556-0001/1 on worker-20200716093123-192.168.72.35-7078 (192.168.72.35:7078) with 1 core(s)
+20/07/16 09:35:56 INFO StandaloneSchedulerBackend: Granted executor ID app-20200716093556-0001/1 on hostPort 192.168.72.35:7078 with 1 core(s), 1024.0 MB RAM
+20/07/16 09:35:57 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20200716093556-0001/0 is now RUNNING
+20/07/16 09:35:57 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20200716093556-0001/1 is now RUNNING
+20/07/16 09:35:57 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, name2, 46220, None)
+20/07/16 09:35:57 INFO BlockManagerMasterEndpoint: Registering block manager name2:46220 with 413.9 MB RAM, BlockManagerId(driver, name2, 46220, None)
+20/07/16 09:35:57 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, name2, 46220, None)
+20/07/16 09:35:57 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, name2, 46220, None)
+20/07/16 09:35:59 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+20/07/16 09:36:04 INFO SparkContext: Starting job: reduce at SparkPi.scala:38
+20/07/16 09:36:05 INFO DAGScheduler: Got job 0 (reduce at SparkPi.scala:38) with 10 output partitions
+20/07/16 09:36:05 INFO DAGScheduler: Final stage: ResultStage 0 (reduce at SparkPi.scala:38)
+20/07/16 09:36:05 INFO DAGScheduler: Parents of final stage: List()
+20/07/16 09:36:05 INFO DAGScheduler: Missing parents: List()
+20/07/16 09:36:05 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at map at SparkPi.scala:34), which has no missing parents
+20/07/16 09:36:06 INFO CoarseGrainedSchedulerBackend$DriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (192.168.72.36:41796) with ID 0
+20/07/16 09:36:07 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.72.36:33537 with 413.9 MB RAM, BlockManagerId(0, 192.168.72.36, 33537, None)
+20/07/16 09:36:07 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 2.0 KB, free 413.9 MB)
+20/07/16 09:36:07 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 1381.0 B, free 413.9 MB)
+20/07/16 09:36:07 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on name2:46220 (size: 1381.0 B, free: 413.9 MB)
+20/07/16 09:36:07 INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1163
+20/07/16 09:36:08 INFO DAGScheduler: Submitting 10 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at map at SparkPi.scala:34) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+20/07/16 09:36:08 INFO TaskSchedulerImpl: Adding task set 0.0 with 10 tasks
+20/07/16 09:36:08 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, 192.168.72.36, executor 0, partition 0, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:10 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 192.168.72.36:33537 (size: 1381.0 B, free: 413.9 MB)
+20/07/16 09:36:11 INFO TaskSetManager: Starting task 1.0 in stage 0.0 (TID 1, 192.168.72.36, executor 0, partition 1, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:11 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 3434 ms on 192.168.72.36 (executor 0) (1/10)
+20/07/16 09:36:11 INFO TaskSetManager: Starting task 2.0 in stage 0.0 (TID 2, 192.168.72.36, executor 0, partition 2, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:11 INFO TaskSetManager: Finished task 1.0 in stage 0.0 (TID 1) in 204 ms on 192.168.72.36 (executor 0) (2/10)
+20/07/16 09:36:11 INFO TaskSetManager: Starting task 3.0 in stage 0.0 (TID 3, 192.168.72.36, executor 0, partition 3, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:12 INFO TaskSetManager: Finished task 2.0 in stage 0.0 (TID 2) in 187 ms on 192.168.72.36 (executor 0) (3/10)
+20/07/16 09:36:12 INFO TaskSetManager: Starting task 4.0 in stage 0.0 (TID 4, 192.168.72.36, executor 0, partition 4, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:12 INFO TaskSetManager: Finished task 3.0 in stage 0.0 (TID 3) in 119 ms on 192.168.72.36 (executor 0) (4/10)
+20/07/16 09:36:12 INFO TaskSetManager: Starting task 5.0 in stage 0.0 (TID 5, 192.168.72.36, executor 0, partition 5, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:12 INFO TaskSetManager: Finished task 4.0 in stage 0.0 (TID 4) in 117 ms on 192.168.72.36 (executor 0) (5/10)
+20/07/16 09:36:12 INFO TaskSetManager: Starting task 6.0 in stage 0.0 (TID 6, 192.168.72.36, executor 0, partition 6, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:12 INFO TaskSetManager: Finished task 5.0 in stage 0.0 (TID 5) in 147 ms on 192.168.72.36 (executor 0) (6/10)
+20/07/16 09:36:12 INFO TaskSetManager: Starting task 7.0 in stage 0.0 (TID 7, 192.168.72.36, executor 0, partition 7, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:12 INFO TaskSetManager: Finished task 6.0 in stage 0.0 (TID 6) in 133 ms on 192.168.72.36 (executor 0) (7/10)
+20/07/16 09:36:12 INFO TaskSetManager: Starting task 8.0 in stage 0.0 (TID 8, 192.168.72.36, executor 0, partition 8, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:12 INFO TaskSetManager: Finished task 7.0 in stage 0.0 (TID 7) in 166 ms on 192.168.72.36 (executor 0) (8/10)
+20/07/16 09:36:12 INFO TaskSetManager: Starting task 9.0 in stage 0.0 (TID 9, 192.168.72.36, executor 0, partition 9, PROCESS_LOCAL, 7870 bytes)
+20/07/16 09:36:12 INFO TaskSetManager: Finished task 8.0 in stage 0.0 (TID 8) in 120 ms on 192.168.72.36 (executor 0) (9/10)
+20/07/16 09:36:12 INFO TaskSetManager: Finished task 9.0 in stage 0.0 (TID 9) in 127 ms on 192.168.72.36 (executor 0) (10/10)
+20/07/16 09:36:12 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+20/07/16 09:36:12 INFO DAGScheduler: ResultStage 0 (reduce at SparkPi.scala:38) finished in 7.342 s
+20/07/16 09:36:12 INFO DAGScheduler: Job 0 finished: reduce at SparkPi.scala:38, took 8.159472 s
+Pi is roughly 3.1432951432951435
+20/07/16 09:36:13 INFO SparkUI: Stopped Spark web UI at http://name2:4040
+20/07/16 09:36:13 INFO StandaloneSchedulerBackend: Shutting down all executors
+20/07/16 09:36:13 INFO CoarseGrainedSchedulerBackend$DriverEndpoint: Asking each executor to shut down
+20/07/16 09:36:13 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+20/07/16 09:36:13 INFO MemoryStore: MemoryStore cleared
+20/07/16 09:36:13 INFO BlockManager: BlockManager stopped
+20/07/16 09:36:13 INFO BlockManagerMaster: BlockManagerMaster stopped
+20/07/16 09:36:13 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+20/07/16 09:36:13 INFO SparkContext: Successfully stopped SparkContext
+20/07/16 09:36:13 INFO ShutdownHookManager: Shutdown hook called
+20/07/16 09:36:13 INFO ShutdownHookManager: Deleting directory /tmp/spark-9a69e6ca-6c45-4d37-8e8c-e3bc8c558ed6
+20/07/16 09:36:13 INFO ShutdownHookManager: Deleting directory /tmp/spark-505d0652-222b-4d3f-bd71-e7f07ada7a40
+
+```
+
+最终执行的命令:
+
+```shell
+exec /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64/bin/java -cp '/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/jars/*' -Xmx1g org.apache.spark.deploy.SparkSubmit --master spark://name2:7077 --class org.apache.spark.examples.SparkPi ../examples/jars/spark-examples_2.11-2.4.6.jar 10
+```
+
+到这里就知道提交任务到spark集群执行时，可以从SparkSubmit此类作为入口查看。
+
+
+
 
 
 集群模式提交:
 
 >  spark-submit --class org.apache.spark.examples.SparkPi --deploy-mode cluster  --master spark://name2:7077 ../examples/jars/spark-examples_2.11-2.4.6.jar  5
+
+集群提交时的一些spark详细打印信息
+
+```shell
+[root@name2 bin]# ./spark-submit -v --class org.apache.spark.examples.SparkPi --deploy-mode cluster  --master spark://name2:7077 ../examples/jars/spark-examples_2.11-2.4.6.jar  5                                                              
+Using properties file: /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/spark-defaults.conf
+Parsed arguments:
+  master                  spark://name2:7077
+  deployMode              cluster
+  executorMemory          null
+  executorCores           null
+  totalExecutorCores      null
+  propertiesFile          /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/spark-defaults.conf
+  driverMemory            null
+  driverCores             null
+  driverExtraClassPath    null
+  driverExtraLibraryPath  null
+  driverExtraJavaOptions  null
+  supervise               false
+  queue                   null
+  numExecutors            null
+  files                   null
+  pyFiles                 null
+  archives                null
+  mainClass               org.apache.spark.examples.SparkPi
+  primaryResource         file:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/../examples/jars/spark-examples_2.11-2.4.6.jar
+  name                    org.apache.spark.examples.SparkPi
+  childArgs               [5]
+  jars                    null
+  packages                null
+  packagesExclusions      null
+  repositories            null
+  verbose                 true
+
+Spark properties used, including those specified through
+ --conf and those from the properties file /mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/conf/spark-defaults.conf:
+  
+
+    
+Main class:
+org.apache.spark.deploy.ClientApp		# 任务集群模式,由此启动driver
+Arguments:
+launch
+spark://name2:7077
+file:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/../examples/jars/spark-examples_2.11-2.4.6.jar
+org.apache.spark.examples.SparkPi
+5
+Spark config:
+(spark.jars,file:/mnt/spark-alone/spark-2.4.6-bin-hadoop2.6/bin/../examples/jars/spark-examples_2.11-2.4.6.jar)
+(spark.driver.supervise,false)
+(spark.app.name,org.apache.spark.examples.SparkPi)
+(spark.submit.deployMode,cluster)
+(spark.master,spark://name2:7077)
+Classpath elements:
+
+```
 
 
 
