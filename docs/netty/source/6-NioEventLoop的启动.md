@@ -14,6 +14,31 @@
 
 回顾了类图，再看一下 NioEventLoop，其中有一个run方法，从其 实现来看就是对selector的操作，那什么时候开始执行了此方法呢？
 
+在server端口绑定时有一个函数:
+
+> io.netty.bootstrap.AbstractBootstrap#doBind0
+
+```java
+private static void doBind0(
+    final ChannelFuture regFuture, final Channel channel,
+    final SocketAddress localAddress, final ChannelPromise promise) {
+    // 在这里向 eventLoop中添加一个任务,变相的启动了NioEventLoop
+    channel.eventLoop().execute(new Runnable() {
+        @Override
+        public void run() {
+            if (regFuture.isSuccess()) {
+                // 注册到selector成功了, 则进行端口的绑定
+                channel.bind(localAddress, promise).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+            } else {
+                promise.setFailure(regFuture.cause());
+            }
+        }
+    });
+}
+```
+
+
+
 经过分析，其启动的方法如下：
 
 > io.netty.util.concurrent.SingleThreadEventExecutor#execute
