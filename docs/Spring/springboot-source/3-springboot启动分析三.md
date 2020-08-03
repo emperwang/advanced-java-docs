@@ -211,7 +211,7 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
 	}
 ```
 
-这里呢即使获取SpringApplicationRunListener的实现类的实例化对象的；其实现类呢，记录在spring.factories文件中，使用的是key-value结构(打开看一下就特别清除了，你会发现，这不就是properties形式吗。对的，就是这种形式).
+这里呢即是获取SpringApplicationRunListener的实现类的实例化对象的；其实现类呢，记录在spring.factories文件中，使用的是key-value结构(打开看一下就特别清除了，你会发现，这不就是properties形式吗。对的，就是这种形式).
 
 ## 那实例化了Listening类，要干什么呢？
 

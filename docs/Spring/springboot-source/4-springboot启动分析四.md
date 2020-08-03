@@ -371,7 +371,7 @@ bindToSpringApplication(environment);
 	}
 	// 打印
 	public Banner print(Environment environment, Class<?> sourceClass, PrintStream out) {
-        // 从enviroment中获取banner(如果用户自定义了，那么就回去起作用)
+        // 从enviroment中获取banner(如果用户自定义了，那么就会起作用)
 		Banner banner = getBanner(environment);
 		banner.printBanner(environment, sourceClass, out);
 		return new PrintedBanner(banner, sourceClass);
