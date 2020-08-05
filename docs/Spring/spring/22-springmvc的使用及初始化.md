@@ -184,7 +184,6 @@ public WebApplicationContext initWebApplicationContext(ServletContext servletCon
             long elapsedTime = System.currentTimeMillis() - startTime;
             logger.info("Root WebApplicationContext initialized in " + elapsedTime + " ms");
         }
-
         return this.context;
     }
     catch (RuntimeException | Error ex) {
@@ -290,6 +289,339 @@ protected void configureAndRefreshWebApplicationContext(ConfigurableWebApplicati
     wac.refresh();
 }
 ```
+
+到此一个xmlWebApplicationContext就创建完成了。
+
+接下来看一下关于DispatcherServlet的相关初始化操作，先看一下其类图：
+
+![](../../image/spring/DispatcherServlet.png)
+
+可以看到DispatcherServlet其实就是HttpServlet，其在使用前，需先调用其init方法进行初始化，然后才能正常使用。这里咱们先看一下其构造函数，然后看一下其init方法。
+
+```java
+public DispatcherServlet() {
+    super();
+    setDispatchOptionsRequest(true);
+}
+```
+
+再看一下dispatcherServlet的静态代码块：
+
+```java
+// 存储默认策略的文件
+	private static final String DEFAULT_STRATEGIES_PATH = "DispatcherServlet.properties";
+// 存储默认的构造策略, 默认构造策略存储在DispatcherServlet.properties 文件中
+	private static final Properties defaultStrategies;
+
+	static {
+		try {
+			ClassPathResource resource = new ClassPathResource(DEFAULT_STRATEGIES_PATH, DispatcherServlet.class);
+			defaultStrategies = PropertiesLoaderUtils.loadProperties(resource);
+		}
+		catch (IOException ex) {
+			throw new IllegalStateException("Could not load '" + DEFAULT_STRATEGIES_PATH + "': " + ex.getMessage());
+		}
+	}
+```
+
+再看一下默认策略文件中存储的内容
+
+```properties
+org.springframework.web.servlet.LocaleResolver=org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver
+org.springframework.web.servlet.ThemeResolver=org.springframework.web.servlet.theme.FixedThemeResolver
+org.springframework.web.servlet.HandlerMapping=org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,\
+org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+
+org.springframework.web.servlet.HandlerAdapter=org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,\
+org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,\
+org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
+
+org.springframework.web.servlet.HandlerExceptionResolver=org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver,\
+org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver,\
+org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver
+
+org.springframework.web.servlet.RequestToViewNameTranslator=org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator
+
+org.springframework.web.servlet.ViewResolver=org.springframework.web.servlet.view.InternalResourceViewResolver
+
+org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.support.SessionFlashMapManager
+```
+
+dispatcherServlet的构造函数就到此，下面继续看一下其init初始化方法:
+
+> org.springframework.web.servlet.HttpServletBean#init
+
+```java
+// dispatcherServlet 会先调用其初始化方法,之后才能正常使用
+@Override
+public final void init() throws ServletException {
+
+    // Set bean properties from init parameters.
+    // todo 这里会把此servlet的init-param进行设置
+    PropertyValues pvs = new ServletConfigPropertyValues(getServletConfig(), this.requiredProperties);
+    if (!pvs.isEmpty()) {
+        try {
+            // 把当前的 dispatcherServlet封装为 BeanWrapper
+            BeanWrapper bw = PropertyAccessorFactory.forBeanPropertyAccess(this);
+            ResourceLoader resourceLoader = new ServletContextResourceLoader(getServletContext());
+            bw.registerCustomEditor(Resource.class, new ResourceEditor(resourceLoader, getEnvironment()));
+            initBeanWrapper(bw);
+            // 把 servelt的init paramer 通过反射设置到bean中
+            bw.setPropertyValues(pvs, true);
+        }
+        catch (BeansException ex) {
+            if (logger.isErrorEnabled()) {
+            logger.error("Failed to set bean properties on servlet '" + getServletName() + "'", ex);
+            }
+            throw ex;
+        }
+    }
+
+    // Let subclasses do whatever initialization they like.
+    // 子类进行扩展
+    // 在子类中常见 web 的子容器
+    initServletBean();
+}
+```
+
+此函数小结一下：
+
+1. 获取此servlet的初始化函数，也就是前面配置的springmvc.xml配置文件路径
+2. 之后吧此servlet封装为 beanWrapper
+3. 把上面的初始化函数设置到此 beanWrapper
+4. 在子类的initServletBean中创建子容器，可以称为 servlet容器
+
+上面设置init-parameter的操作就不细说了，下面看一下创建子容器的操作：
+
+> org.springframework.web.servlet.FrameworkServlet#initServletBean
+
+```java
+@Override
+protected final void initServletBean() throws ServletException {
+    getServletContext().log("Initializing Spring " + getClass().getSimpleName() + " '" + getServletName() + "'");
+    // 记录开始时间
+    long startTime = System.currentTimeMillis();
+
+    try {
+        // 初始化webApplicationContext
+        // 如果没有呢,就进行创建
+        this.webApplicationContext = initWebApplicationContext();
+        // 用于扩展
+        initFrameworkServlet();
+    }
+    catch (ServletException | RuntimeException ex) {
+        logger.error("Context initialization failed", ex);
+        throw ex;
+    }
+
+    if (logger.isDebugEnabled()) {
+        String value = this.enableLoggingRequestDetails ?
+            "shown which may lead to unsafe logging of potentially sensitive data" :
+        "masked to prevent unsafe logging of potentially sensitive data";
+        logger.debug("enableLoggingRequestDetails='" + this.enableLoggingRequestDetails +
+                     "': request parameters and headers will be " + value);
+    }
+
+    if (logger.isInfoEnabled()) {
+        logger.info("Completed initialization in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
+}
+```
+
+> org.springframework.web.servlet.FrameworkServlet#initWebApplicationContext
+
+```java
+// 初始化 webApplicationContext,如果没有,就进行创建
+protected WebApplicationContext initWebApplicationContext() {
+    // 从servletContext中取获取root容器
+    WebApplicationContext rootContext =
+        WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+    WebApplicationContext wac = null;
+    // 如果当亲servlet对应的  webApplicationContext 存在,即不为null
+    if (this.webApplicationContext != null) {
+        // A context instance was injected at construction time -> use it
+        // 记录此 webApplicationContext
+        wac = this.webApplicationContext;
+        if (wac instanceof ConfigurableWebApplicationContext) {
+            // 类型转换
+            ConfigurableWebApplicationContext cwac = (ConfigurableWebApplicationContext) wac;
+            // 没有激活
+            if (!cwac.isActive()) {
+                // The context has not yet been refreshed -> provide services such as
+                // setting the parent context, setting the application context id, etc
+                if (cwac.getParent() == null) {
+                    // The context instance was injected without an explicit parent -> set
+                    // the root application context (if any; may be null) as the parent
+                    // 设置其 父容器为 rootContext
+                    cwac.setParent(rootContext);
+                }
+                // 进行配置,及进行 refresh
+                configureAndRefreshWebApplicationContext(cwac);
+            }
+        }
+    }
+    // 如果当前servlet没有webApplicationContext
+    if (wac == null) {
+        // No context instance was injected at construction time -> see if one
+        // has been registered in the servlet context. If one exists, it is assumed
+        // that the parent context (if any) has already been set and that the
+        // user has performed any initialization such as setting the context id
+        // 从 servletContext中去查找 applicationContext
+        wac = findWebApplicationContext();
+    }
+    // 如果还没有找到 applicationContext,则创建一个
+    if (wac == null) {
+        // No context instance is defined for this servlet -> create a local one
+        // 创建webApplication
+        wac = createWebApplicationContext(rootContext);
+    }
+    // 是否接收到 刷新的事件
+    if (!this.refreshEventReceived) {
+        // Either the context is not a ConfigurableApplicationContext with refresh
+        // support or the context injected at construction time had already been
+        // refreshed -> trigger initial onRefresh manually here.
+        synchronized (this.onRefreshMonitor) {
+            // 进行dispatcherServlet其他组件的注册以及初始化
+            onRefresh(wac);
+        }
+    }
+    // 发布创建的 子applicationContext,即子容器
+    if (this.publishContext) {
+        // Publish the context as a servlet context attribute.
+        // 把刚创建的子容器 放到 servletContext
+        // 获取一个名字,名字格式为: SERVLET_CONTEXT_PREFIX + getServletName()
+        //  SERVLET_CONTEXT_PREFIX = FrameworkServlet.class.getName() + ".CONTEXT."
+        String attrName = getServletContextAttributeName();
+        // 把创建的 applicationContext设置到 servletContext中
+        getServletContext().setAttribute(attrName, wac);
+    }
+    return wac;
+}
+```
+
+最终创建applicationContext后，同样会注册到servletContext中，属性名字为： FrameworkServlet.class.getName() + ".CONTEXT." + getServletName()， 由此可见可以同时注册多个dispatcherServlet。
+
+这里看一下这个onRefresh方法：
+
+> org.springframework.web.servlet.DispatcherServlet#onRefresh
+
+```java
+	/**
+	 * This implementation calls {@link #initStrategies}.
+	 * servlet.init 方法进行对此方法的调用,那就是说在dispatcher进行服务时,关于handlerMapping  
+	 * handlerAdapter还有一些其他组件就初始化好了
+	 */
+	@Override
+	protected void onRefresh(ApplicationContext context) {
+		initStrategies(context);
+	}
+
+	/**
+	 * Initialize the strategy objects that this servlet uses.
+	 * <p>May be overridden in subclasses in order to initialize further strategy objects.
+	 */
+	// 初始化提供服务的组件
+	protected void initStrategies(ApplicationContext context) {
+		initMultipartResolver(context);
+		initLocaleResolver(context);
+		initThemeResolver(context);
+		// 初始化handlerMapping
+		initHandlerMappings(context);
+		// 初始化HandlerAdapter
+		initHandlerAdapters(context);
+		// 初始化异常处理器
+		// 此处会在此类ExceptionHandlerExceptionResolver中进行如下:
+		// 1. controllerAdvice注解的bean的解析
+		// 2. requestBodyAdvice  responseBodyAdvice切面
+		initHandlerExceptionResolvers(context);
+		initRequestToViewNameTranslator(context);
+		initViewResolvers(context);
+		initFlashMapManager(context);
+	}
+```
+
+此步骤还是很重要的，此onRefresh操作初始化了dispatcherServlet的各个重要的组件。
+
+那此onRefresh什么时候初始化呢？
+
+看一下FrameworkServlet中的一个监听器：
+
+```java
+private class ContextRefreshListener implements ApplicationListener<ContextRefreshedEvent> {
+
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        FrameworkServlet.this.onApplicationEvent(event);
+    }
+}
+```
+
+```java
+public void onApplicationEvent(ContextRefreshedEvent event) {
+    this.refreshEventReceived = true;
+    synchronized (this.onRefreshMonitor) {
+        onRefresh(event.getApplicationContext());
+    }
+}
+```
+
+在看一下事件的发出时机点:
+
+> org.springframework.context.support.AbstractApplicationContext#finishRefresh
+
+```java
+protected void finishRefresh() {
+	......
+
+    // Publish the final event.
+    // 发布一个事件
+    publishEvent(new ContextRefreshedEvent(this));
+    .....
+}
+```
+
+再看一下具体注册ContextRefreshListener此监听器到容器的操作：
+
+> org.springframework.web.servlet.FrameworkServlet#createWebApplicationContext
+>
+> org.springframework.web.servlet.FrameworkServlet#configureAndRefreshWebApplicationContext
+
+```java
+protected void configureAndRefreshWebApplicationContext(ConfigurableWebApplicationContext wac) {
+    if (ObjectUtils.identityToString(wac).equals(wac.getId())) {
+        // The application context id is still set to its original default value
+        // -> assign a more useful id based on available information
+        if (this.contextId != null) {
+            wac.setId(this.contextId);
+        }
+        else {
+            // Generate default id...
+            wac.setId(ConfigurableWebApplicationContext.APPLICATION_CONTEXT_ID_PREFIX +
+ObjectUtils.getDisplayString(getServletContext().getContextPath()) + '/' + getServletName());
+        }
+    }
+
+    wac.setServletContext(getServletContext());
+    wac.setServletConfig(getServletConfig());
+    wac.setNamespace(getNamespace());
+    // 添加一个监听器,此监听器用于监听ContextRefreshedEvent事件
+    // 此ContextRefreshListener 主要会用于调用dispatcherServlet的onRefresh方法,
+    // 来进行具体的dispatcherServlet的组件初始化
+    wac.addApplicationListener(new SourceFilteringListener(wac, new ContextRefreshListener()));
+    ConfigurableEnvironment env = wac.getEnvironment();
+    if (env instanceof ConfigurableWebEnvironment) {
+        ((ConfigurableWebEnvironment) env).initPropertySources(getServletContext(), getServletConfig());
+    }
+
+    postProcessWebApplicationContext(wac);
+    applyInitializers(wac);
+    wac.refresh();
+}
+```
+
+到此dispatcherServlet的初始化就完成了。
+
+
 
 
 
