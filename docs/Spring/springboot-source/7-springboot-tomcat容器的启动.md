@@ -209,12 +209,6 @@ class ServletWebServerFactoryConfiguration {
 
 
 
-
-
-
-
-
-
 然后在回顾一下springboot的启动:
 
 ```java
@@ -270,7 +264,7 @@ protected void onRefresh() {
 }
 ```
 
-> 
+> org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext#createWebServer
 
 ```java
 // 创建webServer
