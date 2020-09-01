@@ -375,10 +375,6 @@ static {
         RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(connectTimeout).setSocketTimeout(socketTime).build();
         pool.closeExpiredConnections();
         pool.closeIdleConnections(50L, TimeUnit.SECONDS);
-        Set<HttpRoute> routes = pool.getRoutes();
-        for (HttpRoute route : routes) {
-            log.info("route:{}", route.toString());
-        }
         CloseableHttpClient client = HttpClients.custom().setConnectionManager(pool)
                 .evictExpiredConnections()
                 .evictIdleConnections(50, TimeUnit.SECONDS)
