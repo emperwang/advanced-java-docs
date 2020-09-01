@@ -155,8 +155,8 @@ Some(new DirectKafkaRateController(id,
 
 // time, elems, workDelay, waitDelay
   def compute(
-      time: Long, // in milliseconds  // 处理的时间
-      numElements: Long,
+      time: Long, // in milliseconds  // 处理完成的时间点
+      numElements: Long,	// 处理的记录个数
       processingDelay: Long, // in milliseconds  // workDelay
       schedulingDelay: Long // in milliseconds  // waitdelay
     ): Option[Double] = {
@@ -236,6 +236,7 @@ Some(new DirectKafkaRateController(id,
 
 ```scala
 // 从更新 到完成的 延迟时间
+// time 处理完成的时间点
 val delaySinceUpdate = (time - latestTime).toDouble / 1000
 
 // in elements/second
@@ -260,6 +261,15 @@ val newRate = (latestRate - proportional * error -
 
 1. 当处理慢，有积压时，delaySinceUpdate变大 ， processingRate 变小  error为正数， historicalError为正 ，那newRate变小
 2. 当处理快，每个批次时间很短，delaySinceUpdate变小，processingRate 变大，error为负数，newRate变大
+
+```scala
+    conf.get("spark.streaming.backpressure.rateEstimator", "pid") match {
+      case "pid" =>
+        val proportional = conf.getDouble("spark.streaming.backpressure.pid.proportional", 1.0)
+        val integral = conf.getDouble("spark.streaming.backpressure.pid.integral", 0.2)
+        val derived = conf.getDouble("spark.streaming.backpressure.pid.derived", 0.0)
+        val minRate = conf.getDouble("spark.streaming.backpressure.pid.minRate", 100)
+```
 
 
 
