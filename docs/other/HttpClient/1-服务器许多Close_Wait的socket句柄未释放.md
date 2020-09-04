@@ -12,25 +12,25 @@
 
 这里回顾一下tcp相关的状态转换图：
 
-![](../image/tcp/tcp1.jpg)
+![](../../image/tcp/tcp1.jpg)
 
 这个图呢，感觉是个组合图，拆开来看，
 
 客户端先关闭的情况：
 
-![](../image/tcp/tcp-client-close.jpg)
+![](../../image/tcp/tcp-client-close.jpg)
 
 server端先关闭的情况：
 
-![](../image/tcp/tcp-server-close.jpg)
+![](../../image/tcp/tcp-server-close.jpg)
 
 同时关闭的情况：
 
-![](../image/tcp/tcp-close-sync.jpg)
+![](../../image/tcp/tcp-close-sync.jpg)
 
 同时关闭，但是客户端先接收到server发送的fin：
 
-![](../image/tcp/tcp-receive-client-first.jpg)
+![](../../image/tcp/tcp-receive-client-first.jpg)
 
 解决：
 
