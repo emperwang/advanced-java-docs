@@ -107,7 +107,6 @@ protected Object initializeBean(final String beanName, final Object bean, @Nulla
 			 *  那也就是说方法调用顺序:
 			 *  1.PostConstruct注解的方法
 			 *  2. InitializingBean.afterPropertiesSet
-			 *  3. init-method
 			 */
         // 这里通过beanPostProcessor(CommonAnnotationBeanPostProcessor) 来调用 PostConstruct 注解方法
         wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
@@ -116,7 +115,7 @@ protected Object initializeBean(final String beanName, final Object bean, @Nulla
         /**
 			 * 调用初始化方法
 			 * 	1. 先调用InitializingBean接口的初始化方法 .afterPropertiesSet
-			 * 	2. 调用 init-method 的初始化方法
+			 * 	2. 调用 init-method 的初始化方法 (自定义的初始化方法)
 			 */
         invokeInitMethods(beanName, wrappedBean, mbd);
     }

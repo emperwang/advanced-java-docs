@@ -21,6 +21,8 @@ protected Object doCreateBean(final String beanName, final RootBeanDefinition mb
     if (instanceWrapper == null) {
         // 如果factoryBeanInstanceCache中不存在，那么就创建一个
         // 重点 重点  重点
+        // 最后也是调用构造器来创建实例
+        // 不过这里可以设置构造器参数, 也就是通过构造器 注入
         instanceWrapper = createBeanInstance(beanName, mbd, args);
     }
     final Object bean = instanceWrapper.getWrappedInstance();
@@ -33,8 +35,8 @@ protected Object doCreateBean(final String beanName, final RootBeanDefinition mb
     synchronized (mbd.postProcessingLock) {
         if (!mbd.postProcessed) {
             try {
-                /**
-					 * 调用MergedBeanDefinitionPostProcessor后置处理器,合并父子bean的信息
+					 /* init-method  destory-method
+					 * autowired  value 等注解解析的地方
 					 */
                 applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);
             }
