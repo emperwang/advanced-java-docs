@@ -475,7 +475,7 @@ protected <T> T doGetBean(final String name, @Nullable final Class<T> requiredTy
 
 由上面可知，对类的创建时大体顺序：
 
-1. 先去单例吃中获取，如果存在且不是工厂类，则返回；如果是工厂类，则调用工厂类来获取实例
+1. 先去单例池中获取，如果存在且不是工厂类，则返回；如果是工厂类，则调用工厂类来获取实例
 2. 如果存在父容器，则去父容器中查找
 3. 如果此bean存在依赖，则先实例化依赖bean
 4. 对于 单例 bean的创建
@@ -771,6 +771,7 @@ public Object getSingleton(String beanName, ObjectFactory<?> singletonFactory) {
                 logger.debug("Creating shared instance of singleton bean '" + beanName + "'");
             }
             // 检测是否正在创建中
+            // 如果此beanname 正在创建,则同样会报错
             beforeSingletonCreation(beanName);
             boolean newSingleton = false;
             boolean recordSuppressedExceptions = (this.suppressedExceptions == null);
