@@ -232,7 +232,7 @@ public ConfigurableApplicationContext run(String... args) {
 
 ![](../../image/springboot/AnnotationConfigServletWebServerApplicationContext.png)
 
-类图比较负责，也显示了其功能比较强大。其创建完之后，会进行刷新操作，在回顾一下其刷新操作：
+类图比较复杂，也显示了其功能比较强大。其创建完之后，会进行刷新操作，在回顾一下其刷新操作：
 
 ```java
 @Override

@@ -104,7 +104,7 @@ public void refresh() throws BeansException, IllegalStateException {
 
 ```java
 	protected void finishRefresh() {
-		// 清楚资源缓存
+		// 清除资源缓存
 		// Clear context-level resource caches (such as ASM metadata from scanning).
 		clearResourceCaches();
 
@@ -370,7 +370,7 @@ public void stop() {
     for (LifecycleGroupMember member : this.members) {
         if (lifecycleBeanNames.contains(member.name)) {
             // 1. 开始执行
-            // 2. 限制性依赖的bean,之后再执行本bean
+            // 2. 先执行依赖的bean,之后再执行本bean
             doStop(this.lifecycleBeans, member.name, latch, countDownBeanNames);
         }
         else if (member.bean instanceof SmartLifecycle) {

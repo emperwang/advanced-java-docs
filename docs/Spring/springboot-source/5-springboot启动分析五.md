@@ -204,7 +204,7 @@ private void prepareContext(ConfigurableApplicationContext context, Configurable
     // 获取SpringApplication.run 参数注册的 class
     Set<Object> sources = getAllSources();
     Assert.notEmpty(sources, "Sources must not be empty");
-    // 接在bean到 容器中
+    // 加载bean到 容器中
     // 此处加载的bean,就有启动类
     // 此时 真正的启动到 就注册到 容器中了
     load(context, sources.toArray(new Object[0]));

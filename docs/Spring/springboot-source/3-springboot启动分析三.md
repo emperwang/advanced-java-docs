@@ -1,3 +1,5 @@
+[TOC]
+
 # springboot启动分析三(调用listener处理ApplicationStartingEvent事件)
 
 那今天可以看一下run方法是如何把项目启动起来的。不过run方法做的工作比较多，咱们分开步骤慢慢分析。
@@ -129,7 +131,7 @@ private SpringApplicationRunListeners getRunListeners(String[] args) {
 }
 // 如何得到呢？
 // 就是通过此函数了。是不是似曾相识的感觉呢？对的，初始化函数的监听器也是通过此函数去得到的嘛。
-// 如果忘了，就看看上一篇吧。当然了，在好好看看本篇的注释也是可以的。
+// 如果忘了，就看看上一篇吧。当然了，好好看看本篇的注释也是可以的。
 private <T> Collection<T> getSpringFactoriesInstances(Class<T> type,
                                                       Class<?>[] parameterTypes, Object... args) {
     ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -333,7 +335,7 @@ private Collection<ApplicationListener<?>> retrieveApplicationListeners(
         listeners = new LinkedHashSet<>(this.defaultRetriever.applicationListeners);
         listenerBeans = new LinkedHashSet<>(this.defaultRetriever.applicationListenerBeans);
     }
-    // 遍历锁得到的listener，并查看listener是否支持eventType和sourceType
+    // 遍历所得到的listener，并查看listener是否支持eventType和sourceType
     // 支持则放入到容器中
     for (ApplicationListener<?> listener : listeners) {
         if (supportsEvent(listener, eventType, sourceType)) {
@@ -400,7 +402,7 @@ private void doInvokeListener(ApplicationListener listener, ApplicationEvent eve
     catch (ClassCastException ex) {
         String msg = ex.getMessage();
         if (msg == null || matchesClassCastMessage(msg, event.getClass().getName())) {
-            // Possibly a lambda-defined listener which we could not resolve the generic event type for
+        // Possibly a lambda-defined listener which we could not resolve the generic event type for
             // -> let's suppress the exception and just log a debug message.
             Log logger = LogFactory.getLog(getClass());
             if (logger.isDebugEnabled()) {

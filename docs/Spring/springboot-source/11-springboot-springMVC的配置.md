@@ -59,8 +59,7 @@ protected static class DispatcherServletConfiguration {
         DispatcherServlet dispatcherServlet = new DispatcherServlet();
         dispatcherServlet.setDispatchOptionsRequest(this.webMvcProperties.isDispatchOptionsRequest());
         dispatcherServlet.setDispatchTraceRequest(this.webMvcProperties.isDispatchTraceRequest());
-        dispatcherServlet
-            .setThrowExceptionIfNoHandlerFound(this.webMvcProperties.isThrowExceptionIfNoHandlerFound());
+    dispatcherServlet.setThrowExceptionIfNoHandlerFound(this.webMvcProperties.isThrowExceptionIfNoHandlerFound());
         dispatcherServlet.setEnableLoggingRequestDetails(this.httpProperties.isLogRequestDetails());
         return dispatcherServlet;
     }

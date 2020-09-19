@@ -1,3 +1,5 @@
+[TOC]
+
 # springboot启动分析四(环境准备)
 
 上一篇整篇就分析了一个ApplicationStartingEvent事件的发布，以及相关的listener的调用处理。
@@ -351,7 +353,7 @@ bindToSpringApplication(environment);
 		if (this.bannerMode == Banner.Mode.OFF) {
 			return null;
 		}
-        // 否则就会在家资源进行打印操作
+        // 否则就会加载资源进行打印操作
         // 获取资源加载器
 		ResourceLoader resourceLoader = (this.resourceLoader != null)
 				? this.resourceLoader : new DefaultResourceLoader(getClassLoader());

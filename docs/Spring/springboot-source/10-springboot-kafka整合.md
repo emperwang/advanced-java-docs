@@ -8,7 +8,7 @@
 
 那自动配置的类在autoconfig包中，并且在spring.factories文件中写好了。看一下吧：
 
-![](../image/springboot/kakfa0.png)
+![](../../image/springboot/kakfa0.png)
 
 那先进入此类看一下吧：
 
@@ -70,13 +70,13 @@ public class KafkaBootstrapConfiguration {
 
 对于具体整合的分析，咱们以一个bean的生命周期为脉络入手分析；那么先看一下上面的两个类框架图：
 
-![](../image/springboot/kakfa1.png)
+![](../../image/springboot/kakfa1.png)
 
-![](../image/springboot/kakfa2.png)
+![](../../image/springboot/kakfa2.png)
 
-从生命周期看，KafkaListenerAnnotationBeanPostProcessor此bena先进行处理，看一下此类的具体方法：
+从生命周期看，KafkaListenerAnnotationBeanPostProcessor此bean先进行处理，看一下此类的具体方法：
 
-![](../image/springboot/kafka4.png)
+![](../../image/springboot/kafka4.png)
 
 方法很多，不过在bean的初始化过程中，主要是上面圈出的三个方法是初始化阶段的主要方法。执行顺序是：
 
@@ -235,7 +235,7 @@ public void registerEndpoint(KafkaListenerEndpoint endpoint, KafkaListenerContai
 }
 ```
 
-那上面两个bena初始化前后函数就到这里了，可以看到初始化前没有什么动作，初始化后进行了许多的操作，主要操作如下：
+那上面那个bean初始化前后函数就到这里了，可以看到初始化前没有什么动作，初始化后进行了许多的操作，主要操作如下：
 
 1. 找到带有KafkaListener注解的类或方法
 2. 对具体的类或方法进行处理
@@ -259,18 +259,20 @@ public void afterSingletonsInstantiated() {
             configurer.configureKafkaListeners(this.registrar);
         }
     }
-
+	/// 这里注入的 KafkaListenerEndpointRegistry,所以上面postProcessAfterInitialization才能进行注册操作
     if (this.registrar.getEndpointRegistry() == null) {
         if (this.endpointRegistry == null) {
             Assert.state(this.beanFactory != null,
                          "BeanFactory must be set to find endpoint registry by bean name");
+            // 从容器中获取
             this.endpointRegistry = this.beanFactory.getBean(
                 KafkaListenerConfigUtils.KAFKA_LISTENER_ENDPOINT_REGISTRY_BEAN_NAME,
                 KafkaListenerEndpointRegistry.class);
         }
+        // 注入
         this.registrar.setEndpointRegistry(this.endpointRegistry);
     }
-
+	// 并发容器工厂名
     if (this.containerFactoryBeanName != null) {
         this.registrar.setContainerFactoryBeanName(this.containerFactoryBeanName);
     }
@@ -329,7 +331,7 @@ public void registerListenerContainer(KafkaListenerEndpoint endpoint, KafkaListe
         MessageListenerContainer container = createListenerContainer(endpoint, factory);
         // listenerContainers 记录所有的container的一个容器
         // 也就是在listenerContainers不存在的才会进行创建操作
-        // 如果没有设置id那么id就是:org.springframework.kafka.KafkaListenerEndpointContainer# + 一个序列号
+      // 如果没有设置id那么id就是:org.springframework.kafka.KafkaListenerEndpointContainer# + 一个序列号
         this.listenerContainers.put(id, container);
         if (StringUtils.hasText(endpoint.getGroup()) && this.applicationContext != null) {
             // 这是containerGroup
@@ -870,22 +872,10 @@ public void onMessage(ConsumerRecord<K, V> record, Acknowledgment acknowledgment
 ```
 
 ```java
-protected final Object invokeHandler(Object data, Acknowledgment acknowledgment, Message<?> message,Consumer<?, ?> consumer) {
-    try {
-        if (data instanceof List && !this.isConsumerRecordList) {
-            // 具体的调用方法
-            // 可见是通过反射达到的
-            return this.handlerMethod.invoke(message, acknowledgment, consumer);
-        }
-        else {
-            return this.handlerMethod.invoke(message, data, acknowledgment, consumer);
-        }
-    }
-}
-
-
 protected final Object invokeHandler(Object data, Acknowledgment acknowledgment, Message<?> message, Consumer<?, ?> consumer) {
     try {
+        // 具体的调用方法
+        // 可见是通过反射达到的
         if (data instanceof List && !this.isConsumerRecordList) {
             return this.handlerMethod.invoke(message, acknowledgment, consumer);
         }

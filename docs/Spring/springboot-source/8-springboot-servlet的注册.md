@@ -393,7 +393,7 @@ protected void doHandle(Map<String, Object> attributes, AnnotatedBeanDefinition 
 ```java
 @Override
 protected final void register(String description, ServletContext servletContext) {
-    // 真是的注册操作
+    // 真实的注册操作
     // 返回动态注册的servlet的包装类 ServletRegistration.Dynamic
     D registration = addRegistration(description, servletContext);
     if (registration == null) {

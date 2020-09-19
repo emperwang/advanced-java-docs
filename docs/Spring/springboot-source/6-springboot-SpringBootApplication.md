@@ -108,7 +108,7 @@ protected AutoConfigurationEntry getAutoConfigurationEntry(AutoConfigurationMeta
     configurations.removeAll(exclusions);
     //  从spring.factories中加载AutoConfigurationImportFilter过滤器,进行过滤
     configurations = filter(configurations, autoConfigurationMetadata);
-    //从spring.factories中获取AutoConfigurationImportListener, 并通知其AutoConfigurationImportEvent 事件
+   //从spring.factories中获取AutoConfigurationImportListener, 并通知其AutoConfigurationImportEvent 事件
     fireAutoConfigurationImportEvents(configurations, exclusions);
     // 包装一下合适的配置, 以及 exclude的配置类
     return new AutoConfigurationEntry(configurations, exclusions);

@@ -1,6 +1,8 @@
+[TOC]
+
 # spring启动分析二(实例化初始化类和监听器)
 
-根据上文，再创建SpringApplication时会加载初始化类和监听器，再看一下相关代码:
+根据上文，在创建SpringApplication时会加载初始化类和监听器，再看一下相关代码:
 
 ```java
 	public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySources) {
@@ -248,9 +250,9 @@ org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration,\
 
 那最后确实是通过限定名，去反射调用其构造器进行实例化对象的创建。
 
-那设置初始化类和设置监听器步骤查不到：
+那设置初始化类和设置监听器步骤差不多：
 
-1. 先从spring.factories文件种加载所有的key-value内容到一个map容器中，也就是缓存。
+1. 先从spring.factories文件中加载所有的key-value内容到一个map容器中，也就是缓存。
 2. 得到ApplicationContextInitializer的实现类的限定名集合
 3. 通过反射调用各个实现类的构造器创建实例集合，并返回
 4. 得到ApplicationListener监听器的实现类的限定名集合
