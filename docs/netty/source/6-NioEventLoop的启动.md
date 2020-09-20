@@ -2,11 +2,11 @@
 
 # NioEventLoop 启动
 
-经过上篇，ServerBootstrap端口绑定好了，开始等待客户端的连接；那么有一个问题：就算客户端连接，也需要有一个线程来对selector的read  write  conenct 等事件进行处理才可以的，具体的处理是在哪里进行的呢？
+经过上篇，ServerBootstrap端口绑定好了，开始等待客户端的连接；那么有一个问题：就算客户端连接，也需要有一个线程来对selector的read  write  connect 等事件进行处理才可以的，具体的处理是在哪里进行的呢？
 
 本篇咱们就带着这个问题来进行分析。
 
-首先，经过前面的分析，已经可以了解到具体的处理类应该是 NioEventLoop，而且此时一个线程池，虽然可以暂定是此类进行处理，那么何时开始进行处理的呢？
+首先，经过前面的分析，已经可以了解到具体的处理类应该是 NioEventLoop，而且此是一个线程池，虽然可以暂定是此类进行处理，那么何时开始进行处理的呢？
 
 回顾一下此类的类图:
 
@@ -63,7 +63,7 @@ private void execute(Runnable task, boolean immediate) {
     if (!inEventLoop) {
         startThread();  // 如果是server,这里就会启动接收的处理
         // 如果是client,这里就会启动具体的read/write请求
-        if (isShutdown()) { // 如果线程池已经关系,则移除此添加的任务
+        if (isShutdown()) { // 如果线程池已经关闭,则移除此添加的任务
             boolean reject = false;
             try {
                 if (removeTask(task)) {
