@@ -4,7 +4,7 @@ ReentrantLock中Condition中具体实现方法都在AQS实现了，故在Reentra
 
 本篇就是借ReentrantLock中的Condition的使用来探究一下AQS中的Condition的实现原理。
 
-Condition的await()，signal()和signalAll()有点类似于Object中的wait()，notify()和notifyAll()的使用，不给Condition可以把不同的任务放到不同的任务队列中，这样唤醒时只是唤醒对应队列中的任务，而object只有一个队列，所以唤醒任务时是所有任务都唤醒。相比之下，Condition的使用会更加的便捷。
+Condition的await()，signal()和signalAll()有点类似于Object中的wait()，notify()和notifyAll()的使用，不同Condition实例可以把不同的任务放到不同的任务队列中，这样唤醒时只是唤醒对应队列中的任务，而object只有一个队列，所以唤醒任务时是所有任务都唤醒。相比之下，Condition的使用会更加的便捷。
 
 ## 具体的field
 
@@ -35,7 +35,7 @@ public final void await() throws InterruptedException {
                 throw new InterruptedException();
     		// 添加当前线程到等待队列中
             Node node = addConditionWaiter();
-    		// 如果state值为0，则把node节点的等待状态设置为0，取消状态
+    		// 此处的fullRelease 是释放锁的操作,并保存之前锁的重入状态
             int savedState = fullyRelease(node);
             int interruptMode = 0;
     		// 如果不在同步队列上，则把当前线程阻塞

@@ -68,7 +68,7 @@ private void doAcquireSharedInterruptibly(int arg)
                     throw new InterruptedException();
             }
         } finally {
-            if (failed) // 如果获取锁成功，则把当前node设置为取消状态
+            if (failed) // 如果获取锁失败，则把当前node设置为取消状态
                 cancelAcquire(node);
         }
     }

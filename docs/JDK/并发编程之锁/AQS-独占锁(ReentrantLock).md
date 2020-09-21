@@ -102,7 +102,7 @@ ReenTrantLock内部有一个静态抽象类Sync，继承了AQS，实现了非公
            return node;
        }
    
-   
+   // 这里的enq 返回的是插入队列后node的pre节点
    private Node enq(final Node node) {
        	// 死循环插入节点
            for (;;) {
