@@ -281,7 +281,7 @@ public final void read() {
             allocHandle.lastBytesRead(doReadBytes(byteBuf));
             if (allocHandle.lastBytesRead() <= 0) {
                 // nothing was read. release the buffer.
-                // 如果没有读取到数据呢  就释放buffer  并推出循环
+                // 如果没有读取到数据呢  就释放buffer  并退出循环
                 byteBuf.release();
                 byteBuf = null;
                 close = allocHandle.lastBytesRead() < 0;
