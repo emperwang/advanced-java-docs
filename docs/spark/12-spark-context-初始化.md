@@ -408,7 +408,7 @@ class SparkContext(config: SparkConf) extends Logging {
 5.  SparkStatusTracker的创建
 6.  sparkUI的创建
 7.  HeartbeatReceiver 的创建及 注册
-8. 在 SparkContext.createTaskScheduler中创建了 taskScheduler以及 schedulerbackend，这是两个非常重要的类，driver和executor通信就靠这个schedulerBackend以及 人物的调度 靠这个 taskScheduler；会在后面分析这两个类
+8. 在 SparkContext.createTaskScheduler中创建了 taskScheduler以及 schedulerbackend，这是两个非常重要的类，driver和executor通信就靠这个schedulerBackend以及 任务的调度 靠这个 taskScheduler；会在后面分析这两个类
 9.  new DAGScheduler 类的初始化，此会根据提交的任务分析出DAG图，也就是切分 stage，并把 stage提交到driver
 10. 当前还有 metricsSystem的 初始化 以及启动
 

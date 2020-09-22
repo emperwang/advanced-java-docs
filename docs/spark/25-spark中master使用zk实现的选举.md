@@ -211,13 +211,13 @@ override def electedLeader() {
   }
 ```
 
-可见，只是从WORKING_DIR这个路径中读取数据，反进行返回。
+可见，只是从WORKING_DIR这个路径中读取数据，反序列化返回。
 
 ```java
   // leader 读取完 序列化的备份数据, 开始进行恢复操作
   private def beginRecovery(storedApps: Seq[ApplicationInfo], storedDrivers: Seq[DriverInfo],
       storedWorkers: Seq[WorkerInfo]) {
-    // 如果有存储的app,则尝试重新注册 app,并修改器状态为 UNKNOWN, 并向app的driver发送消息 MasterChanged
+    // 如果有存储的app,则尝试重新注册 app,并修改其状态为 UNKNOWN, 并向app的driver发送消息 MasterChanged
     for (app <- storedApps) {
       logInfo("Trying to recover app: " + app.id)
       try {

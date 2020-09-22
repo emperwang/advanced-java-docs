@@ -241,7 +241,7 @@ override def run(): Unit = {
         // directSend = sending directly back to the driver
         // 结果值的序列化, 此用于把结果发送给 driver
         val serializedResult: ByteBuffer = {
-            // 如果
+            // 如果结果值大小大于 maxResultSize 则drop it
             if (maxResultSize > 0 && resultSize > maxResultSize) {
                 logWarning(s"Finished $taskName (TID $taskId). Result is larger than maxResultSize " +
                            s"(${Utils.bytesToString(resultSize)} > ${Utils.bytesToString(maxResultSize)}), " +
