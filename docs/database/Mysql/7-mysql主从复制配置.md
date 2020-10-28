@@ -205,6 +205,7 @@ example:
 # 复制test  jj  xx数据库
 binlog-do-db=test
 binlog-do-db=jj
+
 binlog-do-db=xx
 ```
 
