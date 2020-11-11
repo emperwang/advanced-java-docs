@@ -94,6 +94,8 @@ public Object postProcessBeforeInitialization(Object bean, String beanName) thro
 	}
 ```
 
+> org.springframework.kafka.annotation.KafkaListenerAnnotationBeanPostProcessor#postProcessAfterInitialization
+
 ```java
 // 这里就涉及到了具体的处理逻辑
 @Override
@@ -142,6 +144,8 @@ public Object postProcessAfterInitialization(final Object bean, final String bea
 }
 ```
 
+> org.springframework.kafka.annotation.KafkaListenerAnnotationBeanPostProcessor#processKafkaListener
+
 ```java
 protected void processKafkaListener(KafkaListener kafkaListener, Method method, Object bean, String beanName) {
     // 检查是否是代理
@@ -160,7 +164,11 @@ MethodKafkaListenerEndpoint<K, V> endpoint = new MethodKafkaListenerEndpoint<>()
 }
 ```
 
+> org.springframework.kafka.annotation.KafkaListenerAnnotationBeanPostProcessor#processListener
+
 ```java
+private final KafkaListenerEndpointRegistrar registrar = new KafkaListenerEndpointRegistrar();
+
 protected void processListener(MethodKafkaListenerEndpoint<?, ?> endpoint, KafkaListener kafkaListener, Object bean,Object adminTarget, String beanName) {
     String beanRef = kafkaListener.beanRef();
     if (StringUtils.hasText(beanRef)) {
@@ -213,8 +221,11 @@ protected void processListener(MethodKafkaListenerEndpoint<?, ?> endpoint, Kafka
 }
 ```
 
+> org.springframework.kafka.config.KafkaListenerEndpointRegistrar#registerEndpoint(org.springframework.kafka.config.KafkaListenerEndpoint, org.springframework.kafka.config.KafkaListenerContainerFactory<?>)
+
 ```java
 // KafkaListenerEndpointRegistrar class
+private KafkaListenerEndpointRegistry endpointRegistry;
 private final List<KafkaListenerEndpointDescriptor> endpointDescriptors = new ArrayList<>();
 public void registerEndpoint(KafkaListenerEndpoint endpoint, KafkaListenerContainerFactory<?> factory) {
     Assert.notNull(endpoint, "Endpoint must be set");
@@ -244,6 +255,8 @@ public void registerEndpoint(KafkaListenerEndpoint endpoint, KafkaListenerContai
    3. 把此endpoint注册到了KafkaListenerEndpointRegistrar类中
 
 那现在bean初始化前后的操作做完了，接下来就会走afterSingletonsInstantiated此方法：
+
+> org.springframework.kafka.annotation.KafkaListenerAnnotationBeanPostProcessor#afterSingletonsInstantiated
 
 ```java
 @Override
@@ -291,12 +304,14 @@ public void afterSingletonsInstantiated() {
 }
 ```
 
+> org.springframework.kafka.config.KafkaListenerEndpointRegistrar#afterPropertiesSet
+
 ```java
 @Override
 public void afterPropertiesSet() {
     registerAllEndpoints();
 }
-
+// org.springframework.kafka.config.KafkaListenerEndpointRegistrar#registerAllEndpoints
 protected void registerAllEndpoints() {
     synchronized (this.endpointDescriptors) {
         for (KafkaListenerEndpointDescriptor descriptor : this.endpointDescriptors) {
@@ -312,11 +327,13 @@ protected void registerAllEndpoints() {
 
 那看一下具体是如何进行的注册:
 
+> org.springframework.kafka.config.KafkaListenerEndpointRegistry#registerListenerContainer(org.springframework.kafka.config.KafkaListenerEndpoint, org.springframework.kafka.config.KafkaListenerContainerFactory<?>)
+
 ```java
 public void registerListenerContainer(KafkaListenerEndpoint endpoint, KafkaListenerContainerFactory<?> factory) {
     registerListenerContainer(endpoint, factory, false);
 }
-
+// org.springframework.kafka.config.KafkaListenerEndpointRegistry#registerListenerContainer(org.springframework.kafka.config.KafkaListenerEndpoint, org.springframework.kafka.config.KafkaListenerContainerFactory<?>, boolean)
 // 注册函数
 public void registerListenerContainer(KafkaListenerEndpoint endpoint, KafkaListenerContainerFactory<?> factory, boolean startImmediately) {
     Assert.notNull(endpoint, "Endpoint must not be null");
@@ -367,7 +384,7 @@ public interface Lifecycle {
 }
 ```
 
-
+> org.springframework.kafka.config.KafkaListenerEndpointRegistry#start
 
 ```java
 	@Override
@@ -383,6 +400,8 @@ public interface Lifecycle {
 	}
 ```
 
+> org.springframework.kafka.config.KafkaListenerEndpointRegistry#startIfNecessary
+
 ```java
 	private void startIfNecessary(MessageListenerContainer listenerContainer) {
 		if (this.contextRefreshed || listenerContainer.isAutoStartup()) {
@@ -392,6 +411,8 @@ public interface Lifecycle {
 ```
 
 具体启动到了父类 AbstaractMessageListenerContainer 类:
+
+> org.springframework.kafka.listener.AbstractMessageListenerContainer#start
 
 ```java
 @Override
@@ -409,6 +430,8 @@ public interface Lifecycle {
 ```
 
 先看ConcurrentmessageListenerContainer的启动把，见名识义，就是并发的信息监听容器：
+
+> org.springframework.kafka.listener.ConcurrentMessageListenerContainer#doStart
 
 ```java
 @Override
@@ -455,6 +478,8 @@ protected void doStart() {
 
 接着看一下这个start方法，回忆一下，有关什么设计模式来着？ 对了，你说的不错，模板模式。
 
+> org.springframework.kafka.listener.AbstractMessageListenerContainer#start
+
 ```java
 	// 父类方法的启动函数
 	@Override
@@ -470,6 +495,8 @@ protected void doStart() {
 		}
 	}
 ```
+
+> org.springframework.kafka.listener.KafkaMessageListenerContainer#doStart
 
 ```java
 // KafkaMessageListenerContainer 具体监听子类:
@@ -750,6 +777,7 @@ ListenerConsumer.this.logger.error("No offset and no reset policy", nofpe);
 可以看到，具体的消费就跟平常是一样的，看看是如何调用处理逻辑的：
 
 ```java
+//  org.springframework.kafka.listener.KafkaMessageListenerContainer.ListenerConsumer#invokeListener
 private void invokeListener(final ConsumerRecords<K, V> records) {
     if (this.isBatchListener) {
         invokeBatchListener(records);
