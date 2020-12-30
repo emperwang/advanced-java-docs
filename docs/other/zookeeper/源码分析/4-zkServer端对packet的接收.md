@@ -1008,6 +1008,72 @@ public void submitRequest(Request si) {
     }
 ```
 
+> org.apache.zookeeper.server.NIOServerCnxn#sendResponse
+
+```java
+// 发送响应
+@Override
+public void sendResponse(ReplyHeader h, Record r, String tag) {
+    try {
+        super.sendResponse(h, r, tag);
+        if (h.getXid() > 0) {
+            // check throttling
+            if (outstandingRequests.decrementAndGet() < 1 ||
+                zkServer.getInProcess() < outstandingLimit) {
+                enableRecv();
+            }
+        }
+    } catch(Exception e) {
+        LOG.warn("Unexpected exception. Destruction averted.", e);
+    }
+}
+```
+
+> org.apache.zookeeper.server.ServerCnxn#sendResponse
+
+```java
+// 响应客户端的请求
+public void sendResponse(ReplyHeader h, Record r, String tag) throws IOException {
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    // Make space for length
+    BinaryOutputArchive bos = BinaryOutputArchive.getArchive(baos);
+    try {
+        baos.write(fourBytes);
+        bos.writeRecord(h, "header");
+        if (r != null) {
+            bos.writeRecord(r, tag);
+        }
+        baos.close();
+    } catch (IOException e) {
+        LOG.error("Error serializing response");
+    }
+    byte b[] = baos.toByteArray();
+    serverStats().updateClientResponseSize(b.length - 4);
+    ByteBuffer bb = ByteBuffer.wrap(b);
+    // 放入大小
+    bb.putInt(b.length - 4).rewind();
+    // 发送数据
+    sendBuffer(bb);
+}
+```
+
+> org.apache.zookeeper.server.NIOServerCnxn#sendBuffer
+
+```java
+// 发送server处理完的响应数据
+public void sendBuffer(ByteBuffer bb) {
+    if (LOG.isTraceEnabled()) {
+        LOG.trace("Add a buffer to outgoingBuffers, sk " + sk
+                  + " is valid: " + sk.isValid());
+    }
+    // 可以看到这里其实是吧数据缓存起来,异步发送
+    outgoingBuffers.add(bb);
+    requestInterestOpsUpdate();
+}
+```
+
+最后把处理完的数据发送到 outgoingBuffers中，并修改对应的selectionKey对应的事件。
+
 这里的处理函数比较长，这里主要看一下具体的处理函数 以及 响应发送函数:
 
 > org.apache.zookeeper.server.ZooKeeperServer#processTxn(org.apache.zookeeper.server.Request)
@@ -1356,7 +1422,7 @@ void handleWrite(SelectionKey k) throws IOException, CloseRequestException {
 }
 ```
 
-
+![](../../../image/zookeeper/zk-server.png)
 
 
 

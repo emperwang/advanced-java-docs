@@ -1023,7 +1023,9 @@ private void processEvent(Object event) {
 
 其实就是调用客户端注册的对应的watcher进行处理. 
 
+最后来一个图小结一下:
 
+![](../../../image/zookeeper/zk-client-nio.png)
 
 
 
