@@ -306,7 +306,9 @@ private void requestInterestOpsUpdate() {
 
 这样把事件发送到客户端后，客户端解析数据得知这是一个event事件packet，会把对应的packet封装到放入到waitingEvent队列中，由eventThread来处理； eventThread会得到此path对应的所有watcher，然后调用watcher对事件进行处理。
 
+画个图总结一下:
 
+![](../../../image/zookeeper/zk-watcher.png)
 
 
 
