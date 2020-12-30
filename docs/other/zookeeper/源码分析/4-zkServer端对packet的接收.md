@@ -1422,6 +1422,8 @@ void handleWrite(SelectionKey k) throws IOException, CloseRequestException {
 }
 ```
 
+使用一个图来总结下总体的流程:
+
 ![](../../../image/zookeeper/zk-server.png)
 
 
