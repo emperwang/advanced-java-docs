@@ -6,160 +6,17 @@
 
 ## JDK源码解析
 
-### 并发编程锁
-
-* [AQS概述](docs/JDK/并发编程之锁/AQS-概述.md)
-
-* [AQS之独占锁](docs/JDK/并发编程之锁/AQS-独占锁(ReentrantLock).md)
-
-- [AQS之共享锁](docs/JDK/并发编程之锁/AQS共享锁(semaphore).md)
-- [CountDownLatch分析](docs/JDK/并发编程之锁/CountDownLatch.md)
-- [ReentrantLock之Condition](docs/JDK/并发编程之锁/ReentrantLock之condition使用.md)
-
-### 线程及线程池
-
-- [Thread解析(没有实现)](docs/JDK/线程及线程池/Thread解析.md)
-- [FutureTask](docs/JDK/线程及线程池/FutureTask.md)
-- [Executors(实现不完整)](docs/JDK/线程及线程池/Exceutors.md)
-- [ThreadPoolExecutor](docs/JDK/线程及线程池/ThreadPoolExecutor.md)
-- [ForkJoinPool](docs/JDK/线程及线程池/ForkJoinPool.md)
-- [RecursiveAction(没有实现)](docs/JDK/线程及线程池/RecursiveAction.md)
-- [RecursiveTask(没有实现)](docs/JDK/线程及线程池/RecursiveTask.md)
-- [ForkJoinWorkerThread(没有实现)](docs/JDK/线程及线程池/ForkJoinWorkerThread.md)
-- [ForkJoinTask(没有实现)](docs/JDK/线程及线程池/ForkJoinTask.md)
-
-### 类加载器
-
-* [ServiceLoader](docs/JDK/类加载器/ServiceLoader.md)
-* [ClassLoader](docs/JDK/类加载器/ClassLoader.md)
-* [Launcher](docs/JDK/类加载器/Launcher.md)  
-* [URLClassLoader](docs/JDK/类加载器/URLClassLoader.md)
-* [URLClassPath](docs/JDK/类加载器/URLClassPath.md)
-* [Class](docs/JDK/类加载器/Class.md)
-
-### Reflect
-
-- [Constructor](docs/JDK/reflect/Constructor.md)
-- [Field](docs/JDK/reflect/Field.md)
-- [Method](docs/JDK/reflect/Method.md)
-- [Modifier](docs/JDK/reflect/Modifier.md)
-- [Parameter](docs/JDK/reflect/Parameter.md)
-- [Proxy](docs/JDK/reflect/Proxy.md)
-
-### NIO
-
-* [Buffer](docs/JDK/NIO/Buffer.md)
-* [ByteBuffer](docs/JDK/NIO/ByteBuffer.md)
-* [ByteOrder](docs/JDK/NIO/ByteOrder.md)
-* [CharBuffer](docs/JDK/NIO/CharBuffer.md)
-* [ShortBuffer](docs/JDK/NIO/ShortBuffer.md)
-* [IntBuffer](docs/JDK/NIO/IntBuffer.md)
-* [FloatBuffer](docs/JDK/NIO/FloatBuffer.md)
-* [DoubleBuffer](docs/JDK/NIO/DoubleBuffer.md)
-* [LongBuffer](docs/JDK/NIO/LongBuffer.md)
-* [MappedByteBuffer](docs/JDK/NIO/MappedByteBuffer.md)
-
-### 容器
-
-#### 非并发包
-
-* [IdentityHashMap](docs/JDK/容器/IdentityHashMap.md)
-* [HashTable](docs/JDK/容器/HashTable.md)
-* [HashSet](docs/JDK/容器/HashSet.md)
-* [LinkedHashMap](docs/JDK/容器/LinkedHashMap.md)
-* [WeakHashMap](docs/JDK/容器/WeakHashMap.md)
-* [LinkedHashSet](docs/JDK/容器/LinkedHashSet.md)
-* [Properties](docs/JDK/容器/Properties.md)
-* [EnumMap](docs/JDK/容器/EnumMap.md)
-* [EnumSet](docs/JDK/容器/EnumSet.md)
-* [TreeMap](docs/JDK/容器/TreeMapmd)
-* [TreeSet](docs/JDK/容器/TreeSet.md)
-* [ArrayList](docs/JDK/容器/ArrayList.md)
-* [ArrayDeque](docs/JDK/容器/ArrayDeque.md)
-* [LinkedList](docs/JDK/容器/LinkedList.md)
-* [Vector](docs/JDK/容器/Vector.md)
-
-#### 并发包
-
-* [ConcurrentLinkedQueue](docs/JDK/并发容器/ConcurrentLinkedQueue.md)
-* [LinkedBlockingDeque](docs/JDK/并发容器/LinkedBlockingDeque.md)
-* [ConcurrentHashMap](docs/JDK/并发容器/ConcurrentHashMap.md)
-* [CopyOnWriteArrayList](docs/JDK/并发容器/CopyOnWriteArrayList.md)
-* [CopyOnWriteArraySet](docs/JDK/并发容器/CopyOnWriteArraySet.md)
-* [LinkedBlockingQueue](docs/JDK/并发容器/LinkedBlockingQueue.md)
-* [LinkedTransferQueue](docs/JDK/并发容器/LinkedTransferQueue.md)
-* [ArrayBlockingQueue](docs/JDK/并发容器/ArrayBlockingQueue.md)
-* [DelayQueue](docs/JDK/并发容器/DelayQueue.md)
-* [SynchronousQueue](docs/JDK/并发容器/SynchronousQueue.md)
-
-#### 引用
-
-* [Reference示例](docs/JDK/reference/Reference的使用.md)
-* [Reference](docs/JDK/reference/Reference.md)
-* [ReferenceQueue](docs/JDK/reference/ReferenceQueue.md)
-* [AtomicMarkableReference](JDK/Atomic/AtomicMarkableReference.md)
-* [AtomicStampedReference](JDK/Atomic/AtomicStampedReference.md)
-### IO
-
-* [File](docs/JDK/IO/File.md)
-* [FileDescriptor](docs/JDK/IO/FileDescriptor.md)
-* [InputStream](docs/JDK/IO/InputStream/InputStream.md)
-* [FilterInputStream](docs/JDK/IO/InputStream/FilterInputStream.md)
-  * [BufferedInputStream](docs/JDK/IO/InputStream/FilterInputStream/BufferedInputStream.md)
-  * [DataInputStream](docs/JDK/IO/InputStream/FilterInputStream/DataInputStream.md)
-  * [LineNumberInputStream](docs/JDK/IO/InputStream/FilterInputStream/LineNumberInputStream.md)
-  * [PushbackInputStream](docs/JDK/IO/InputStream/FilterInputStream/PushbackInputStream.md)
-* [SequenceInputStream](docs/JDK/IO/InputStream/SequenceInputStream.md)
-* [ByteArrayInputStream](docs/JDK/IO/InputStream/ByteArrayInputStream.md)
-* [FileInputStream](docs/JDK/IO/InputStream/FileInputStream.md)
-* [PipedInputStream](docs/JDK/IO/InputStream/PipedInputStream.md)
-* [ByteArrayOutputStream](docs/JDK/IO/OuputStream/ByteArrayOutputStream.md)
-* [FileOutputStream](docs/JDK/IO/OuputStream/FileOutputStream.md)
-* [FilterOutputStream](docs/JDK/IO/OuputStream/FilterOutputStream.md)
-  * [BufferedOutputStream](docs/JDK/IO/OuputStream/FilterOutputStream/BufferedOutputStream.md)
-  * [DataOutputStream](docs/JDK/IO/OuputStream/FilterOutputStream/DataOutputStream.md)
-  * [PrintStream](docs/JDK/IO/OuputStream/FilterOutputStream/PrintStream.md)
-* [Reader](docs/JDK/IO/Reader/Reader.md)
-* [BufferedReader](docs/JDK/IO/Reader/BufferedReader.md)
-* [CharArrayReader](docs/JDK/IO/Reader/CharArrayReader.md)
-* [FilterReader](docs/JDK/IO/Reader/FilterReader.md)
-* [InputStreamReader](docs/JDK/IO/Reader/InputStreamReader.md)
-* [PipedReader](docs/JDK/IO/Reader/PipedReader.md)
-* [StringReader](docs/JDK/IO/Reader/StringReader.md)
-* [PipedWriter](docs/JDK/IO/Writer/PipedWriter.md)
-* [BufferedWriter](docs/JDK/IO/Writer/BufferedWriter.md)
-* [CharArrayWriter](docs/JDK/IO/Writer/CharArrayWriter.md)
-* [FilterWriter](docs/JDK/IO/Writer/FilterWriter.md)
-* [OutputStreamWriter](docs/JDK/IO/Writer/OutputStreamWriter.md)
-* [PrintWriter](docs/JDK/IO/Writer/PrintWriter.md)
-* [StringWriter](docs/JDK/IO/Writer/StringWriter.md)
-
-### Atomic
-
-* [AtomicInteger](docs/JDK/Atomic/AtomicInteger.md)
-* [AtomicIntegerFieldUpdater](docs/JDK/Atomic/AtomicIntegerFieldUpdater.md)
-* [AtomicReference](docs/JDK/Atomic/AtomicReference.md)
-* [AtomicMarkableReference](docs/JDK/Atomic/AtomicMarkableReference.md)
-* [AtomicStampedReference](docs/JDK/Atomic/AtomicStampedReference.md)
-* [DoubleAccumulator](docs/JDK/Atomic/DoubleAccumulator.md)
-* [DoubleAdder](docs/JDK/Atomic/DoubleAdder.md)
-
-### net
-
-* [socket](docs/JDK/net/Socket.md)
-* [SocketImpl](docs/JDK/net/SocketImpl.md)
-* [AbstractPlainSocketImpl](docs/JDK/net/AbstractPlainSocketImpl.md)
-* [PlainSocketImpl](docs/JDK/net/PlainSocketImpl.md)
-* [DualStackPlainSocketImpl](docs/JDK/net/DualStackPlainSocketImpl.md)
-* [TwoStacksPlainSocketImpl](docs/JDK/net/TwoStacksPlainSocketImpl.md)
-* [SocketInputStream](docs/JDK/net/SocketInputStream.md)
-* [SocketOutputStream](docs/JDK/net/SocketOutputStream.md)
+* [JDK-index](docs/JDK/0-JDK-index.md)
 
 ## SpringBoot
 
 * [springboot-index](docs/Spring/springboot-source/0-springboot-index.md)
 
 
+
+## tomcat
+
+- [tomcat source index](docs/tomcat/0-tomcat-index.md)
 
 ## SpringFramework
 
@@ -178,16 +35,7 @@
 
 ## Docker
 
-* [docker安装](docs/docker/docker-安装.md)
-* [镜像管理](docs/docker/镜像管理.md)
-* [容器管理](docs/docker/容器管理.md)
-* [数据卷管理](docs/docker/数据卷管理.md)
-* [dockerfile-cmd](docs/docker/dockerfile-cmd.md)
-* [Docker_network](docs/docker/Docker_network.md)
-* [Docker_security](docs/docker/Docker_security.md)
-* [ubuntu_sshd镜像](docs/docker/ubuntu_sshd镜像.md)
-* [Docker-machine(没有实现)](docs/docker/Docker-machine.md)
-* [Docker-swarm(没有实现)](docs/docker/Docker-swarm.md)
+* [docker-index](docs/docker/0-docker-index.md)
 
 ## 数据库
 
@@ -218,45 +66,80 @@
 
 - [maven-index](docs/maven/plugins/0-maven-index.md)
 
+## gradle
 
+- [gradle index](docs/gradle/0-gradle-index.md)
 
 ## mybatis
 
-- [0-mybatis概述](docs/mybatis/0-mybatis概述.md)
-- [1配置文件解析](docs/mybatis/1配置文件解析.md)
-- [2-接口和xml文件的对应关系](docs/mybatis/2-接口和xml文件的对应关系.md)
-- [3-一个接口函数的执行流程](docs/mybatis/3-一个接口函数的执行流程.md)
-- [4-sql参数的配置](docs/mybatis/4-sql参数的配置.md)
-- [5-连接池](docs/mybatis/5-连接池.md)
-- [6-事务管理](docs/mybatis/6-事务管理.md)
-- [7-查询结果如何映射到java类中](docs/mybatis/7-查询结果如何映射到java类中.md)
+- [0-mybatis-index](docs/mybatis/0-mybatis-index.md)
 
 ## other
 
 * [自动更新配置文件](docs/other/自动更新配置文件.md)
 
-### logBack
+## logBack
 
-* [logback初始化](docs/other/logback/logback初始化.md)
-* [getLogger操作](docs/other/logback/getLogger操作.md)
-* [Log打印](docs/other/logback/Log打印.md)
+* [logback index](docs/other/logback/0-logback-index.md)
 
-### kafka
+## kafka
 
-* [kafka集群模式安装](docs/other/kafka/kafka集群模式安装.md)
+* [kafka user index](docs/other/kafka/0-index.md)
+* [kafka client source index](docs/other/kafka/client/0-kakfa-index.md)
+* [kafka server source index](docs/other/kafka/server/0-kafka-source-index.md)
 
-### nginx
+## nginx
 
 * [Nginx-install](docs/other/nginx/Nginx-install.md)
 
-### redis
+## redis
 
-* [redis集群模式安装](docs/other/redis/redis集群模式安装.md)
+* [redis index](docs/other/redis/)
 
-### zookeeper
+## zookeeper
 
-* [zookeeper集群模式安装](docs/other/zookeeper/zookeeper集群模式安装.md) 
+* [zookeeper集群模式安装](docs/other/zookeeper/zookeeper集群模式安装.md)
+* [1-zk写操作超时导致没有响应](docs/other/zookeeper/1-zk写操作超时导致没有响应.md)
+* [zk分布式计数器-DistributedAtomicInteger](docs/other/zookeeper/zk分布式计数器-DistributedAtomicInteger.md)
+* [zk分布式锁原理-InterProcessMutex](docs/other/zookeeper/zk分布式锁原理-InterProcessMutex.md)
+* [zookeeper常见错误](docs/other/zookeeper/zookeeper常见错误.md)
+* [zookeeper source index](docs/other/zookeeper/源码分析/0-zk-index.md)
 
 ## python
 
 * [python-index](docs/python/0-index.md)
+
+## lucene
+
+- [lucene index](docs/other/lucene/0-lucene-index.md)
+
+
+
+## httpClient
+
+- [httpClient source index](docs/other/HttpClient/source/0-httpClient-index.md)
+- [1-服务器许多Close_Wait的socket句柄未释放](docs/other/HttpClient/1-服务器许多Close_Wait的socket句柄未释放.md)
+- [2-添加了清除过期的仍然有Close_Wait的socket句柄](docs/other/HttpClient/2-添加了清除过期的仍然有Close_Wait的socket句柄.md)
+- [3-连接未释放3](docs/other/HttpClient/3-连接未释放3.md)
+
+## Spark
+
+- [Spark source index](docs/spark/0-spark-index.md)
+
+## spring-streaming index
+
+- [spark-streaming index](docs/spark/spark-streaming/0-spark-stream-index.md)
+
+## netty
+
+- [netty source index](docs/netty/source/0-netty-index.md)
+
+## zabbix
+
+- [zabbix index](docs/other/zabbix/0-zabbix-index.md)
+
+
+
+## javascript 
+
+- [java script index](docs/javascript/0-js-index.md)
