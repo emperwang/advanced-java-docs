@@ -31,7 +31,7 @@
 
 ## JVM
 
-* [jvm-index](docs/JVM/0-jvm-index.md)
+* [jvm-index](docs/JVM/0-index.md)
 
 ## Docker
 
