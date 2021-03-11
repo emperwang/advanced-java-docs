@@ -44,7 +44,7 @@ tcpdump -i eth0 -w https.pcap
 
 1.编辑--> 首选项-->RSA Keys
 
-在此出配置密钥(keyStore)，不是证书也不是trustKeyStore.
+在此处配置密钥(keyStore)，不是证书也不是trustKeyStore.
 
 ![](../image/https/wireshark-keystore.png)
 

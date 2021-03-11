@@ -54,7 +54,7 @@ SSL/TLS协议处于TCP/IP协议与各种应用协议之间，为数据通讯提�
 
 名词解析:
 
-**对此算法(symmetric cryptography)：**就是需要双方使用一样的key来加密解析消息，常用密钥算法有:Data Encryption Standard(DES)， triple-strength DES(3DES),Rivest Cipher 2(RC2)和Rivest Cipher 4(RC4)。因为对称算法效率相对高，因此SSL会话中的敏感数据都使用密钥算法加密。
+**对称算法(symmetric cryptography)：**就是需要双方使用一样的key来加密解析消息，常用密钥算法有:Data Encryption Standard(DES)， triple-strength DES(3DES),Rivest Cipher 2(RC2)和Rivest Cipher 4(RC4)。因为对称算法效率相对高，因此SSL会话中的敏感数据都使用密钥算法加密。
 
 **非对称算法(asymmetric cryptography)：**就是key的组成是公钥私钥对(key-pair)，公钥传递给对方，私钥自己保留。公钥私钥算法是互逆的，一个用来加密另一个可以解密。常用的算法有Rivest Shamir Adleman(RSA)，Diffie-Hellman(DH)。非对称算法计算量大，因此仅适用于少量数据加密，如对密钥加密，而不适合大量数据的通讯加密。
 
@@ -62,7 +62,7 @@ SSL/TLS协议处于TCP/IP协议与各种应用协议之间，为数据通讯提�
 
 **加密哈希功能(Cryptographic Hash Functions)：**加密哈希功能与checksum功能相似。不同之处在于，checksum用来侦测意外的数据变化而加密哈希用来侦测数据是否篡改。数据被hash后产生一小串比特字符串，微小的数据改变将导致hash串的变化。发送数据时，SSL会使用加密hash功能来确保数据的一致性，用来阻止第三方破坏通讯数据完整性。SSL常用的hash算法由Message Digest 5(MD5)和Secure Hash Algorithm(SHA)。
 
-**消息认证码(Message Authentication Code)：**消息认证码与加密hash功能相似，除了它需要基于密钥。密钥信息与加密hash功能产生的数据结合就是哈希消息认证码(HMAC)。如果A要确保给B发送的消息不被C篡改，他要按如下步骤做--首先：A要计算吃一个HMAC值，将其添加到原始信息后面。用于A与B之间通讯的密钥加密消息体，然后发送给B。B收到信息后用密钥解密，然后重新计算出一个HMAC，来判断消息是否再传输中被篡改，SSL用HMAC来确保数据传输的安全。
+**消息认证码(Message Authentication Code)：**消息认证码与加密hash功能相似，除了它需要基于密钥。密钥信息与加密hash功能产生的数据结合就是哈希消息认证码(HMAC)。如果A要确保给B发送的消息不被C篡改，他要按如下步骤做--首先：A要计算出一个HMAC值，将其添加到原始信息后面。用于A与B之间通讯的密钥加密消息体，然后发送给B。B收到信息后用密钥解密，然后重新计算出一个HMAC，来判断消息是否再传输中被篡改，SSL用HMAC来确保数据传输的安全。
 
 **数字签名(Digital Signature)：**一个消息加密哈希被创建后，哈希值用发送者的私钥加密，解密的结果就叫做数字签名。
 
