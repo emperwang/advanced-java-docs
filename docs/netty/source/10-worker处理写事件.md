@@ -30,10 +30,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String se = "server received msg {"+ buf.toString(CharsetUtil.UTF_8) +"} " + LocalDateTime.now().format(format);
         
-        
         // 就以此为入口
-        ctx.writeAndFlush(Unpooled.copiedBuffer(se,
-                                                CharsetUtil.UTF_8));
+        ctx.writeAndFlush(Unpooled.copiedBuffer(se,CharsetUtil.UTF_8));
     }
 
 
@@ -369,6 +367,7 @@ protected void doWrite(ChannelOutboundBuffer in) throws Exception {
                 ByteBuffer buffer = nioBuffers[0];
                 int attemptedBytes = buffer.remaining();
                 final int localWrittenBytes = ch.write(buffer);
+                // 这里主要是针对半包写入的处理
                 if (localWrittenBytes <= 0) {
                     incompleteWrite(true);
                     return;
@@ -381,6 +380,7 @@ protected void doWrite(ChannelOutboundBuffer in) throws Exception {
             default: {
                 long attemptedBytes = in.nioBufferSize();
                 final long localWrittenBytes = ch.write(nioBuffers, 0, nioBufferCnt);
+                // 这里主要是针对半包写入的处理
                 if (localWrittenBytes <= 0) {
                     incompleteWrite(true);
                     return;

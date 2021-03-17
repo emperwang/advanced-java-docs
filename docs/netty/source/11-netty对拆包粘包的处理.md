@@ -136,7 +136,7 @@ protected void callDecode(ChannelHandlerContext ctx, ByteBuf in, List<Object> ou
             int oldInputLength = in.readableBytes();
             // 调用decode,解码操作
             decodeRemovalReentryProtection(ctx, in, out);
-            // 如果此handler白移除了,那么就不需要继续往下进行处理了
+            // 如果此handler被移除了,那么就不需要继续往下进行处理了
             if (ctx.isRemoved()) {
                 break;
             }
