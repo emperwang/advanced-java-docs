@@ -64,6 +64,29 @@ sync: 资料会先暂存于内存中,而非直接写入硬盘
 no_root_squash:当登录NFS主机使用共享目录的使用者是root时,其权限将被转换成为匿名使用者,通常它的UID与GID都会变成nobody身份.
 ```
 
+| 参数             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| ro               | 只读方式                                                     |
+| rw               | 读写访问                                                     |
+| sync             | 所有数据再请求时写入共享                                     |
+| async            | nfs在写入数据前可以响应请求                                  |
+| secure           | nfs通过1024以下的安全TCP/IP端口发送                          |
+| insecure         | nfs通过1024以上的端口发送                                    |
+| wdelay           | 如果多个用户要写入nfs目录,则归组写入(默认)                   |
+| no_wdelay        | 如果多个用户要写入nfs目录,则立即写入, 当使用async时,无需此设置 |
+| hide             | 在nfs共享目录中不共享子目录                                  |
+| no_hide          | 共享nfs目录的子目录                                          |
+| subtree_check    | 如果共享/usr/bin之类的子目录时, 强制nfs检查父目录的权限(默认) |
+| no_subtree_check | 不检查父目录权限                                             |
+| all_squash       | 共享文件的UID和GID映射匿名用户anonynous,适合公用目录         |
+| no_all_squash    | 保留共享文件的UID和GID(默认)                                 |
+| root_squash      | root用户的所有请求映射成如anonymous用户一样的权限(默认)      |
+| no_root_squash   | root用户具有根目录的完全管理访问权限                         |
+| anonuid=xxx      | 指定nfs服务器/etc/passwd 文件中匿名用户的UID                 |
+| anongid=xxx      | 指定nfs服务器e/etc/passwd文件中的匿名用户的GID               |
+
+
+
 ```shell
 ## 启动服务
 #### 这里一定要注意,服务一定要先驱动rpcbind
@@ -106,13 +129,20 @@ showmount -e 192.168.72.35
 
 ## 挂载目录到本地
 mount -t nfs 192.168.72.35:/root/shell  /opt/shell 
+# nfs默认使用UDP连接,可以指定使用tcp
+mount -t nfs 192.168.72.35:/root/shell /opt/shell -o proto=tcp -o nolock
+# 卸载nfs
+umount /opt/shell
 
 ## 查看 portmap nfs  mountd 进程端口等信息
 rpcinfo -p localhost
 
 ## 查看那nfs设置
-showmount -e localhost	# 查看exports文件
-showmount -a localhost	# 查看nfs与主机连接情况
+showmount -e 192.168.72.35	# 查看主机可用的挂载
+
+## 查看本机挂载
+mount | grep nfs
+
 ```
 
 
@@ -140,7 +170,7 @@ mount -t nfs 192.168.72.35:/root/shell  /opt/shell
 
 ## 也可以把命令添加到 /etc/fatab
 192.168.72.35:/root/shell  /opt/shell   nfs  defaults,_rnetdev  1 1
-注: 第一个1表示备份文件系统,第二个1表示从/分区的顺序凯斯fsck磁盘检测,0表示不检测.
+注: 第一个1表示备份文件系统,第二个1表示从/分区的顺序开始fsck磁盘检测,0表示不检测.
 _rnetdev: 表示主机无法挂载直接跳过,避免无法挂载主机无法启动
 ```
 
@@ -159,9 +189,9 @@ umount dir
 
 
 
-## command
+## 相关command
 
-### showmount
+### 1.showmount
 
 ```shell
 NAME
@@ -194,7 +224,24 @@ Suppress the descriptive headings from the output.
 
 
 
-### rpcinfo
+### 2. rpcinfo
+
+```shell
+# 
+-p host:  查询host主机上的注册信息
+```
+
+
+
+### 3. exportfs
+
+```shell
+# 用于操作/etc/exports中的内容
+-a: 全部挂载或卸载/etc/exports中的内容
+-r: 重新读取/etc/exports中的内容, 并同步更新/etc/exports   /var/lib/nfs/xtab
+-u:卸载单一目录(和-a一起使用为卸载所有/etc/exports文件中的目录)
+-v:输出详细的共享参数
+```
 
 
 
