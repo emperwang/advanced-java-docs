@@ -108,6 +108,18 @@ showmount -a localhost(ip)  # 查看nfs与主机连接情况
 showmount -e 192.168.72.35
 ```
 
+刚启动rpc时的输出信息, 还没有nfs相关的注册
+
+![](../image/linux/nfs/rpcinfo.png)
+
+nfs启动注册后的rpc注册信息
+
+![](../image/linux/nfs/rpcinfo2.png)
+
+查看nfs-server上有哪些export的目录
+
+![](../image/linux/nfs/showmount1.png)
+
 
 
 ### 2-2 客户端的配置
