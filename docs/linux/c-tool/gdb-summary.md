@@ -18,6 +18,16 @@ Gdb是一款强大的调试工具，在这里小结一下其常用的用法.
 
 ![](../../image/gdb/common-options.jpg)
 
+### 2.1 条件断点
+
+```shell
+break test.c:8  if Value==5   # 如果变量Value的值为5, 则在test.c的第8行设置断点 
+```
+
+
+
+
+
 ## 3.显示
 
 ### 3.1 print
@@ -144,9 +154,59 @@ call <expr>
 
 
 
+### 4.5 查看变量的类型
+
+```shell
+ptype  variable   # -- 查看变量variable的类型
+```
+
+
+
+### 4.6 设置变量的值
+
+```shell
+set var variablename=47  ##-- 将变量variablename 的值设置为47
+```
+
+
+
+### 4.7 设置输入变量
+
+```shell
+set args 10 20 30  # 设置输入变量值为 10 20 30
+
+# 显示输入的运行变量
+show args
+```
+
+
+
+### 4.8 退出当前运行函数
+
+```shell
+finish   # 退出当前运行函数
+```
+
+
+
 ## 5.语言环境
 
 ![](../../image/gdb/language.jpg)
+
+
+
+## 6. 多进程调试
+
+```shell
+# 设置follow child mode
+set follow-fork-mode child
+
+# 设置follow parent
+set follow-fork-mode parent
+
+# 显示模式
+show follow-fork-mode
+```
 
 
 
