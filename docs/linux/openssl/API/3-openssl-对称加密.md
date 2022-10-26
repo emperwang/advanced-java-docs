@@ -48,7 +48,7 @@ void AES_cbc_encrypt(const unsigned char *in, unsigned char *out,
      	要求: 1.必须包含结尾\0的长度. length = in.length+\0
      		 2. (字符串长度+\0) % 16 == 0;  必须是16的整数倍
      		  - 实际长度计算: length = ((in.len /16) + 1) * 16
-     - key: 初始化后的加密key 
+     - key: 初始化后的加密key;  秘钥可选长度: 16 byte, 24byte, 32byte
      - ivec: 初始化向量. 长度和分组长度相同
      - enc: 指明是加密还是解密,此值为两个宏中选择一个
      	 # define AES_ENCRYPT     1
