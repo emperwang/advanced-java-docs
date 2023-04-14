@@ -7,7 +7,28 @@ tags: obsidian,link
 ## 1.  internal link
 
 ```
+# 直接连接到一个文件
 [[name of file]]
+
+#link to head in a note
+[[File#head]]
+[[File#head 1#Head 2]]
+
+# link to block in a note
+[[File#^block]]
+
+# create a block
+add ^human-block at the end of a block.
+
+# change the link display text
+Wikilink frmat:
+Use the vertical bar (|) to change the text used to display a link.
+[[internal link|display text]]
+
+Markdown format:
+Enter the display text between the square brackets ([])
+[display text](url)
+
 ```
 [[0-Obsidian index]]
 
