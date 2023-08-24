@@ -1,3 +1,0 @@
-# java访问zabbix
-
-可以看到使用shell中的curl命令访问zabbix，那么使用java中的httpclient或其他类似的http访问工具就可以访问到zabbix。

@@ -210,37 +210,37 @@
 
 ## Java_command
 
-* [记录JDB调试程序](java_command/记录JDB调试程序.md)
+* [记录JDB调试程序](记录JDB调试程序.md)
 
 ## maven
 
 * [0-maven-lifecycle](maven/plugins/0-maven-lifecycle.md)
-* [1-maven-resources](maven/plugins/1-maven-resources.md)
-* [2-maven-surefire](maven/plugins/2-maven-surefire.md)
-* [3-maven-jar](maven/plugins/3-maven-jar.md)
-* [4-maven-dependency](maven/plugins/4-maven-dependency.md)
-* [5-maven-shade](maven/plugins/5-maven-shade.md)
-* [6-maven-assembly](maven/plugins/6-maven-assembly.md)
-* [6-maven-assembly-example](maven/plugins/6-maven-assembly-example.md)
-* [7-maven-springboot-plugins](maven/plugins/7-maven-springboot-plugins.md)
+* [1-maven-resources](1-maven-resources.md)
+* [2-maven-surefire](2-maven-surefire.md)
+* [3-maven-jar](3-maven-jar.md)
+* [4-maven-dependency](4-maven-dependency.md)
+* [5-maven-shade](5-maven-shade.md)
+* [6-maven-assembly](6-maven-assembly.md)
+* [6-maven-assembly-example](6-maven-assembly-example.md)
+* [7-maven-springboot-plugins](7-maven-springboot-plugins.md)
 
 
 
 ## mybatis
 
-* [0-mybatis概述](mybatis/0-mybatis概述.md)
-* [1配置文件解析](mybatis/1配置文件解析.md)
-* [2-接口和xml文件的对应关系](mybatis/2-接口和xml文件的对应关系.md)
-* [3-一个接口函数的执行流程](mybatis/3-一个接口函数的执行流程.md)
-* [4-sql参数的配置](mybatis/4-sql参数的配置.md)
-* [5-连接池](mybatis/5-连接池.md)
-* [6-事务管理](mybatis/6-事务管理.md)
-* [7-查询结果如何映射到java类中](mybatis/7-查询结果如何映射到java类中.md)
+* [0-mybatis概述](0-mybatis概述.md)
+* [1配置文件解析](1配置文件解析.md)
+* [2-接口和xml文件的对应关系](2-接口和xml文件的对应关系.md)
+* [3-一个接口函数的执行流程](3-一个接口函数的执行流程.md)
+* [4-sql参数的配置](4-sql参数的配置.md)
+* [5-连接池](5-连接池.md)
+* [6-事务管理](6-事务管理.md)
+* [7-查询结果如何映射到java类中](7-查询结果如何映射到java类中.md)
 
 
 ## other
 
-* [自动更新配置文件](other/自动更新配置文件.md)
+* [自动更新配置文件](Java/自动更新配置文件.md)
 
 ### logBack
 
