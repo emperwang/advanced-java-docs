@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"fe71f203108855ae","x":-580,"y":380,"width":200,"height":50,"type":"text","text":"Linux learn"},
+		{"id":"ce279bd8918fae3d","x":-200,"y":-280,"width":420,"height":100,"type":"text","text":"目标一:\n1) 了解驱动的架构, 以及如何对驱动管理\n2) 了解其中的字符驱动开发"},
+		{"id":"10faa738c0038ad2","x":-540,"y":320,"width":320,"height":60,"type":"text","text":"1) linux source\n2) vim read config ready"},
+		{"id":"935bc27ec4711195","x":-505,"y":200,"width":405,"height":120,"type":"text","text":"1) read some book about linux driver, have a idea about how to read source code\n2) after read some doc or book,  begin  read some source code"}
+	],
+	"edges":[]
+}

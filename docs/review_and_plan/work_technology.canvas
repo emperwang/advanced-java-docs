@@ -1,0 +1,30 @@
+{
+	"nodes":[
+		{"id":"ba4fea884e8f9913","type":"text","text":"work needed skill","x":-580,"y":-200,"width":200,"height":60},
+		{"id":"6609000fceff432e","type":"text","text":"programe language","x":-240,"y":-400,"width":200,"height":60},
+		{"id":"02d089b384601b81","type":"text","text":"automate tool","x":-240,"y":-120,"width":200,"height":60},
+		{"id":"d40885e6fb071099","type":"text","text":"shell\npython\nperl","x":60,"y":-360,"width":160,"height":80},
+		{"id":"f5b5c36c3d39c5c1","type":"text","text":"cloud","x":-240,"y":20,"width":200,"height":60},
+		{"id":"2fa9e1d882ce95e3","type":"text","text":"GCP","x":60,"y":14,"width":169,"height":60},
+		{"id":"61c39a5ec4445672","type":"text","text":"react","x":60,"y":-265,"width":169,"height":60},
+		{"id":"d567e9d042e4e6ff","type":"text","text":"jenkins\nansible","x":60,"y":-120,"width":165,"height":60},
+		{"id":"aa8882488a81a629","type":"text","text":"java\nkotlin","x":80,"y":-540,"width":125,"height":60},
+		{"id":"878db907d81e01cd","type":"text","text":"java中的点:\n1) zero GC\n2) one thread process (效率最高)\n3) native memory\n4) object pool","x":280,"y":-720,"width":251,"height":180},
+		{"id":"67c594a6f3b2e57d","type":"text","text":"1) deploy app to GCP","x":-240,"y":300,"width":250,"height":60},
+		{"id":"51c68ebffcc56c49","type":"text","text":"not familiar","x":-500,"y":380,"width":181,"height":60},
+		{"id":"617a78017ea8635d","type":"text","text":"大体步骤如下:\n1) build docker image\n2) push image to  gcp\n3) cp image to vm instance and start process","x":100,"y":200,"width":300,"height":180}
+	],
+	"edges":[
+		{"id":"41c6e3c3d3e39439","fromNode":"ba4fea884e8f9913","fromSide":"right","toNode":"6609000fceff432e","toSide":"left"},
+		{"id":"5cb75070251c757c","fromNode":"ba4fea884e8f9913","fromSide":"right","toNode":"02d089b384601b81","toSide":"left"},
+		{"id":"73c3805c2d2ebbab","fromNode":"6609000fceff432e","fromSide":"right","toNode":"aa8882488a81a629","toSide":"left"},
+		{"id":"9a48a90becaf3310","fromNode":"6609000fceff432e","fromSide":"right","toNode":"d40885e6fb071099","toSide":"left"},
+		{"id":"8e1a76c4fc1da2bc","fromNode":"02d089b384601b81","fromSide":"right","toNode":"d567e9d042e4e6ff","toSide":"left"},
+		{"id":"1195aa4f244ea002","fromNode":"f5b5c36c3d39c5c1","fromSide":"right","toNode":"2fa9e1d882ce95e3","toSide":"left"},
+		{"id":"936ef4df94469635","fromNode":"ba4fea884e8f9913","fromSide":"right","toNode":"f5b5c36c3d39c5c1","toSide":"left"},
+		{"id":"ea0828f719045a21","fromNode":"6609000fceff432e","fromSide":"right","toNode":"61c39a5ec4445672","toSide":"left"},
+		{"id":"4f4b5fd93ea211cc","fromNode":"aa8882488a81a629","fromSide":"right","toNode":"878db907d81e01cd","toSide":"left"},
+		{"id":"4285c089a80d4584","fromNode":"51c68ebffcc56c49","fromSide":"right","toNode":"67c594a6f3b2e57d","toSide":"left"},
+		{"id":"d49b60860a61f3a2","fromNode":"67c594a6f3b2e57d","fromSide":"right","toNode":"617a78017ea8635d","toSide":"left"}
+	]
+}

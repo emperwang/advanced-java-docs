@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"ba04036bdde2659f","x":-391,"y":-460,"width":250,"height":60,"type":"text","text":"netty的启动"},
+		{"id":"c47acf33d47a7605","x":-391,"y":-220,"width":250,"height":60,"type":"text","text":"netty的粘包与拆包的解决"},
+		{"id":"4ede02f6c649c9c4","x":-391,"y":-340,"width":250,"height":60,"type":"text","text":"netty的pipeline"},
+		{"id":"7786d451e136effc","x":-391,"y":-92,"width":250,"height":60,"type":"text","text":"netty fastThreadLocal为啥快"},
+		{"id":"c306252d25f967e0","x":-391,"y":40,"width":250,"height":60,"color":"2","type":"text","text":"netty的内存管理"},
+		{"id":"74b85aca9f184d82","x":-391,"y":160,"width":250,"height":60,"type":"text","text":"netty的时间轮"},
+		{"id":"2b13bfbc5f95daa7","x":-640,"y":-87,"width":132,"height":50,"type":"text","text":"netty"},
+		{"id":"9b0f9a8fca27ce48","x":-391,"y":300,"width":250,"height":60,"color":"2","type":"text","text":"netty的其他协议解析"},
+		{"id":"0d95378ff275f9bc","x":-391,"y":440,"width":250,"height":60,"type":"text","text":"netty中好用的工具(可以拿出来复用的)"},
+		{"id":"e7bde7acab564e8b","x":-80,"y":240,"width":250,"height":60,"color":"2","type":"text","text":"http解析"},
+		{"id":"353599ec80b93243","x":-80,"y":330,"width":250,"height":60,"color":"2","type":"text","text":"websocket解析"},
+		{"id":"745a7adc93a95781","x":-779,"y":131,"width":205,"height":139,"type":"text","text":"橙色:  未完成\n灰色:  review"}
+	],
+	"edges":[]
+}
