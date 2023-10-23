@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"f4c8570c806d1e06","type":"text","text":"起点:   之前没有CFA 基础\nreason: 想以此为基础, 入门金融\n","x":-600,"y":100,"width":300,"height":120,"color":"6"},
+		{"id":"83b4de5e9d09dd61","type":"text","text":"step 1:\n1) 找一个简介的视频或文章, 去大体了解CFA 是什么","x":-540,"y":0,"width":280,"height":100},
+		{"id":"d2a47ef3ee7d862e","type":"text","text":"step 2:\n找CFA的入门书籍","x":-485,"y":-110,"width":250,"height":110,"color":"4"},
+		{"id":"f5037fa74693c2f8","type":"text","text":"step 3:\n1) 量化书籍的目标, 即每天看多少,多久看完","x":-450,"y":-220,"width":250,"height":110,"color":"4"},
+		{"id":"df39e012559ac6a8","type":"text","text":"目的:  考取CFA 一级","x":-40,"y":-620,"width":250,"height":60,"color":"6"},
+		{"id":"dde9b850c83fe147","type":"text","text":"2023-10-22  record","x":-875,"y":-225,"width":250,"height":60,"color":"1"},
+		{"id":"5a58b4db05e9265f","type":"text","text":"起点 重点为 **紫色**\n完成为   **绿色**","x":-900,"y":-608,"width":275,"height":97,"color":"6"},
+		{"id":"9053292ad8a00367","x":180,"y":-195,"width":240,"height":140,"type":"text","text":"量化目标:\n总数: 571 page\n计划:每天20page\n完成: 20天"}
+	],
+	"edges":[
+		{"id":"2a595129c93ff63a","fromNode":"dde9b850c83fe147","fromSide":"right","toNode":"f5037fa74693c2f8","toSide":"left"},
+		{"id":"63bd1ec01a3f81b6","fromNode":"f4c8570c806d1e06","fromSide":"right","toNode":"df39e012559ac6a8","toSide":"right","label":"最终目标"},
+		{"id":"e6c1a0afda6b7736","fromNode":"f5037fa74693c2f8","fromSide":"right","toNode":"9053292ad8a00367","toSide":"left"}
+	]
+}

@@ -1,0 +1,10 @@
+{
+	"nodes":[
+		{"id":"1048270776bf0ff2","x":-500,"y":120,"width":250,"height":60,"type":"text","text":"英语step"},
+		{"id":"32fdd354276e2d86","x":-20,"y":-200,"width":320,"height":120,"type":"text","text":"目标 1:\n日常对话要熟练. (平时说中文时,可以想英语如何说)"},
+		{"id":"df5f1509d2f2895a","x":197,"y":-487,"width":250,"height":60,"type":"text","text":"目标2:\n脱产说"},
+		{"id":"c22f5721adf5e44a","x":-420,"y":60,"width":250,"height":60,"type":"text","text":"/2 or /1: 背诵并写出一段对话"},
+		{"id":"5dbd007d5b9957f1","x":-624,"y":-524,"width":250,"height":60,"type":"text","text":"/2: 每两天\n/1: 每天"}
+	],
+	"edges":[]
+}
