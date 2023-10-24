@@ -61,7 +61,7 @@ create: "{{date:YYYY-MM-DD}}"
 
 
 #### 重要事件
-
+english pod 
 
 
 #### 经验回顾
@@ -74,9 +74,12 @@ create: "{{date:YYYY-MM-DD}}"
 
 紧急/不重要                                                                    
 
+
 ---
 重要/不紧急
-
+* [ ] CFA  20 pages⏫  
+- [ ] 自学大全 20page
+- [ ] 嵌入式C 20page
 
 
 不重要/不紧急                                                                
