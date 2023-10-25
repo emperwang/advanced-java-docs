@@ -80,6 +80,8 @@ english pod
 * [ ] CFA  20 pages⏫  
 - [ ] 自学大全 20page
 - [ ] 嵌入式C 20page
+- [ ] K8S 20pages
+- [ ] english POD
 
 
 不重要/不紧急                                                                
