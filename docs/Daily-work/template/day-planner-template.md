@@ -61,7 +61,7 @@ create: "{{date:YYYY-MM-DD}}"
 
 
 #### 重要事件
-english pod 
+- [ ] english pod 
 
 
 #### 经验回顾
@@ -72,7 +72,9 @@ english pod
 重要/紧急
 
 
+
 紧急/不重要                                                                    
+
 
 
 ---

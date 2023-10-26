@@ -73,6 +73,7 @@ create: "2023-10-25"
 2, 看了一个 alibaba cloud的入门课程, 相当于入门了
 3, 再 linkedin看了一些AWS的课程, 但是看到一半就不能看了. (会继续尝试,  如果可以继续看, 要把这个视频看完, 也算是AWS 入门了)
 
+4, 从自己电脑上找到了 AWS和GCP的一些free course, 可以继续follow 看下去
 
 #### 经验回顾
 
@@ -80,17 +81,17 @@ create: "2023-10-25"
 ### 2023-10-26 To do list
 
 重要/紧急
-- [ ] release insert date to admin console
-- [ ] review weekend release
-- [ ] analysis false alert date, 完善脚本
+- [x] release insert date to admin console ✅ 2023-10-26
+- [x] review weekend release ✅ 2023-10-26
+- [x] analysis false alert date, 完善脚本 ✅ 2023-10-26
 
 紧急/不重要                                                                    
 
 
 ---
 重要/不紧急
-* [ ] CFA  20 pages⏫  
-- [ ] 自学大全 20page
+* [x] CFA  20 pages ⏫ ✅ 2023-10-26
+- [x] 自学大全 20page ✅ 2023-10-26
 - [ ] 嵌入式C 20page
 
 
