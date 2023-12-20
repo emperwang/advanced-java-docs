@@ -46,7 +46,7 @@ ip netns exec netns1 ip link set dev lo up
 ## 1. 创建veth 设备
 ip link add veth0 type veth peer name veth1
 ## 2. 设置veth1到 新的network namespace中
-ip link set veth1 setns netns1
+ip link set veth1 netns netns1
 ## 3. bring up veth
 ip netns exec netns1 ifconfig veth1 10.1.1.1/24 up
 ifconfig veth0 10.1.1.2/24 up
@@ -56,6 +56,11 @@ ip netns exec netns1 ping 10.1.1.2
 # 查看network namespace中的路由
 ip netns exec netns1 route
 ip netns exec netns1 iptables -L
+
+
+## 查看帮助
+ip netns help
+man ip-netns
 ```
 
 有两种方式可以引用network namespace
