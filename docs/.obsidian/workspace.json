@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1db1c325ba45aa1b",
+        "id": "065d34e7300d4805",
         "type": "tabs",
         "children": [
           {
-            "id": "b6aee536e8c46aba",
+            "id": "d2a1a0bb99696413",
             "type": "leaf",
             "state": {
               "type": "weekly",
@@ -16,14 +16,14 @@
             }
           },
           {
-            "id": "d6a5da661f7f80b7",
+            "id": "c28e101c0ad5d283",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
-                "mode": "preview",
-                "source": true
+                "file": "Daily-work/2024-01-14-Sunday.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -57,7 +57,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#tag",
+                "query": "[\"project\"]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +86,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 392.5
+    "width": 393.5
   },
   "right": {
     "id": "f9f3c853f73351a2",
@@ -102,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
+                "file": "Daily-work/2024-01-14-Sunday.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
+                "file": "Daily-work/2024-01-14-Sunday.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md"
+                "file": "Daily-work/2024-01-14-Sunday.md"
               }
             }
           },
@@ -167,20 +167,26 @@
             }
           },
           {
-            "id": "1d33b1983e067f5c",
+            "id": "d04c901a3d1edafb",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          },
+          {
+            "id": "af6afa5903e85b21",
             "type": "leaf",
             "state": {
               "type": "timeline",
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 428.5,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,60 +202,59 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d6a5da661f7f80b7",
+  "active": "c28e101c0ad5d283",
   "lastOpenFiles": [
+    "css/css技巧篇之一_图片文本对齐.md",
+    "css/5-响应式网页的思考.md",
+    "css/6-margin的应用.md",
+    "css/image/brother_merge.png",
+    "css/image/brother_merge.png",
+    "Excalidraw/brother_merge.md",
+    "Excalidraw/brother_margin.png",
+    "css/image/brother_margin.png",
+    "css/4-mediaQuery.md",
+    "css/3-display.md",
+    "css/2-css长度.md",
+    "css/1-css选择器.md",
     "timestamps/2024-01-14-工作不能带给你成长-怎么办.md",
+    "css/css技巧篇之二_.md",
+    "css/image/parent_child_margin.png",
+    "css/image/media-query1.png",
+    "css/image/box_model.png",
+    "Excalidraw/Drawing 2024-01-14 19.27.05.excalidraw.png",
+    "Pasted image 20230817223408.png",
+    "Excalidraw",
+    "css/0-css-index.md",
+    "Daily-work/2024-01-14-Sunday.md",
+    "Daily-work/2024-01-13-Saturday.md",
+    "kanban/2024-01-14.md",
+    "kanban",
+    "2024-01.md",
+    "timestamps/2023-10-22-关于自学.md",
     "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
     "timestamps/index.md",
     "linux/network/network_namespace/network_namespace_base_cmd.md",
-    "timestamps/2023-10-22-关于自学.md",
     "go/0-go-index.md",
     "review_and_plan/plan/2023-10-第4周.md",
-    "css/0-css-index.md",
     "Daily-work/2023-10-25-Wednesday.md",
     "Daily-work/2023-10-26-Thursday.md",
     "Daily-work/2023-10-24-Tuesday.md",
     "Daily-work/2023-10-23-Monday.md",
-    "network/4-tcp的四次挥手.md",
     "linux/network/network_namespace",
     "linux/network/vxlan",
     "linux/network/veth",
     "linux/network",
-    "Java/yaml/1-syntax.md",
-    "review_and_plan/plan/2023-10_plan.md",
     "git/git.xmind",
     "git",
     "新建文件夹",
-    "JDK/IO/InputStream/FilterInputStream/PushbackInputStream.md",
-    "JDK/IO/InputStream/FilterInputStream/LineNumberInputStream.md",
-    "JDK/IO/OuputStream/FilterOutputStream/PrintStream.md",
-    "JDK/IO/InputStream/FilterInputStream/DataInputStream.md",
-    "JDK/IO/OuputStream/FilterOutputStream/BufferedOutputStream.md",
-    "JDK/IO/OuputStream/FilterOutputStream/DataOutputStream.md",
-    "JDK/IO/InputStream/FilterInputStream/BufferedInputStream.md",
-    "JDK/NIO/channel/WindowsSelectorImpl.md",
-    "JDK/NIO/channel/SocketChannel.md",
-    "JDK/NIO/channel/ServerSocketChannel.md",
-    "JDK/NIO/channel/SelectorImpl.md",
     "JDK/IO/InputStream/FilterInputStream",
-    "JDK/IO/OuputStream/FilterOutputStream",
-    "JDK/NIO/channel",
     "JVM/image/ps2.png",
-    "JVM/image/top1.png",
-    "JVM/image/ps12.png",
-    "JVM/image/jstack1.png",
-    "Java/JVM/image/ps2.png",
-    "Java/JVM/image/top1.png",
-    "Java/JVM/image/ps12.png",
-    "Java/JVM/image/jstack1.png",
     "Untitled.canvas",
     "review_and_plan/English_plan.canvas",
     "review_and_plan/CFA-plan.canvas",
     "review_and_plan/Linux.canvas",
     "review_and_plan/ideas.canvas",
     "review_and_plan/sqlite-db.canvas",
-    "threadLocal-leak.png",
-    "Pasted image 20230817223408.png",
     "review_and_plan/netty_learn.canvas",
     "review_and_plan/work_technology.canvas"
   ]

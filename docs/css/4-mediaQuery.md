@@ -1,3 +1,9 @@
+---
+tags:
+  - css
+  - html
+---
+
 # media query
 
 ## 1. media query的类型
