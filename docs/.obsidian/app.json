@@ -2,5 +2,6 @@
   "livePreview": true,
   "defaultViewMode": "preview",
   "showLineNumber": true,
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "showInlineTitle": true
 }

@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "59991950dd2c766d",
+            "id": "b6aee536e8c46aba",
             "type": "leaf",
             "state": {
               "type": "weekly",
@@ -16,14 +16,14 @@
             }
           },
           {
-            "id": "0f3a8c81162764d4",
+            "id": "d6a5da661f7f80b7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily-work/2023-10-23-Monday.md",
-                "mode": "source",
-                "source": false
+                "file": "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
+                "mode": "preview",
+                "source": true
               }
             }
           }
@@ -86,7 +86,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 297.5
+    "width": 392.5
   },
   "right": {
     "id": "f9f3c853f73351a2",
@@ -102,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily-work/2023-10-23-Monday.md",
+                "file": "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily-work/2023-10-23-Monday.md",
+                "file": "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily-work/2023-10-23-Monday.md"
+                "file": "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md"
               }
             }
           },
@@ -152,7 +152,9 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           },
@@ -173,11 +175,12 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 445.5
+    "width": 428.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -193,59 +196,61 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "0f3a8c81162764d4",
+  "active": "d6a5da661f7f80b7",
   "lastOpenFiles": [
-    "Daily-work/template/day-planner-template.md",
-    "Daily-work/2023-10-23-Monday.md",
-    "review_and_plan/English_plan.canvas",
-    "review_and_plan/CFA-plan.canvas",
-    "IDE/Obsidian/3-Obsidian-debug.md",
-    "IDE/Obsidian/0-Obsidian index.md",
-    "IDE/Obsidian/1-link的使用.md",
-    "IDE/Obsidian/2-metadata的使用.md",
-    "Excalidraw/Drawing 2023-10-23 20.47.12.excalidraw.md",
-    "Daily-work/2023-10-24-Tuesday.md",
+    "timestamps/2024-01-14-工作不能带给你成长-怎么办.md",
+    "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
+    "timestamps/index.md",
+    "linux/network/network_namespace/network_namespace_base_cmd.md",
+    "timestamps/2023-10-22-关于自学.md",
+    "go/0-go-index.md",
+    "review_and_plan/plan/2023-10-第4周.md",
+    "css/0-css-index.md",
     "Daily-work/2023-10-25-Wednesday.md",
     "Daily-work/2023-10-26-Thursday.md",
-    "Daily-work/2023-10-27-Friday.md",
-    "timestamps/2023-10-22 由工作中目标制定-问题解决-思考.md",
-    "timestamps/2023-10-22 关于自学.md",
-    "daily-work/2023-10-23-Monday.md",
-    "Daily-work/template",
-    "Daily-work",
+    "Daily-work/2023-10-24-Tuesday.md",
+    "Daily-work/2023-10-23-Monday.md",
+    "network/4-tcp的四次挥手.md",
+    "linux/network/network_namespace",
+    "linux/network/vxlan",
+    "linux/network/veth",
+    "linux/network",
+    "Java/yaml/1-syntax.md",
+    "review_and_plan/plan/2023-10_plan.md",
+    "git/git.xmind",
+    "git",
+    "新建文件夹",
+    "JDK/IO/InputStream/FilterInputStream/PushbackInputStream.md",
+    "JDK/IO/InputStream/FilterInputStream/LineNumberInputStream.md",
+    "JDK/IO/OuputStream/FilterOutputStream/PrintStream.md",
+    "JDK/IO/InputStream/FilterInputStream/DataInputStream.md",
+    "JDK/IO/OuputStream/FilterOutputStream/BufferedOutputStream.md",
+    "JDK/IO/OuputStream/FilterOutputStream/DataOutputStream.md",
+    "JDK/IO/InputStream/FilterInputStream/BufferedInputStream.md",
+    "JDK/NIO/channel/WindowsSelectorImpl.md",
+    "JDK/NIO/channel/SocketChannel.md",
+    "JDK/NIO/channel/ServerSocketChannel.md",
+    "JDK/NIO/channel/SelectorImpl.md",
+    "JDK/IO/InputStream/FilterInputStream",
+    "JDK/IO/OuputStream/FilterOutputStream",
+    "JDK/NIO/channel",
+    "JVM/image/ps2.png",
+    "JVM/image/top1.png",
+    "JVM/image/ps12.png",
+    "JVM/image/jstack1.png",
+    "Java/JVM/image/ps2.png",
+    "Java/JVM/image/top1.png",
+    "Java/JVM/image/ps12.png",
+    "Java/JVM/image/jstack1.png",
+    "Untitled.canvas",
+    "review_and_plan/English_plan.canvas",
+    "review_and_plan/CFA-plan.canvas",
     "review_and_plan/Linux.canvas",
     "review_and_plan/ideas.canvas",
-    "timestamps/daily-template.md",
-    "timestamps/2023/04-April/2023-04-14-Friday.md",
     "review_and_plan/sqlite-db.canvas",
-    "review_and_plan/Drawing 2023-10-22 21.35.34.excalidraw.md",
     "threadLocal-leak.png",
     "Pasted image 20230817223408.png",
-    "Spring Security OAuth2.0认证授权_v1.1.pdf",
-    "timestamps/2023/09-September/2023-09-08-Friday.md",
     "review_and_plan/netty_learn.canvas",
-    "review_and_plan/work_technology.canvas",
-    "review_and_plan",
-    "timestamps/2023/09-September",
-    "README.md",
-    "production_issue/1. symbolic-link-引起的production-Issue.md",
-    "production_issue/images/symbolic_link5.jpg",
-    "production_issue/images/symbolic_link4.jpg",
-    "production_issue/images/symbolic_link3.jpg",
-    "production_issue/0.Production-Issue-index.md",
-    "images/symbolic_link2.png.md",
-    "images",
-    "production_issue/images/symbolic_link2.jpg",
-    "production_issue/images/symbolic_link1.png",
-    "production_issue/images",
-    "Java/netty/source/1-NioEventLoopGroup的初始化.md",
-    "production_issue",
-    "JDK/并发编程之锁/AQS-独占锁(ReentrantLock).md",
-    "Java/dubbo/1-dubbo-spi扩展机制.md",
-    "database/sqlite/image/sqlite_build_folder.jpg",
-    "database/sqlite/image/sqlite_run.jpg",
-    "database/sqlite/image/GDBM_link_error.jpg",
-    "database/sqlite/image",
-    "database/sqlite/新建文件夹"
+    "review_and_plan/work_technology.canvas"
   ]
 }
