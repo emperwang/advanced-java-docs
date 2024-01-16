@@ -11,8 +11,11 @@
 9. [springboot-servlet的注册](8-springboot-servlet的注册.md)
 10. [springboot-lifeCycle处理](9-springboot-lifeCycle处理.md)
 11. [springboot-kafka整合](10-springboot-kafka整合.md)
-12. [springboot-springMVC的配置](./11-springboot-springMVC的配置一.md)
-13. [springboot-AOP的配置](12-springboot-AOP的配置.md)
-14. [springboot-mybatis整合](./13-springboot-mybatis整合一.md)
-15. [springboot-事务的配置](14-springboot-事务的配置.md)
-16. [springboot加载](15-springboot加载.md)
+12. [[11-springboot-springMVC的配置]]
+14. [springboot-AOP的配置](12-springboot-AOP的配置.md)
+15. [springboot-mybatis整合](./13-springboot-mybatis整合一.md)
+16. [springboot-事务的配置](14-springboot-事务的配置.md)
+17. [springboot加载](15-springboot加载.md)
+18. [[16-springboot静态资源的处理]]
+
+
