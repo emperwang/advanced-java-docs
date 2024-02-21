@@ -67,6 +67,16 @@ create: "{{date:YYYY-MM-DD}}"
 #### 经验回顾
 
 
+#### 幸福时刻
+| 日期<br>年月日        | 幸福时刻 | 幸福的缘由<br>i 这件好事为什么会发生<br>ii 这对你意味着什么<br>iii 如何能让这样的好事在未来更多的发生 |
+| ---- | ---- | ---- |
+|  | 幸福时刻一:                   <br><br><br><br> | i<br>ii<br>iii<br> |
+|  | 幸福时刻二:<br><br><br><br> | i<br>ii<br>iii<br> |
+|  | 幸福时刻三:<br><br><br><br> | i<br>ii<br>iii<br> |
+
+
+
+
 ### <% tp.date.tomorrow("YYYY-MM-DD") %> To do list
 
 重要/紧急
@@ -80,9 +90,6 @@ create: "{{date:YYYY-MM-DD}}"
 ---
 重要/不紧急
 * [ ] CFA  20 pages⏫  
-- [ ] 自学大全 20page
-- [ ] 嵌入式C 20page
-- [ ] K8S 20pages
 - [ ] english POD
 
 
