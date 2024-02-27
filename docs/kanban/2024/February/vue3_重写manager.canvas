@@ -1,0 +1,34 @@
+{
+	"nodes":[
+		{"id":"ea1ffe7db7e252d0","type":"text","text":"创建工程","x":-480,"y":-140,"width":128,"height":60},
+		{"id":"91e15b96717a024f","type":"text","text":"stu_manager","x":-740,"y":-140,"width":166,"height":60},
+		{"id":"ae7ceea1b5119252","type":"text","text":"了解vue3使用","x":-497,"y":-320,"width":162,"height":60},
+		{"id":"8186a72407a9886b","type":"text","text":"登录页面","x":-260,"y":40,"width":128,"height":60},
+		{"id":"7a37cb48268c5f38","type":"text","text":"管理页面layout","x":-260,"y":130,"width":172,"height":60},
+		{"id":"47f61f9aba67ccb5","type":"text","text":"首页","x":-260,"y":240,"width":172,"height":60},
+		{"id":"10d7a09d02f7173d","type":"text","text":"重写任务","x":-520,"y":340,"width":128,"height":60},
+		{"id":"ad5da4036499e6bc","type":"text","text":"成绩展示页面","x":-260,"y":640,"width":172,"height":60},
+		{"id":"4c4d0bc88847ed85","type":"text","text":"角色展示页面","x":-260,"y":500,"width":172,"height":60},
+		{"id":"59b3b7170751c108","type":"text","text":"用户展示页面","x":-260,"y":370,"width":172,"height":60},
+		{"id":"b4fc6417ca0784c1","type":"text","text":"增删改查","x":-20,"y":370,"width":120,"height":60},
+		{"id":"bcbabefa21992b5f","type":"text","text":"增删改查","x":-20,"y":640,"width":120,"height":60},
+		{"id":"cd9f79fed296a6b4","type":"text","text":"增删改查","x":-20,"y":500,"width":120,"height":60},
+		{"id":"d6af4da900fe68e6","type":"text","text":"通过视频了解vue3的使用","x":-260,"y":-315,"width":242,"height":50},
+		{"id":"b6fad6c7b958bcc3","x":-649,"y":-555,"width":349,"height":60,"type":"text","text":"2023-02-24 创建初始计划"}
+	],
+	"edges":[
+		{"id":"ae5ef4d0f1db1cd3","fromNode":"91e15b96717a024f","fromSide":"right","toNode":"ae7ceea1b5119252","toSide":"left"},
+		{"id":"a805dcd6c44422da","fromNode":"91e15b96717a024f","fromSide":"right","toNode":"ea1ffe7db7e252d0","toSide":"left"},
+		{"id":"9464bdbf6f34343f","fromNode":"91e15b96717a024f","fromSide":"right","toNode":"10d7a09d02f7173d","toSide":"left"},
+		{"id":"eb307de0ceb6a4e2","fromNode":"10d7a09d02f7173d","fromSide":"right","toNode":"8186a72407a9886b","toSide":"left"},
+		{"id":"242ec5d6b5514859","fromNode":"10d7a09d02f7173d","fromSide":"right","toNode":"7a37cb48268c5f38","toSide":"left"},
+		{"id":"b3383541adfaaaa7","fromNode":"10d7a09d02f7173d","fromSide":"right","toNode":"47f61f9aba67ccb5","toSide":"left"},
+		{"id":"013cb01dec4dd55e","fromNode":"10d7a09d02f7173d","fromSide":"right","toNode":"59b3b7170751c108","toSide":"left"},
+		{"id":"6ae5abd64f8e1c51","fromNode":"10d7a09d02f7173d","fromSide":"right","toNode":"4c4d0bc88847ed85","toSide":"left"},
+		{"id":"265563da5d0f10fb","fromNode":"10d7a09d02f7173d","fromSide":"right","toNode":"ad5da4036499e6bc","toSide":"left"},
+		{"id":"b09be0a914135eff","fromNode":"59b3b7170751c108","fromSide":"right","toNode":"b4fc6417ca0784c1","toSide":"left"},
+		{"id":"e2c2b4bc00fdf39b","fromNode":"4c4d0bc88847ed85","fromSide":"right","toNode":"cd9f79fed296a6b4","toSide":"left"},
+		{"id":"56ceab0441f5f0aa","fromNode":"ad5da4036499e6bc","fromSide":"right","toNode":"bcbabefa21992b5f","toSide":"left"},
+		{"id":"7ceb445714b5ea0f","fromNode":"ae7ceea1b5119252","fromSide":"right","toNode":"d6af4da900fe68e6","toSide":"left"}
+	]
+}
