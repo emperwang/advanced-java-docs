@@ -62,6 +62,7 @@ create: "{{date:YYYY-MM-DD}}"
 
 #### 重要事件
 - [ ] english pod 
+- [ ] 记录50个字
 
 
 #### 经验回顾
