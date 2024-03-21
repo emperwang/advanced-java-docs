@@ -64,7 +64,7 @@ create: "2024-03-06"
 #### 重要事件
 - [ ] english pod 
 1) 今天在回来地铁上听了 <新概念英语一>, 感觉自己是有长进的, 读的速度比较慢,  但是大部分都能听懂.
-2) 
+[合并数组, 并保持有序](https://leetcode.cn/problems/merge-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150)
 
 #### 经验回顾
 

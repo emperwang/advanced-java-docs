@@ -1,10 +1,10 @@
 ---
 project: daliy-summary
-create: "2024-03-07"
+create: "2024-03-13"
 ---
 
 ## Day Planner
-**这是  2024-03-07 日计划 **
+**这是  2024-03-13 日计划 **
 
 
 ### 每日计划主要由5部分组成
@@ -50,25 +50,31 @@ create: "2024-03-07"
 
 
 
-###  2024-03-07 今日复盘
+###  2024-03-13 今日复盘
 
 #### 阅读的书
+OpenLDAP书籍.  目前在了解此opensource的使用, 还在了解使用情况.
+阅读此书的目的:
+1. 了解LDAP的使用
+2. 了解软件如何通过LDAP的认证以及授权
+3. 了解第三方软件 如何整合LDAP进行认证
 
-[[1-认知觉醒]]
-英语小学读物
+
 
 #### 工作思考
 
-[[1-jenkinsfile编写]]
 
-[移除数组元素](https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&envId=top-interview-150)
+
 #### 重要事件
-- [x] english pod ✅ 2024-03-07
-- [x] 记录50个字 ✅ 2024-03-07
+- [ ] english pod 
+- [ ] 记录50个字
 
 
 #### 经验回顾
 
+认证以及授权
+[[1-SAML_flow]]
+[[2-OAuth2]]
 
 #### 幸福时刻
 | 日期<br>年月日        | 幸福时刻 | 幸福的缘由<br>i 这件好事为什么会发生<br>ii 这对你意味着什么<br>iii 如何能让这样的好事在未来更多的发生 |
@@ -80,11 +86,10 @@ create: "2024-03-07"
 
 
 
-### 2024-03-08 To do list
+### 2024-03-14 To do list
 
 重要/紧急
-1) 编写ansible-playbook deploy  (BAU占据了大部分时间, 没来得及编写)
-2) read Vulnerability scan (03-08 看了一部分, 没看完)
+
 
 
 紧急/不重要                                                                    
@@ -95,7 +100,6 @@ create: "2024-03-07"
 重要/不紧急
 * [ ] CFA  20 pages⏫  
 - [ ] english POD
-- [ ] 权限控制编写
 
 
 不重要/不紧急                                                                
