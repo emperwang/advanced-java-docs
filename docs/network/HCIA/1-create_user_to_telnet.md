@@ -46,14 +46,14 @@ save : 保存配置
 ```
 system-view  进入系统视图
 interface GigabitEthernet0/0/0  进入端口视图
-ip address 10.0.0.1 24   配置端口信息
+	ip address 10.0.0.1 24   配置端口信息
 ```
 ![](./images/01_ip_add.png)
 
 #### 2. 配置console登录密码
 ```
 user-interface console 0  : 进入console 视图
-authentication-mode password : 配置校验模式为password, 并设置密码
+	authentication-mode password : 配置校验模式为password, 并设置密码
 ```
  配置完成后, 再次通过console进入就需要驶入密码
 
@@ -61,10 +61,10 @@ authentication-mode password : 配置校验模式为password, 并设置密码
 
 ```
 user-interface vty 0 4 : 进入vty0-4 视图(一次配置多个vty)
-authentication-mode aaa  : 配置模式为aaa
+	authentication-mode aaa  : 配置模式为aaa
 aaa  : 进入aaa视图
-local-user admin password cipher huawei : 创建本地用户,密码为huawei
-local-user admin service-type telnet: 配置添加的用户服务的方式
+	local-user admin password cipher huawei : 创建本地用户,密码为huawei
+	local-user admin service-type telnet: 配置添加的用户服务的方式
 display user-interface: 显示不同登录配置的用户登录等级
 
 ```
@@ -82,7 +82,7 @@ display user-interface: 显示不同登录配置的用户登录等级
 
 ```
 aaa :   进入aaa 视图
-local-user admin privilege level 15 : 提升权限
+	local-user admin privilege level 15 : 提升权限
 ```
 
 此时再次登录,  用户的权限就比较大, 可以用于配置了.
