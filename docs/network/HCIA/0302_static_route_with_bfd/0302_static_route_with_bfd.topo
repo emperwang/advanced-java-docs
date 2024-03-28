@@ -63,6 +63,5 @@
         <txttip left="358" top="48" right="460" bottom="65" content="172.16.12.100" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
         <txttip left="723" top="231" right="810" bottom="248" content="172.16.12.3" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
         <txttip left="585" top="518" right="672" bottom="535" content="172.16.13.2" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
-        <txttip left="740" top="345" right="827" bottom="362" content="172.16.13.3" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
     </txttips>
 </topo>
