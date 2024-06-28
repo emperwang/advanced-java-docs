@@ -1,48 +1,41 @@
 {
   "main": {
-    "id": "739df80b8b56f9d9",
+    "id": "edd10884f2bbb350",
     "type": "split",
     "children": [
       {
-        "id": "065d34e7300d4805",
+        "id": "ae3122b23b36e84a",
         "type": "tabs",
         "children": [
           {
-            "id": "d2a1a0bb99696413",
+            "id": "00f39d165c20a2cf",
             "type": "leaf",
-            "state": {
-              "type": "weekly",
-              "state": {}
-            }
-          },
-          {
-            "id": "c28e101c0ad5d283",
-            "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily-work/2024-01-14-Sunday.md",
+                "file": "HomePage.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "c0cf4215207e0642",
+    "id": "dc2f714445585e86",
     "type": "split",
     "children": [
       {
-        "id": "04e334b54841b6f7",
+        "id": "4dd877f2b5271650",
         "type": "tabs",
         "children": [
           {
-            "id": "1b95a65141d1eb46",
+            "id": "0d10dfc8f04300f9",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -52,12 +45,12 @@
             }
           },
           {
-            "id": "8f095bfbbd50b2b2",
+            "id": "d61b6c6395923381",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "[\"project\"]",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -67,15 +60,7 @@
             }
           },
           {
-            "id": "d0449aa59d7cb1ac",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
-            }
-          },
-          {
-            "id": "236369fecf059e5c",
+            "id": "7ed223f1077dcce0",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -86,23 +71,31 @@
       }
     ],
     "direction": "horizontal",
-    "width": 393.5
+    "width": 337.51190185546875
   },
   "right": {
-    "id": "f9f3c853f73351a2",
+    "id": "9d2bf3f3615654e6",
     "type": "split",
     "children": [
       {
-        "id": "2187e7f523a24dd9",
+        "id": "635ede47ed03d911",
         "type": "tabs",
         "children": [
           {
-            "id": "d6a797d30cb42d7f",
+            "id": "f4fee3d6dcca124b",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "a493626399874f3f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily-work/2024-01-14-Sunday.md",
+                "file": "HomePage.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,40 +107,30 @@
             }
           },
           {
-            "id": "1c805ab1ef88f733",
+            "id": "06180c4967cbc163",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily-work/2024-01-14-Sunday.md",
+                "file": "HomePage.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "5705ca8cffc27112",
+            "id": "73497bb522345c52",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": false
+                "useHierarchy": true
               }
             }
           },
           {
-            "id": "6274cb9a25d5c6d8",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "Daily-work/2024-01-14-Sunday.md"
-              }
-            }
-          },
-          {
-            "id": "b9c64dbae77c9288",
+            "id": "630e9f3480bd3636",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -159,15 +142,17 @@
             }
           },
           {
-            "id": "168db5c824ef9bcc",
+            "id": "7815951d42053f9c",
             "type": "leaf",
             "state": {
-              "type": "calendar",
-              "state": {}
+              "type": "outline",
+              "state": {
+                "file": "HomePage.md"
+              }
             }
           },
           {
-            "id": "d04c901a3d1edafb",
+            "id": "e285e5bad78519f8",
             "type": "leaf",
             "state": {
               "type": "advanced-tables-toolbar",
@@ -175,87 +160,92 @@
             }
           },
           {
-            "id": "af6afa5903e85b21",
+            "id": "882e66b0324707b1",
             "type": "leaf",
             "state": {
               "type": "timeline",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "templater-obsidian:Templater": false,
+      "homepage:Open homepage": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-excalidraw-plugin:New Excalidraw drawing": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-day-planner:Timeline": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "c28e101c0ad5d283",
+  "active": "00f39d165c20a2cf",
   "lastOpenFiles": [
-    "css/css技巧篇之一_图片文本对齐.md",
-    "css/5-响应式网页的思考.md",
-    "css/6-margin的应用.md",
-    "css/image/brother_merge.png",
-    "css/image/brother_merge.png",
-    "Excalidraw/brother_merge.md",
-    "Excalidraw/brother_margin.png",
-    "css/image/brother_margin.png",
-    "css/4-mediaQuery.md",
-    "css/3-display.md",
-    "css/2-css长度.md",
-    "css/1-css选择器.md",
-    "timestamps/2024-01-14-工作不能带给你成长-怎么办.md",
-    "css/css技巧篇之二_.md",
-    "css/image/parent_child_margin.png",
-    "css/image/media-query1.png",
-    "css/image/box_model.png",
-    "Excalidraw/Drawing 2024-01-14 19.27.05.excalidraw.png",
-    "Pasted image 20230817223408.png",
-    "Excalidraw",
-    "css/0-css-index.md",
-    "Daily-work/2024-01-14-Sunday.md",
-    "Daily-work/2024-01-13-Saturday.md",
-    "kanban/2024-01-14.md",
-    "kanban",
-    "2024-01.md",
-    "timestamps/2023-10-22-关于自学.md",
-    "timestamps/2023-10-22-由工作中目标制定-问题解决-思考.md",
-    "timestamps/index.md",
-    "linux/network/network_namespace/network_namespace_base_cmd.md",
-    "go/0-go-index.md",
+    "devOps/jenkins/1-获取jenkins的credentials.md",
+    "devOps/jenkins/0-index.md",
+    "devOps/jenkins",
+    "kanban/2024/07/2024-07-02周(08-15).md",
+    "devOps",
+    "kanban/2024/07/2024-07-01周(01-07).md",
+    "kanban/2024/05/2024-03-04_10.md",
+    "kanban/2024/07/Untitled.md",
+    "kanban/2024/05/2024-05_01-10.md",
+    "kanban/2024/06/2024-06-05周.md",
+    "kanban/2024/12",
+    "kanban/2024/11",
+    "kanban/2024/10",
+    "kanban/2024/09",
+    "kanban/2024/08",
+    "kanban/2024/07",
+    "HomePage.md",
+    "doscify_github搭建.md",
+    "README.md",
+    "2-js.md",
+    "kanban/2024/06/2024-06-04周.md",
+    "kanban/2024/06/2024-06-03周.md",
+    "kanban/2024/06/2024-06-02周.md",
+    "frontend/electron/1-electron_with_vue_error.md",
+    "kanban/2024/02/vue3_重写manager.canvas",
+    "kanban/2024/02/2024-03-04_10.md",
+    "kanban/2024/02/2024-02-27_意义树.excalidraw.md",
+    "kanban/2024/02/2024-02-19_29.md",
+    "kanban/2024/02/2024-02-01_06.md",
+    "kanban/2024/01/2024-01-14.md",
+    "kanban/2024/06",
     "review_and_plan/plan/2023-10-第4周.md",
-    "Daily-work/2023-10-25-Wednesday.md",
-    "Daily-work/2023-10-26-Thursday.md",
-    "Daily-work/2023-10-24-Tuesday.md",
-    "Daily-work/2023-10-23-Monday.md",
-    "linux/network/network_namespace",
-    "linux/network/vxlan",
-    "linux/network/veth",
-    "linux/network",
-    "git/git.xmind",
-    "git",
-    "新建文件夹",
-    "JDK/IO/InputStream/FilterInputStream",
-    "JVM/image/ps2.png",
-    "Untitled.canvas",
-    "review_and_plan/English_plan.canvas",
-    "review_and_plan/CFA-plan.canvas",
+    "review_and_plan/work_technology.canvas",
     "review_and_plan/Linux.canvas",
     "review_and_plan/ideas.canvas",
+    "review_and_plan/English_plan.canvas",
+    "review_and_plan/CFA-plan.canvas",
     "review_and_plan/sqlite-db.canvas",
-    "review_and_plan/netty_learn.canvas",
-    "review_and_plan/work_technology.canvas"
+    "Daily-work/2024-06-13-Thursday.md",
+    "frontend/electron/2-开发环境搭建.md",
+    "Excalidraw/brother_merge.md",
+    "frontend/javascript/2-js下载后端压缩的文件流.md",
+    "frontend/images/react",
+    "Untitled.canvas",
+    "image/ClassLoader.png",
+    "JVM/image/01_classload.png",
+    "Excalidraw/music_backend.canvas",
+    "network/HCIA/images/1201/1201_s1_port_vlan.png",
+    "network/HCIA/images/1201/1201_s1_vlan_table.png",
+    "network/HCIA/images/1201/1201_pc1_ping_pc2345.png",
+    "network/HCIA/images/1201/1201_port_vlan.png",
+    "network/HCIA/images/1201/1201_vlan_table.png",
+    "network/HCIA/images/1201/1201_pc2_ping_pc34.png",
+    "network/HCIA/images/1201/1201_topo.png",
+    "network/HCIA/images/1200/1200_pc1_ping_pc4.png"
   ]
 }

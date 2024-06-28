@@ -8,5 +8,9 @@
   "templater-obsidian",
   "cmenu-plugin",
   "table-editor-obsidian",
-  "obsidian-tasks-plugin"
+  "obsidian-tasks-plugin",
+  "obsidian-minimal-settings",
+  "obsidian-style-settings",
+  "obsidian-activity-history",
+  "homepage"
 ]

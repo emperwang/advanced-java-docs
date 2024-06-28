@@ -1,0 +1,23 @@
+{
+	"nodes":[
+		{"id":"5497daab65c09657","type":"text","text":"backend_function","x":-660,"y":-52,"width":250,"height":60},
+		{"id":"cb8a69adbc6e1bf5","type":"text","text":"download image","x":140,"y":-232,"width":250,"height":60},
+		{"id":"5e1130da7081fa72","type":"text","text":"download_music","x":140,"y":-112,"width":250,"height":60},
+		{"id":"bd666ab37e17d07e","type":"text","text":"download","x":-240,"y":-202,"width":250,"height":60},
+		{"id":"6f0fbac793de6298","type":"text","text":"list info","x":-240,"y":-22,"width":250,"height":60},
+		{"id":"f783aab858a601ab","type":"text","text":"player info","x":140,"y":-22,"width":250,"height":60},
+		{"id":"fb1fb94a656d53b9","type":"text","text":"webSocket","x":-240,"y":180,"width":250,"height":60},
+		{"id":"5f45ced41d6719f8","type":"text","text":"music list","x":140,"y":80,"width":250,"height":60},
+		{"id":"f36a5102c73b849f","type":"text","text":"suggest music info","x":140,"y":180,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"e0dc15e17774cc39","fromNode":"5497daab65c09657","fromSide":"right","toNode":"fb1fb94a656d53b9","toSide":"left"},
+		{"id":"b4ba7a7714c6ebfd","fromNode":"5497daab65c09657","fromSide":"right","toNode":"bd666ab37e17d07e","toSide":"left"},
+		{"id":"360fb96f21500968","fromNode":"bd666ab37e17d07e","fromSide":"right","toNode":"cb8a69adbc6e1bf5","toSide":"left"},
+		{"id":"c5c4d031208523d2","fromNode":"bd666ab37e17d07e","fromSide":"right","toNode":"5e1130da7081fa72","toSide":"left"},
+		{"id":"88d129f884d674cf","fromNode":"6f0fbac793de6298","fromSide":"right","toNode":"f783aab858a601ab","toSide":"left"},
+		{"id":"a92a44201551a1cb","fromNode":"6f0fbac793de6298","fromSide":"right","toNode":"5f45ced41d6719f8","toSide":"left"},
+		{"id":"b405ed909ef51ddd","fromNode":"5497daab65c09657","fromSide":"right","toNode":"6f0fbac793de6298","toSide":"left"},
+		{"id":"c4eb7422802ff640","fromNode":"6f0fbac793de6298","fromSide":"right","toNode":"f36a5102c73b849f","toSide":"left"}
+	]
+}
