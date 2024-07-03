@@ -39,7 +39,12 @@
   "blue-topaz-theme@@highlight-style": "all-rounded-corners-highlight",
   "blue-topaz-theme@@text-selection@@light": "#0B20DC",
   "blue-topaz-theme@@muted-activeline-bg": false,
-  "blue-topaz-theme@@show-full-metadata": true,
   "blue-topaz-theme@@background-popover@@light": "#CF1616",
-  "blue-topaz-theme@@graph-text-color@@light": "#1C8336"
+  "blue-topaz-theme@@graph-text-color@@light": "#1C8336",
+  "things-style@@default-font-color": false,
+  "things-style@@active-line": true,
+  "things-style@@fancy-code": true,
+  "things-style@@fancy-highlight": true,
+  "things-style@@progress-color": true,
+  "things-style@@text-highlight-bg-l": "#204BBA"
 }

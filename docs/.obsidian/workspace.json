@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "212b6123e90490ee",
+        "id": "e16a705181f262c7",
         "type": "tabs",
         "children": [
           {
-            "id": "3d957be4dc76f6ec",
+            "id": "279533062ed45299",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -163,12 +163,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 282.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -186,11 +185,16 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "3d957be4dc76f6ec",
+  "active": "279533062ed45299",
   "lastOpenFiles": [
+    "go/14-cgo.md",
+    "kanban/2024/07/2024-07-01周(01-07).md",
+    "go/15-cgo-types.md",
+    "go/images/cgo/diff_folder.png",
+    "go/images/cgo",
+    "go/images/新建文件夹",
     "HomePage.md",
     "kanban/2024/06/2024-06-05周.md",
-    "kanban/2024/07/2024-07-01周(01-07).md",
     "kanban/2024/07/2024-07-02周(08-15).md",
     "devOps/docker/docker.canvas",
     "devOps/docker/3-AUFS实验.md",
@@ -217,13 +221,10 @@
     "Daily-work/template/kankan-template.md",
     "devOps/jenkins",
     "devOps",
-    "kanban/2024/07/Untitled.md",
     "kanban/2024/12",
     "kanban/2024/11",
     "kanban/2024/10",
     "kanban/2024/09",
-    "kanban/2024/08",
-    "kanban/2024/07",
     "kanban/2024/02/vue3_重写manager.canvas",
     "review_and_plan/work_technology.canvas",
     "review_and_plan/Linux.canvas",
@@ -240,7 +241,6 @@
     "network/HCIA/images/1201/1201_port_vlan.png",
     "network/HCIA/images/1201/1201_vlan_table.png",
     "network/HCIA/images/1201/1201_pc2_ping_pc34.png",
-    "network/HCIA/images/1201/1201_topo.png",
-    "network/HCIA/images/1200/1200_pc1_ping_pc4.png"
+    "network/HCIA/images/1201/1201_topo.png"
   ]
 }
