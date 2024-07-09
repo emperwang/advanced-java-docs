@@ -4,16 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "e16a705181f262c7",
+        "id": "29c34b45550198f0",
         "type": "tabs",
         "children": [
           {
-            "id": "279533062ed45299",
+            "id": "299bc62c0e73d7eb",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "kanban/2024/07/2024-07-01周(01-07).md"
+                "file": "HomePage.md",
+                "mode": "preview",
+                "source": false
               }
             }
           }
@@ -91,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kanban/2024/07/2024-07-01周(01-07).md",
+                "file": "HomePage.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "kanban/2024/07/2024-07-01周(01-07).md",
+                "file": "HomePage.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kanban/2024/07/2024-07-01周(01-07).md"
+                "file": "HomePage.md"
               }
             }
           },
@@ -185,23 +187,42 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "279533062ed45299",
+  "active": "299bc62c0e73d7eb",
   "lastOpenFiles": [
-    "go/14-cgo.md",
+    "kanban/2024/07/2024-07-02周(08-15).md",
     "kanban/2024/07/2024-07-01周(01-07).md",
+    "devOps/docker/4-overyLay.md",
+    "devOps/docker/3-AUFS实验.md",
+    "devOps/docker/images/aufs/3-in-container.png",
+    "devOps/docker/images/aufs/3-create.png",
+    "devOps/docker/images/aufs/2-mnt.png",
+    "devOps/docker/2-linux-namespace-实验.md",
+    "linux/yum/1-yum-config.md",
+    "HomePage.md",
+    "devOps/docker/images/namespace/4-net.png",
+    "devOps/docker/images/namespace/3-mount.png",
+    "devOps/docker/images/namespace/2-pid-new.png",
+    "devOps/docker/images/namespace/2-pid.png",
+    "devOps/docker/images/namespace/1-ipcmk.png",
+    "devOps/docker/images/namespace/1-ipcs-1-new.png",
+    "devOps/docker/images/namespace/1-ipcs-q.png",
+    "devOps/docker/docker.canvas",
+    "linux/aufs/1-upgrade-keynel-via-ELrepo.md",
+    "linux/aufs",
+    "devOps/docker/images/namespace",
+    "devOps/docker/images/cgroup",
+    "devOps/docker/images/aufs",
+    "devOps/docker/images",
+    "linux/yum/0-yum-index.md",
+    "linux/yum",
+    "devOps/docker/1-linux-cgroup实验.md",
+    "devOps/kubenates/01-kubenates-index.md",
     "go/15-cgo-types.md",
-    "go/images/cgo/diff_folder.png",
+    "go/14-cgo.md",
     "go/images/cgo",
     "go/images/新建文件夹",
-    "HomePage.md",
     "kanban/2024/06/2024-06-05周.md",
-    "kanban/2024/07/2024-07-02周(08-15).md",
-    "devOps/docker/docker.canvas",
-    "devOps/docker/3-AUFS实验.md",
-    "devOps/docker/2-linux-namespace-实验.md",
-    "devOps/docker/1-linux-cgroup实验.md",
     "devOps/docker/0-docker-index.md",
-    "devOps/kubenates/01-kubenates-index.md",
     "devOps/kubenates",
     "devOps/docker",
     "go/13-单元测试.md",
@@ -215,16 +236,6 @@
     "kanban/2024/07/Untitled Kanban.md",
     "kanban/2024/05/2024-05_01-10.md",
     "kanban/2024/05/2024-03-04_10.md",
-    "devOps/jenkins/1-获取jenkins的credentials.md",
-    "devOps/jenkins/0-jenkins-index.md",
-    "Daily-work/template/day-planner-template.md",
-    "Daily-work/template/kankan-template.md",
-    "devOps/jenkins",
-    "devOps",
-    "kanban/2024/12",
-    "kanban/2024/11",
-    "kanban/2024/10",
-    "kanban/2024/09",
     "kanban/2024/02/vue3_重写manager.canvas",
     "review_and_plan/work_technology.canvas",
     "review_and_plan/Linux.canvas",
@@ -232,15 +243,6 @@
     "review_and_plan/English_plan.canvas",
     "review_and_plan/CFA-plan.canvas",
     "review_and_plan/sqlite-db.canvas",
-    "image/ClassLoader.png",
-    "JVM/image/01_classload.png",
-    "Excalidraw/music_backend.canvas",
-    "network/HCIA/images/1201/1201_s1_port_vlan.png",
-    "network/HCIA/images/1201/1201_s1_vlan_table.png",
-    "network/HCIA/images/1201/1201_pc1_ping_pc2345.png",
-    "network/HCIA/images/1201/1201_port_vlan.png",
-    "network/HCIA/images/1201/1201_vlan_table.png",
-    "network/HCIA/images/1201/1201_pc2_ping_pc34.png",
-    "network/HCIA/images/1201/1201_topo.png"
+    "Excalidraw/music_backend.canvas"
   ]
 }
