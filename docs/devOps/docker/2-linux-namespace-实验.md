@@ -150,6 +150,10 @@ func NewNsProcess() {
 ![](./images/namespace/3-mount.png)
 启动进程后,  重新挂载一下proc fs,  运行ps 可以看到展示的只有 新的namespace中的进程.  说明mount创建成功.
 
+```shell
+# remount proc
+mount -t proc proc /proc
+```
 
 USER : CLONE_NEWUSER
 
