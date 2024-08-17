@@ -23,7 +23,7 @@ touch lower1/lower1.txt  lower2/lower2.txt lower2/upper.txt  upper/upper.txt wor
 echo "lower1" >> lower1/lower1.txt ; echo "lower2" >> lower2/lower2.txt; echo "lower2 upper" >> lower2/upper.txt ;  echo "upper" >> upper/upper.txt
 
 ### 目录挂载
-mount -t overlay -o lowerdir=./lower1:./lower2,upperdir=./upper,workder=./work  overlay ./merged
+mount -t overlay -o lowerdir=./lower1:./lower2,upperdir=./upper,workdir=./work  overlay ./merged
 
 
 ```

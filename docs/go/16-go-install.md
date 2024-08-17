@@ -4,7 +4,7 @@ tags:
   - Golang
   - install
 ---
-
+linux环境 GO的安装。
 ## binary install
 在linux上安装go
 ```shell
@@ -27,6 +27,7 @@ tar -xzvf go1.23rc1.linux-amd64.tar.gz
 ```
 # default: GOPROXY='https://proxy.golang.org,direct'
 go env -w GOPROXY="https://mirrors.aliyun.com/goproxy/,direct"
+go env -w GOPROXY="https://goproxy.cn,direct"
 ```
 
 
