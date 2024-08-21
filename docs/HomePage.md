@@ -93,7 +93,7 @@ const option = {
     calendar: {
         left: 30,
         right: 10,
-        range: "2023",
+        range: currentYear,
         itemStyle: {
             normal: {
                 color: "rgba(0, 0, 0, 0)",
