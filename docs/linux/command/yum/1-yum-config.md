@@ -28,7 +28,14 @@ yum --enablerepo="elrepo"  list available
 ```
 
 
+>  缺失某些命令工具, 要如何确定要安装那些包?
 
 
+```shell
+## sample
+yum provides semanage
+```
+
+![](./images/yum-provides.png)
 
 

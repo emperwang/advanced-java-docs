@@ -1,0 +1,12 @@
+---
+tags:
+  - linux
+  - index
+  - rescue
+---
+
+
+
+
+
+
