@@ -59,15 +59,57 @@ type: 类型. (在tergeted中 最重要)
 	domain: 在主体进程(subject)则称为 领域 (domain)
 
 
-
-
 ```
 
+## domain transition
+
+Domain transition 严格受三条规则约束:
+1. The parent process of the source domain must have the execute permission for the application sitting between both the domains. (this is the entrypoint)
+2. The file context for the application must be identified as an entrypoint for the targetdomain.  
+3. The original domain must be allowed to transition to the target domain.
+
+举一个VSFTP的栗子看一下:
+条件一:
+source domain `init_t`needs to have execute permission on the entrypoint application with the ftpd_exec_t context.
+```shell
+sesearch -s init_t -t ftpd_exec_t -c file -p execute -A -d
+Found 1 semantic av rules:
+   allow init_t ftpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ;
+
+
+-s : rules with type/attribute NAME as source
+-t : rules with type/attribute NAME as target
+-c : rules with class NAME as the object class
+-p : permission
+-A : allow
+-d :  do not search for type's attributes
+```
+
+![](./images/9-vsftp1.png)
+
+条件二:
+check if the binary file is the entrypoint for the target domain ftpd_t
+```shell
+sesearch -s ftpd_t -t ftpd_exec_t -c file -p entrypoint -A
+Found 1 semantic av rules:
+   allow ftpd_t ftpd_exec_t : file { ioctl read getattr lock map execute execute_no_trans entrypoint open } ; 
+```
+![](./images/9-vsftp2.png)
+
+条件三:
+the source domain init_t needs to have permission to transition to the target domain ftpd_t
+```shell
+sesearch -s init_t -t ftpd_t -c process -p transition -A -d
+Found 1 semantic av rules:
+   allow init_t ftpd_t : process transition ; 
+```
+
+![](./images/9-vsftp3.png)
 ## command
 
 
 ```shell
-semanage # manage se context 
+semanage # manage se context,查询预设type, 增加,删除,修改预设的type
 	
 chcon    # update file se context
 
@@ -77,13 +119,30 @@ sesearch   # search se audio log
 
 fixfiles  # check/restore  file 
 
-seinfo
+seinfo     # SELinux的一些info
 
-sestatus
+sestatus    # 查看seLinux的 status
 
-getenforce
+getenforce  #获取SELinux的mode
 
-setenforce
+setenforce  # 设置SELinux的mode
+
+getsebool [-a] [规则名称]       # 获取某些规则状态
+
+setsebool [-p] [规则名称] [0|1]  # 打开/关闭某些规则
+
+ausearch # 可以查询audit  log
+
+sealert # 查看某些se alert, 并可以看到对应的alert详细信息和解决建议
+
+semodule # SE policy module 的管理 (add delete install list)
+
+## 查看文件的 secontext
+ls -lZ  .
+
+## 查看process的secontext
+ps -efZ
+
 
 ```
 
@@ -95,16 +154,18 @@ setenforce
 ##  修改目录的默认 fcontext
 semanage fcontext -a -t httpd_sys_content_t '/src/www(/.*)?'
 
-# list se user
-semanage user -l 
-semanage login -l
-semanage fcontext -l
+## fcontext 增删改查
+semanage fcontext [--add (-t TYPE -f FTYPE) file_spec | --delete (-t TYPE -f FTYPE) file_spec | --deleteall | --modify (-t TYPE -f FTYPE) file_spec]
 
-## 
+# list se user
+semanage [user|login|fcontext|port] -l 
+
 
 
 ```
 
+![](./images/2-semanage.png)
+![](./images/2-1-semanage.png)
 
 > chcon
 
@@ -150,9 +211,11 @@ sesearch -D
 sesearch --all
 
 ## display rules which [httpd_t] domain is allowed to access
+## 查看http_t 可以访问那些资源
 sesearch -s httpd_t --allow
 
 ## display allowed rules which domain can access to [httpd_sys_script_exec_t]  type
+## 查看那些 domain 可以查看 httpd_sys_script_exec_t 资源
 sesearch -t httpd_sys_script_exec_t --allow
 
 ## display allowed rules which domain can write to [shadow_t type] files
@@ -160,6 +223,7 @@ sesearch -t shadow_t -c file -p write --allow
 
 
 ```
+![](./images/3-sesearch.png)
 
 > sestatus
 
@@ -170,9 +234,60 @@ sestatus -vb
 -b: 将目前政策的规则boolean值列出.  即某些规则rule是否启动
 
 ```
+![](./images/4-sestatus.png)
+![](./images/4-1-sestatus.png)
+
+
+> getsebool
+```shell
+# getsebool 获取所有rule 状态(on|off)
+getsebool -a
+
+```
+![](./images/5-getsebool.png)
+
+> setsebool
+```shell
+## 永久设置某个rule的状态 (on|off)
+setsebool -P boolean value
+```
+
+![](./images/6-setsebool.png)
+
+
+> ausearch
+
+![](./images/7-ausearch.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 > reference
 
 [鸟哥selinux](https://zq99299.github.io/linux-tutorial/tutorial-basis/16/05.html#selinux-%E7%9A%84%E8%BF%90%E4%BD%9C%E6%A8%A1%E5%BC%8F)
-
-
+[SELinux Wiki](https://www.selinuxproject.org/page/Main_Page)
+[digitalocean](https://www.digitalocean.com/community/tutorials/an-introduction-to-selinux-on-centos-7-part-2-files-and-processes)
+[Redhat_SELinux](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/using_selinux/troubleshooting-problems-related-to-selinux_using-selinux#identifying-selinux-denials_troubleshooting-problems-related-to-selinux)
