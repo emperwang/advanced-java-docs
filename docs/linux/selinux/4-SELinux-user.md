@@ -105,6 +105,59 @@ step3 : 家目录测试脚本
 
 ![](./images/12-user10.png)
 
+查看sealert的警告信息以及解决建议:
+```shell
+[root@name5 ~]# sealert -l 3f3f2936-8dcb-4741-a1d3-7607064862da
+SELinux is preventing /usr/bin/bash from execute access on the file test.sh.
+
+*****  Plugin catchall_boolean (89.3 confidence) suggests   ******************
+
+If you want to allow guest to exec content
+Then you must tell SELinux about this by enabling the 'guest_exec_content' boolean.
+
+Do
+setsebool -P guest_exec_content 1
+
+*****  Plugin catchall (11.6 confidence) suggests   **************************
+
+If you believe that bash should be allowed execute access on the test.sh file by default.
+Then you should report this as a bug.
+You can generate a local policy module to allow this access.
+Do
+allow this access for now by executing:
+# ausearch -c 'bash' --raw | audit2allow -M my-bash
+# semodule -i my-bash.pp
+
+
+Additional Information:
+Source Context                guest_u:guest_r:guest_t:s0
+Target Context                guest_u:object_r:user_home_t:s0
+Target Objects                test.sh [ file ]
+Source                        bash
+Source Path                   /usr/bin/bash
+Port                          <Unknown>
+Host                          name5
+Source RPM Packages           
+Target RPM Packages           
+Policy RPM                    selinux-policy-3.13.1-229.el7.noarch
+Selinux Enabled               True
+Policy Type                   targeted
+Enforcing Mode                Enforcing
+Host Name                     name5
+Platform                      Linux name5 3.10.0-957.el7.x86_64 #1 SMP Thu Nov 8
+                              23:39:32 UTC 2018 x86_64 x86_64
+Alert Count                   2
+First Seen                    2024-08-27 23:27:19 CST
+Last Seen                     2024-08-27 23:27:34 CST
+Local ID                      3f3f2936-8dcb-4741-a1d3-7607064862da
+
+Raw Audit Messages
+type=AVC msg=audit(1724772454.787:718): avc:  denied  { execute } for  pid=8804 comm="bash" name="test.sh" dev="dm-0" ino=18315746 scontext=guest_u:guest_r:guest_t:s0 tcontext=guest_u:object_r:user_home_t:s0 tclass=file permissive=0
+
+
+Hash: bash,guest_t,user_home_t,file,execute
+```
+
 ### Action 3: Restricting Access to Services
 
 
