@@ -35,7 +35,7 @@ system_u-> system_u
 guest_u: this User dont have access to X-window system(GUI) or networking and can't execute su/sudo command.
 xguest_u: this User has access to GUI and networking is available via Firefox browser.
 user_u: this user has more access than the guest accounts (GUI and networking), but can't switch users by running su or sudo.
-staff_u: Same rights as user_u, exceptt it can execute sudo command to have root privileges.
+staff_u: Same rights as user_u, except it can execute sudo command to have root privileges.
 sysadm_u: this suer is meant for running system services and not to be mapped to regular user accounts.
 
 ```
@@ -159,10 +159,78 @@ Hash: bash,guest_t,user_home_t,file,execute
 ```
 
 ### Action 3: Restricting Access to Services
+本例以 `httpd`服务为例.  在对用户进行限制之前, 我们先来看一下为什么root用户可以操作`httpd`.   然后再把 `restricteduser` 添加到 `sudoers`, 并验证在添加后, 确实是可以进行`httpd`的操作.  之后对 `restricteduser`进行限制.
 
+#### root 为何可以操作 httpd
+先来看一下`http`的上下文.
 
+```shell
+ls -lhZ /usr/sbin/httpd 
+-rwxr-xr-x. root root system_u:object_r:httpd_exec_t:s0 /usr/sbin/httpd
+```
 
+接下来看一下root对应的 system_u 那些角色 
+```shell
+seinfo -uroot -x
+   root
+      default level: s0
+      range: s0 - s0:c0.c1023
+      roles:
+         object_r
+         staff_r
+         sysadm_r
+         system_r
+         unconfined_r
+```
 
+看一下其中的 `system_r` 角色拥有哪些可以访问 `` domain的policy
+```shell
+sesearch -A -t httpd_exec_t  -d
+Found 13 semantic av rules:
+   allow httpd_t httpd_exec_t : file { ioctl read getattr lock map execute execute_no_trans entrypoint open } ; 
+   allow piranha_web_t httpd_exec_t : file { ioctl read getattr lock map execute execute_no_trans open } ; 
+   allow piranha_pulse_t httpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ; 
+   allow system_cronjob_t httpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ; 
+   allow svc_run_t httpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ; 
+   allow httpd_exec_t httpd_exec_t : filesystem associate ; 
+   allow dirsrvadmin_t httpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ; 
+   allow cobblerd_t httpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ; 
+   allow logrotate_t httpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ; 
+   allow openshift_domain httpd_exec_t : file entrypoint ; 
+   allow crond_t httpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ; 
+   allow certwatch_t httpd_exec_t : file { ioctl read getattr map execute execute_no_trans open } ; 
+   allow pki_apache_domain httpd_exec_t : file { ioctl read getattr lock map execute execute_no_trans entrypoint open } ; 
+```
 
+其中第一条rule比较明显, `allow httpd_t httpd_exec_t : file { ioctl read getattr lock map execute execute_no_trans entrypoint open } ;`  也就是说拥有 `httpd_t` domain就可以访问 `httpd_exec_t`.
+
+*root -> system_r -> httpd_t*, root 拥有 `system_r`角色,  system_r 拥有 `httpd_t`的rule,  故 root就可以 访问 httpd 服务.
+#### 限制 restricteduser 用户
+
+添加 restricteduser 到 sudoers中.
+```shell
+visudo
+
+# 
+restricteduser  ALL=(ALL)  ALL
+```
+
+![](./images/12-user11.png)
+
+添加到 sudoer中, 可以见到 restricteduser 是可以通过sudo 来操作  httpd服务的.
+
+因为 `restricteduser` 映射到 SELinux中的 default,  其中 defaut映射到 `unconfined_u`, 而 `unconfined_u` 拥有 `system_r` 角色.
+
+![](./images/12-user2.png)
+
+现在我们把 `restricteduser` 添加到 `user_u`中,  那么此时 `restricteduser` 就不再拥有 `system_r` 角色,  也就不可以再操作 `httpd`服务,  也就达到了限制access service的功能.
+
+```shell
+semanage login -a -s user_u restricteduser
+```
+
+![](./images/12-user12.png)
+
+![](./images/12-user13.png)
 
 
