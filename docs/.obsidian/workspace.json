@@ -1,20 +1,20 @@
 {
   "main": {
-    "id": "edd10884f2bbb350",
+    "id": "65114c45647b6f9b",
     "type": "split",
     "children": [
       {
-        "id": "29c34b45550198f0",
+        "id": "733b9df49501c5da",
         "type": "tabs",
         "children": [
           {
-            "id": "299bc62c0e73d7eb",
+            "id": "40856f0e4c9e1c77",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "HomePage.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               }
             }
@@ -25,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "dc2f714445585e86",
+    "id": "39226f1f7def6317",
     "type": "split",
     "children": [
       {
-        "id": "4dd877f2b5271650",
+        "id": "26ca44da361c28ec",
         "type": "tabs",
         "children": [
           {
-            "id": "0d10dfc8f04300f9",
+            "id": "5776e522bce60b68",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +43,7 @@
             }
           },
           {
-            "id": "d61b6c6395923381",
+            "id": "b7757ddcdddc7cb1",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +58,7 @@
             }
           },
           {
-            "id": "7ed223f1077dcce0",
+            "id": "587ebacd256861cf",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -69,26 +69,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 337.51190185546875
+    "width": 300
   },
   "right": {
-    "id": "9d2bf3f3615654e6",
+    "id": "e87587850ad9e032",
     "type": "split",
     "children": [
       {
-        "id": "635ede47ed03d911",
+        "id": "c0af9bf681053ea5",
         "type": "tabs",
         "children": [
           {
-            "id": "f4fee3d6dcca124b",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {}
-            }
-          },
-          {
-            "id": "a493626399874f3f",
+            "id": "b4d9eac103b76cba",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -105,7 +97,7 @@
             }
           },
           {
-            "id": "06180c4967cbc163",
+            "id": "a40712078b7e6cb1",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -117,7 +109,7 @@
             }
           },
           {
-            "id": "73497bb522345c52",
+            "id": "dcec2b974eaf82e8",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -128,19 +120,7 @@
             }
           },
           {
-            "id": "630e9f3480bd3636",
-            "type": "leaf",
-            "state": {
-              "type": "all-properties",
-              "state": {
-                "sortOrder": "frequency",
-                "showSearch": false,
-                "searchQuery": ""
-              }
-            }
-          },
-          {
-            "id": "7815951d42053f9c",
+            "id": "83e5be962d2acbff",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -150,15 +130,15 @@
             }
           },
           {
-            "id": "e285e5bad78519f8",
+            "id": "84f2f5066eaea800",
             "type": "leaf",
             "state": {
-              "type": "advanced-tables-toolbar",
+              "type": "calendar",
               "state": {}
             }
           },
           {
-            "id": "882e66b0324707b1",
+            "id": "6fc7339d4940ac53",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -169,80 +149,38 @@
       }
     ],
     "direction": "horizontal",
-    "width": 282.5,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "homepage:Open homepage": false,
+      "obsidian-kanban:Create new board": false,
+      "templater-obsidian:Templater": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-day-planner:Timeline": false,
-      "templater-obsidian:Templater": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false
+      "homepage:Open homepage": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "299bc62c0e73d7eb",
+  "active": "40856f0e4c9e1c77",
   "lastOpenFiles": [
-    "kanban/2024/07/2024-07-02周(08-15).md",
-    "kanban/2024/07/2024-07-01周(01-07).md",
-    "devOps/docker/4-overyLay.md",
-    "devOps/docker/3-AUFS实验.md",
-    "devOps/docker/images/aufs/3-in-container.png",
-    "devOps/docker/images/aufs/3-create.png",
-    "devOps/docker/images/aufs/2-mnt.png",
-    "devOps/docker/2-linux-namespace-实验.md",
-    "linux/yum/1-yum-config.md",
+    "https/SSL/2-SSL-question.md",
+    "https/SSL/3-renew-CA.md",
+    "https/跨域解决.md",
+    "https/SSL",
+    "https/wireShark解析https报文.md",
+    "https/SSL/1-SSL-TLS协议简介.md",
+    "https/防盗链.md",
+    "https/make-certificate.md",
+    "kanban/2024/09/2024-09-01周(02-08).md",
     "HomePage.md",
-    "devOps/docker/images/namespace/4-net.png",
-    "devOps/docker/images/namespace/3-mount.png",
-    "devOps/docker/images/namespace/2-pid-new.png",
-    "devOps/docker/images/namespace/2-pid.png",
-    "devOps/docker/images/namespace/1-ipcmk.png",
-    "devOps/docker/images/namespace/1-ipcs-1-new.png",
-    "devOps/docker/images/namespace/1-ipcs-q.png",
-    "devOps/docker/docker.canvas",
-    "linux/aufs/1-upgrade-keynel-via-ELrepo.md",
-    "linux/aufs",
-    "devOps/docker/images/namespace",
-    "devOps/docker/images/cgroup",
-    "devOps/docker/images/aufs",
-    "devOps/docker/images",
-    "linux/yum/0-yum-index.md",
-    "linux/yum",
-    "devOps/docker/1-linux-cgroup实验.md",
-    "devOps/kubenates/01-kubenates-index.md",
-    "go/15-cgo-types.md",
-    "go/14-cgo.md",
-    "go/images/cgo",
-    "go/images/新建文件夹",
-    "kanban/2024/06/2024-06-05周.md",
-    "devOps/docker/0-docker-index.md",
-    "devOps/kubenates",
-    "devOps/docker",
-    "go/13-单元测试.md",
-    "go/5-数组使用.md",
-    "go/2-if语句.md",
-    "go/3-for语句.md",
-    "go/1-变量使用.md",
-    "kanban/2024/06/2024-06-02周.md",
-    "kanban/2024/06/2024-06-03周.md",
-    "kanban/2024/06/2024-06-04周.md",
-    "kanban/2024/07/Untitled Kanban.md",
-    "kanban/2024/05/2024-05_01-10.md",
-    "kanban/2024/05/2024-03-04_10.md",
-    "kanban/2024/02/vue3_重写manager.canvas",
-    "review_and_plan/work_technology.canvas",
-    "review_and_plan/Linux.canvas",
-    "review_and_plan/ideas.canvas",
-    "review_and_plan/English_plan.canvas",
-    "review_and_plan/CFA-plan.canvas",
-    "review_and_plan/sqlite-db.canvas",
-    "Excalidraw/music_backend.canvas"
+    "Spring Security OAuth2.0认证授权_v1.1.pdf",
+    "Pasted image 20240707073256.png"
   ]
 }
