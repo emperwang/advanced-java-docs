@@ -50,16 +50,66 @@ tags:
 1.  不发送root CA.  那么通过证书链中的 intermediate CA 也可以在 client端找到签名的根证书,  也能保证handshake 成功.
 2. 发送root CA. 因为root CA是 自签名证书, 那么发送root CA, 也能使 client找到对应的CA证书 来进行 handshake.
 ### 4. how client verify server certificate chan? (客户端如何校验服务器端的证书链?)
+以一个栗子来说明校验的流程. 
+假设server端发送以下的一个证书链
+```shell
+1.end-user-cert  issued to: baidu.com - issued by: Authority1
+2.Authority1-cert      issued to: Authority1 - issued by: Authority2
+3.Authority2-cert      issued to: Authority2 - issued by: root CA1
+```
 
+客户端拥有以下 trustCA list:
+```shell
+1. root CA1
+2. root CA2
+3. root CA3
+```
 
+校验流程如下:
+1. end-user-cert先发送过来, 由此client 知道此是 server端证书.  并拿着 `Authority1`去  trustCAList中查找此对应的CA证书. 但没有找到
+2.  client会沿着证书链继续向上校验.  此时准备校验 `Authority1-cert`, 同样去 trustCAList中查找  `Authority2`. 同样没有找到. 
+3. 继续向上, 此时校验: `Authority2-cert`, 并去查找 `root CA1`. 通过`root CA1` 知道此 `Authority2-cert`是可信的证书,  由此使用`Authority2-cert` 校验`Authority1-cert`,  并确认是可信的证书.  最后通过`Authority1-cert`校验`end-user-cert`
 
 
 ### 5. when server send a certificate chan to client, how client knows which one is server certifcate ? (服务器发送了证书链到客户端, 那么客户端如何才能知道哪个证书是服务器证书?  )
+> certificate_list
+      This is a sequence (chain) of certificates.  The sender's
+      certificate MUST come first in the list.  Each following
+      certificate MUST directly certify the one preceding it.  Because
+      certificate validation requires that root keys be distributed
+      independently, the self-signed certificate that specifies the root
+      certificate authority MAY be omitted from the chain, under the
+      assumption that the remote end must already possess it in order to
+      validate it in any case.
+      
+由此可知, 当server 发送一个证书链时,  证书链是一个排序好的, 并且第一个就是 server自己的证书.
+> As indicated in the standard, the server is supposed to send a complete, ordered _chain_ of certificate, starting with the server's certificate proper, then a certificate for the intermediate CA that issued it, then a certificate for the intermediate CA that issued the previous intermediate CA certificate, and so on. At the end of the chain, the server has the option to include or not include the root CA certificate; if the chain is to be of any use to the client, then the client must already know the root, and thus does not need a new copy of it
+
 
 ### 6. As we know, client have many CA certificates, when client begin verify server certificate, how client knows which CA certificate to user ? ( 我们都知道, 客户端有很多的CA证书,  那么当client需要对 服务器证书校验时,  如何知道要使用那个CA 证书?)
+client 会通过 server证书中的 `issuer`来查找对应的 CA.
+
+### 7. 当server端要校验client端证书, 而且客户端keystore中有多个entry,  客户端如何知道要选择哪一个 entry? 
 
 
-### 7. what need to do when CA certificate expires?   (如果CA证书过期了, 那么怎么做?)
+### 8. what need to do when CA certificate expires?   (如果CA证书过期了, 那么怎么做?)
+当root CA过期, 我们怎么做呢?
+
+method 1:  
+从更新生成根证书,  并让client重新使用根证书签名.   (影响太大. 不好实行)
+
+
+method 2:
+保持根证书 私钥不变(私钥不变,  意味着公钥也不变),  重新签名一个根证书. (可行.)
+
+可行的原因:
+所有由 旧根证书 签名的cert,  其上的签名 就是使用 root cert 的 私钥签名的. 新root CA的 私钥同 旧 rootCA 是一样的,  故原先的 client cert 不会受影响.
+
+验证查看 [[3-renew-CA]]
+
+### 9. 原先使用的自签名证书上线了系统,  现在要转换到CA 签名的证书,  要如何操作?
+
+
 
 
 
