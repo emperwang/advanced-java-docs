@@ -113,7 +113,6 @@ const option = {
 app.plugins.plugins["obsidian-echarts"].render(option, this.container);
 ```
 
-
 ```dataview
 CALENDAR file.ctime
 ```

@@ -1,3 +1,9 @@
+---
+tags:
+  - https
+  - tls/ssl
+---
+
 # SSL/TLS协议
 
 SSL(Secure Sockets layer)和TLS(Transport Layer Security)是比较成熟的通信加密协议，它们通常被用于在客户端和服务端之间建立加密通信通道。各种开发语言都给出了SSL/TLS协议的具体的实现，在JDK中有一个JSSE(javax.net.ssl)包，提供了对SSL和TLS的支持。通过JDK提供的一系列API，开发者可以像使用普通socket一样使用基于SSL或TLS的安全套接字，而不用关心SSL和TLS协议的细节，例如握手的过程等。
@@ -20,7 +26,7 @@ SSL/TLS协议处于TCP/IP协议与各种应用协议之间，为数据通讯提�
 
 基本流程如下：
 
-![](../image/https/SSL-TLS.png)
+![](SSL-TLS.png)
 
 步骤1. ClientHello --客户端发送所支持的SSL/TLS最高协议版本号和所支持的加密算法集合以及压缩方法集合等信息给服务端。
 
@@ -72,33 +78,33 @@ SSL/TLS协议处于TCP/IP协议与各种应用协议之间，为数据通讯提�
 
 先从抓的包中大体分析流程:
 
-![](../image/https/pacp1.png)
+![](pacp1.png)
 
 第一步:  ClientHello -- 客户端发送支持的TLS版本，加密，压缩等算法信息。
 
-![](../image/https/clientHello.png)
+![](ClientHello.png)
 
 第二步: 此阶段发送了多个握手信息，分别是:serverHello，certificate，ServerKeyExchange，Certificate Request，ServerHelloDone。咱们一一分析：
 
 ​	ServerHello:
 
-![](../image/https/serverHello.png)
+![](serverHello.png)
 
 ​	certificate：
 
-![](../image/https/serverCertificate.png)
+![](serverCertificate.png)
 
 ​	ServerKeyExchange：
 
-![](../image/https/serverKeyExchang.png)
+![](serverKeyExchang.png)
 
 ​	Certificate Request：
 
-![](../image/https/certificateRequest.png)
+![](certificateRequest.png)
 
 ​	ServerHelloDone：
 
-![](../image/https/serverHelloDone.png)
+![](serverHelloDone.png)
 
 第三步: 此步骤同样是包含多个握手信息，分别是:Certificate, clientKeyExchange；那分别看看把。
 
@@ -106,27 +112,27 @@ certificate:
 
 clientKeyExchange：
 
-![](../image/https/clientKeyExchange.png)
+![](clientKeyExchange.png)
 
 第四步: 客户端通知服务端进入加密模式
 
-![](../image/https/clientChangeCipherSpec.png)
+![](clientChangeCipherSpec.png)
 
 第五步: 客户端协商结束
 
-![](../image/https/clientFinished.png)
+![](clientFinished.png)
 
 第六步: 服务端响应进入加密模式
 
-![](../image/https/serverChangeCipherSpec.png)
+![](serverChangeCipherSpec.png)
 
 第七步: 服务器协商结束
 
-![](../image/https/serverFinished.png)
+![](serverFinished.png)
 
 第八步: 开始密文传输
 
-![](../image/https/applicationDate.png)
+![](applicationDate.png)
 
 到此一个TLS握手以及密文传输的一个过程就分析完了。
 
