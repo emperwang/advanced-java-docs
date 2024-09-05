@@ -14,11 +14,16 @@
 
 ```shell
 > openssl req  -new  -key  root.key  -out root.csr
+
+## 通过参数指定 subject
+> openssl req -new -key cert.key -out cert.csr  -subj "/CN=service-dev\/emailAddress=admin@tit.com/C=CN/ST=GD/L=GZ/O=xiaomi/OU=xiaomiUnit"
+
+## 如果通过配置文件来生成证书.  请参考文件 /etc/pki/tls/openssl.cnf
 ```
 
 ![](../image/https/certificate/openssl-req.png)
 
-**注意：**这里生成证书请求时，要求输入一个 Common Name(your name  or  your  server's hostname) ，在httpclient中有一个关于hostName的验证，就是对应此了。
+**注意：在httpclient中有一个关于hostName的验证, 对应证书中的 DNS
 
 3.证书生成
 
@@ -59,7 +64,7 @@
 2.证书请求生成
 
 ```shell
-> openssl  rq  -new  -key  server2.key  -out  server.csr
+> openssl  req  -new  -key  server2.key  -out  server.csr
 ```
 
 ![](../image/https/certificate/server-csr.png)

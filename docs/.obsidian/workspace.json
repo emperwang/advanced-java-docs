@@ -34,19 +34,31 @@
             }
           },
           {
-            "id": "d9a02ecca30a2af9",
+            "id": "261e1c6b6789f143",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "https/SSL/2-SSL-question.md",
+                "file": "https/make-certificate.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "04028fcf02874f8d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "https/SSL/3-renew-CA.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -96,8 +108,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "e87587850ad9e032",
@@ -113,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "https/SSL/2-SSL-question.md",
+                "file": "https/SSL/3-renew-CA.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "https/SSL/2-SSL-question.md",
+                "file": "https/SSL/3-renew-CA.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -153,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "https/SSL/2-SSL-question.md"
+                "file": "https/SSL/3-renew-CA.md"
               }
             }
           },
@@ -196,14 +207,18 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "d9a02ecca30a2af9",
+  "active": "04028fcf02874f8d",
   "lastOpenFiles": [
+    "https/SSL/images/5-cant-find-ca.png",
+    "https/make-certificate.md",
+    "https/SSL/3-renew-CA.md",
+    "https/SSL/images/4-verify-cert1.png",
+    "https/SSL/1-SSL-TLS协议简介.md",
+    "https/SSL/2-SSL-question.md",
     "https/SSL/images/3-verify-cert.png",
     "HomePage.md",
-    "https/SSL/2-SSL-question.md",
     "devOps/jenkins/3-jenkins-部署包含symbolic的文件.md",
     "linux/command/2-linux中压缩symbolic-link文件.md",
-    "https/SSL/3-renew-CA.md",
     "https/SSL/images/2-root-ca.png",
     "https/SSL/images/1-ssl-level.png",
     "https/SSL/images",
@@ -212,9 +227,7 @@
     "https/跨域解决.md",
     "https/SSL",
     "https/wireShark解析https报文.md",
-    "https/SSL/1-SSL-TLS协议简介.md",
     "https/防盗链.md",
-    "https/make-certificate.md",
     "kanban/2024/09/2024-09-01周(02-08).md",
     "Spring Security OAuth2.0认证授权_v1.1.pdf",
     "Pasted image 20240707073256.png"
