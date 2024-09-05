@@ -8,21 +8,21 @@
         "type": "tabs",
         "children": [
           {
-            "id": "40856f0e4c9e1c77",
+            "id": "b60f91ca67d57574",
             "type": "leaf",
             "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
                 "file": "HomePage.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "pinned": true
             }
           },
           {
-            "id": "7c8ebef31521f5e3",
+            "id": "2af6899fe20c5c49",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -34,12 +34,12 @@
             }
           },
           {
-            "id": "a2902ee7af3c0ae3",
+            "id": "d9a02ecca30a2af9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "https/SSL/3-renew-CA.md",
+                "file": "https/SSL/2-SSL-question.md",
                 "mode": "source",
                 "source": false
               }
@@ -96,7 +96,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "e87587850ad9e032",
@@ -112,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "https/SSL/3-renew-CA.md",
+                "file": "https/SSL/2-SSL-question.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "https/SSL/3-renew-CA.md",
+                "file": "https/SSL/2-SSL-question.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "https/SSL/3-renew-CA.md"
+                "file": "https/SSL/2-SSL-question.md"
               }
             }
           },
@@ -165,7 +166,7 @@
             }
           },
           {
-            "id": "6fc7339d4940ac53",
+            "id": "c8d90612ea5c766d",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -195,16 +196,19 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "a2902ee7af3c0ae3",
+  "active": "d9a02ecca30a2af9",
   "lastOpenFiles": [
-    "https/SSL/2-SSL-question.md",
+    "https/SSL/images/3-verify-cert.png",
     "HomePage.md",
+    "https/SSL/2-SSL-question.md",
+    "devOps/jenkins/3-jenkins-部署包含symbolic的文件.md",
+    "linux/command/2-linux中压缩symbolic-link文件.md",
+    "https/SSL/3-renew-CA.md",
     "https/SSL/images/2-root-ca.png",
     "https/SSL/images/1-ssl-level.png",
     "https/SSL/images",
     "https/SSL/新建文件夹",
     "README.md",
-    "https/SSL/3-renew-CA.md",
     "https/跨域解决.md",
     "https/SSL",
     "https/wireShark解析https报文.md",

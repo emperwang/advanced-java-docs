@@ -12,7 +12,8 @@ tags:
 4. 读取证书中的 CSR (certificate signing  Request), 并根据 证书中`签名算法` 做 hash操作.
 5. 如果hash后的值  == 解密后的签名, 那么证书校验通过
 6. (optional) DNS校验, 即 证书中的DNS域名和 访问的 server的域名一致. 
-		
+
+![](./images/3-verify-cert.png)
 ### 2. Do server need send certificate chan to client ? need or no need, explain the reason.  (服务器端需要发送证书链到客户端吗?  请接释原因)
 首先说一下, 证书的三种分类.
 证书可以简单分为 两种:
@@ -109,6 +110,11 @@ method 2:
 
 ### 9. 原先使用的自签名证书上线了系统,  现在要转换到CA 签名的证书,  要如何操作?
 
+
+
+### 10. 当stunnel中加载两个相同 `Subject`的证书, 会报错. why ?
+由上面所知,  当client 校验证书时, 会通过 `issuer DN` 去CAList 查找. 其实 `Issuer DN` 对应 CA中的 Subject.  如果两个Subject 一样, 那么就会导致 不知道使用哪个证书来进行校验. 
+当然`stunnel`中的实现中, 可能对此种情况有处理. (没有深入了解此部分)
 
 
 
