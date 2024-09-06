@@ -26,4 +26,9 @@ trusted-host = pypi.tuna.tsinghua.edu.cn
 cert = path/ca-boundle.crt
 ```
 
-
+```shell
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host = https://pypi.tuna.tsinghua.edu.cn
+```

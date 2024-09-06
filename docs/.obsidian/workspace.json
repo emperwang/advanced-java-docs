@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b60f91ca67d57574",
+            "id": "04028fcf02874f8d",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -22,43 +22,21 @@
             }
           },
           {
-            "id": "2af6899fe20c5c49",
+            "id": "694b1097d92ee914",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "https/SSL/2-SSL-question.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "261e1c6b6789f143",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "https/make-certificate.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "04028fcf02874f8d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "https/SSL/3-renew-CA.md",
-                "mode": "source",
-                "source": false
+                "file": "kanban/2024/09/2024-09-01周(02-08).md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": []
+                }
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -87,7 +65,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "pip.con",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -124,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "https/SSL/3-renew-CA.md",
+                "file": "kanban/2024/09/2024-09-01周(02-08).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "https/SSL/3-renew-CA.md",
+                "file": "kanban/2024/09/2024-09-01周(02-08).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "https/SSL/3-renew-CA.md"
+                "file": "kanban/2024/09/2024-09-01周(02-08).md"
               }
             }
           },
@@ -177,7 +155,7 @@
             }
           },
           {
-            "id": "c8d90612ea5c766d",
+            "id": "4c467d539de2f4d7",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -207,16 +185,21 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "04028fcf02874f8d",
+  "active": "694b1097d92ee914",
   "lastOpenFiles": [
+    "python/15-pip.conf.md",
+    "python/Django/1-环境搭建.md",
+    "linux/kail/1-install-error.md",
+    "HomePage.md",
+    "linux/kail",
+    "kanban/2024/09/2024-09-01周(02-08).md",
+    "https/SSL/2-SSL-question.md",
+    "https/SSL/3-renew-CA.md",
     "https/SSL/images/5-cant-find-ca.png",
     "https/make-certificate.md",
-    "https/SSL/3-renew-CA.md",
     "https/SSL/images/4-verify-cert1.png",
     "https/SSL/1-SSL-TLS协议简介.md",
-    "https/SSL/2-SSL-question.md",
     "https/SSL/images/3-verify-cert.png",
-    "HomePage.md",
     "devOps/jenkins/3-jenkins-部署包含symbolic的文件.md",
     "linux/command/2-linux中压缩symbolic-link文件.md",
     "https/SSL/images/2-root-ca.png",
@@ -228,7 +211,6 @@
     "https/SSL",
     "https/wireShark解析https报文.md",
     "https/防盗链.md",
-    "kanban/2024/09/2024-09-01周(02-08).md",
     "Spring Security OAuth2.0认证授权_v1.1.pdf",
     "Pasted image 20240707073256.png"
   ]
