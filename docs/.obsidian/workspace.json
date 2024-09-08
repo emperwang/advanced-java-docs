@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "733b9df49501c5da",
+        "id": "1ac0771c5585d7e6",
         "type": "tabs",
         "children": [
           {
-            "id": "04028fcf02874f8d",
+            "id": "55732ca0678527bd",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -22,21 +22,52 @@
             }
           },
           {
-            "id": "694b1097d92ee914",
+            "id": "5ff69770f742f809",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/lvm/1-extends-vm-storage.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5ff5c13846ce997f",
             "type": "leaf",
             "state": {
               "type": "kanban",
               "state": {
-                "file": "kanban/2024/09/2024-09-01周(02-08).md",
+                "file": "kanban/2024/09/2024-09-02周(02-09).md",
                 "kanbanViewState": {
                   "kanban-plugin": "board",
-                  "list-collapse": []
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "id": "275ffa2afb91d3bc",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "linux/lvm/lvm_command.canvas",
+                "viewState": {
+                  "x": -765,
+                  "y": -538.6294795143313,
+                  "zoom": -1.4715507541079444
                 }
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -102,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kanban/2024/09/2024-09-01周(02-08).md",
+                "file": "linux/lvm/lvm_command.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +150,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "kanban/2024/09/2024-09-01周(02-08).md",
+                "file": "linux/lvm/lvm_command.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +173,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kanban/2024/09/2024-09-01周(02-08).md"
+                "file": "linux/lvm/lvm_command.canvas"
               }
             }
           },
@@ -155,7 +186,7 @@
             }
           },
           {
-            "id": "4c467d539de2f4d7",
+            "id": "0e2eafc9d8566387",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -185,25 +216,42 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "694b1097d92ee914",
+  "active": "275ffa2afb91d3bc",
   "lastOpenFiles": [
+    "kanban/2024/09/2024-09-02周(02-09).md",
+    "linux/lvm/1-extends-vm-storage.md",
+    "linux/lvm/lvm_command.canvas",
+    "kanban/2024/09/2024-09-01周(02-08).md",
+    "linux/lvm/images/6-resizelv.png",
+    "linux/lvm/images/6-resizefs.png",
+    "linux/lvm/images/5-add-vg.png",
+    "linux/lvm/images/5-add-pv.png",
+    "linux/lvm/images/4-new-sdb1.png",
+    "linux/lvm/images/3-display-lv.png",
+    "linux/lvm/images/3-display1.png",
+    "linux/lvm/images/2-lsblk.png",
+    "linux/lvm/images/1-add-ide.png",
+    "linux/lvm/images",
+    "linux/lvm/新建文件夹",
+    "HomePage.md",
+    "linux/lvm/Untitled.md",
+    "Excalidraw/music_backend.canvas",
+    "Excalidraw/Drawing 2024-09-07 07.36.21.excalidraw.md",
+    "devOps/excaliDraw/devOps_component.md",
+    "devOps/jenkins/deploy-flow.md",
+    "linux/network/network_namespace/network_namespace_base_cmd.md",
+    "linux/lvm",
     "python/15-pip.conf.md",
     "python/Django/1-环境搭建.md",
     "linux/kail/1-install-error.md",
-    "HomePage.md",
     "linux/kail",
-    "kanban/2024/09/2024-09-01周(02-08).md",
     "https/SSL/2-SSL-question.md",
     "https/SSL/3-renew-CA.md",
     "https/SSL/images/5-cant-find-ca.png",
     "https/make-certificate.md",
-    "https/SSL/images/4-verify-cert1.png",
     "https/SSL/1-SSL-TLS协议简介.md",
-    "https/SSL/images/3-verify-cert.png",
     "devOps/jenkins/3-jenkins-部署包含symbolic的文件.md",
     "linux/command/2-linux中压缩symbolic-link文件.md",
-    "https/SSL/images/2-root-ca.png",
-    "https/SSL/images/1-ssl-level.png",
     "https/SSL/images",
     "https/SSL/新建文件夹",
     "README.md",
@@ -211,7 +259,6 @@
     "https/SSL",
     "https/wireShark解析https报文.md",
     "https/防盗链.md",
-    "Spring Security OAuth2.0认证授权_v1.1.pdf",
-    "Pasted image 20240707073256.png"
+    "Spring Security OAuth2.0认证授权_v1.1.pdf"
   ]
 }

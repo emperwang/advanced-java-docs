@@ -94,15 +94,16 @@
   "library2": {
     "type": "excalidrawlib",
     "version": 2,
-    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.1.6",
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.4.1",
     "libraryItems": [
       {
         "status": "unpublished",
         "elements": [
           {
             "type": "arrow",
-            "version": 52,
-            "versionNonce": 319588303,
+            "version": 53,
+            "versionNonce": 1538649504,
+            "index": "a0",
             "isDeleted": false,
             "id": "Sr4qJupo-4Hsyi3pgPBiu",
             "fillStyle": "hachure",
@@ -124,18 +125,20 @@
               "type": 2
             },
             "boundElements": [],
-            "updated": 1709045995466,
+            "updated": 1725665709013,
             "link": null,
             "locked": false,
             "startBinding": {
               "elementId": "SMs0SbixLYMm8FdjzZrEo",
               "gap": 1,
-              "focus": -0.42714273012305853
+              "focus": -0.42714273012305853,
+              "fixedPoint": null
             },
             "endBinding": {
               "elementId": "DN8MArUoWXry4978hCwhQ",
               "gap": 1.9715511726681143,
-              "focus": 0.23491271250708065
+              "focus": 0.23491271250708065,
+              "fixedPoint": null
             },
             "lastCommittedPoint": null,
             "startArrowhead": null,
@@ -166,7 +169,7 @@
   "mdCSS": "",
   "scriptEngineSettings": {},
   "defaultTrayMode": false,
-  "previousRelease": "2.4.1",
+  "previousRelease": "2.4.2",
   "showReleaseNotes": true,
   "showNewVersionNotification": true,
   "latexBoilerplate": "\\color{blue}",
