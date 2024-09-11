@@ -8,33 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "55732ca0678527bd",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "HomePage.md",
-                "mode": "preview",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
             "id": "5ff69770f742f809",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "linux/lvm/1-extends-vm-storage.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5ff5c13846ce997f",
             "type": "leaf",
             "state": {
               "type": "kanban",
@@ -54,20 +28,18 @@
           {
             "id": "275ffa2afb91d3bc",
             "type": "leaf",
+            "pinned": true,
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "linux/lvm/lvm_command.canvas",
-                "viewState": {
-                  "x": -765,
-                  "y": -538.6294795143313,
-                  "zoom": -1.4715507541079444
-                }
-              }
+                "file": "HomePage.md",
+                "mode": "preview",
+                "source": false
+              },
+              "pinned": true
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -133,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "linux/lvm/lvm_command.canvas",
+                "file": "kanban/2024/09/2024-09-02周(02-09).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "linux/lvm/lvm_command.canvas",
+                "file": "kanban/2024/09/2024-09-02周(02-09).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -173,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "linux/lvm/lvm_command.canvas"
+                "file": "kanban/2024/09/2024-09-02周(02-09).md"
               }
             }
           },
@@ -186,7 +158,7 @@
             }
           },
           {
-            "id": "0e2eafc9d8566387",
+            "id": "3f55c96a2f7b6cbf",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -216,10 +188,12 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "275ffa2afb91d3bc",
+  "active": "5ff69770f742f809",
   "lastOpenFiles": [
+    "linux/openssl/3-ssl-verify-mode.md",
     "kanban/2024/09/2024-09-02周(02-09).md",
     "linux/lvm/1-extends-vm-storage.md",
+    "HomePage.md",
     "linux/lvm/lvm_command.canvas",
     "kanban/2024/09/2024-09-01周(02-08).md",
     "linux/lvm/images/6-resizelv.png",
@@ -233,7 +207,6 @@
     "linux/lvm/images/1-add-ide.png",
     "linux/lvm/images",
     "linux/lvm/新建文件夹",
-    "HomePage.md",
     "linux/lvm/Untitled.md",
     "Excalidraw/music_backend.canvas",
     "Excalidraw/Drawing 2024-09-07 07.36.21.excalidraw.md",
