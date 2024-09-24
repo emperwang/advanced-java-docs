@@ -8,25 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5ff69770f742f809",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "kanban/2024/09/2024-09-02周(02-09).md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
-              }
-            }
-          },
-          {
-            "id": "275ffa2afb91d3bc",
+            "id": "65386472e3f0c2b3",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -38,8 +20,21 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "3a6e3b6cfbe85fe5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "linux/command/4-su命令的-参数.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -105,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kanban/2024/09/2024-09-02周(02-09).md",
+                "file": "linux/command/4-su命令的-参数.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "kanban/2024/09/2024-09-02周(02-09).md",
+                "file": "linux/command/4-su命令的-参数.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kanban/2024/09/2024-09-02周(02-09).md"
+                "file": "linux/command/4-su命令的-参数.md"
               }
             }
           },
@@ -158,7 +153,7 @@
             }
           },
           {
-            "id": "3f55c96a2f7b6cbf",
+            "id": "5117107d8c2898a9",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -188,12 +183,18 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "5ff69770f742f809",
+  "active": "3a6e3b6cfbe85fe5",
   "lastOpenFiles": [
-    "linux/openssl/3-ssl-verify-mode.md",
-    "kanban/2024/09/2024-09-02周(02-09).md",
-    "linux/lvm/1-extends-vm-storage.md",
+    "linux/command/3-shell中--功能.md",
+    "linux/command/images/--.png",
+    "linux/command/5-ssh远程执行复杂命令.md",
+    "linux/command/4-su命令的-参数.md",
     "HomePage.md",
+    "linux/openssl/0-black.md",
+    "kanban/2024/09/2024-09-03周(02-16).md",
+    "kanban/2024/09/2024-09-02周(02-09).md",
+    "linux/openssl/3-ssl-verify-mode.md",
+    "linux/lvm/1-extends-vm-storage.md",
     "linux/lvm/lvm_command.canvas",
     "kanban/2024/09/2024-09-01周(02-08).md",
     "linux/lvm/images/6-resizelv.png",
@@ -220,7 +221,6 @@
     "linux/kail",
     "https/SSL/2-SSL-question.md",
     "https/SSL/3-renew-CA.md",
-    "https/SSL/images/5-cant-find-ca.png",
     "https/make-certificate.md",
     "https/SSL/1-SSL-TLS协议简介.md",
     "devOps/jenkins/3-jenkins-部署包含symbolic的文件.md",
@@ -228,10 +228,7 @@
     "https/SSL/images",
     "https/SSL/新建文件夹",
     "README.md",
-    "https/跨域解决.md",
     "https/SSL",
-    "https/wireShark解析https报文.md",
-    "https/防盗链.md",
     "Spring Security OAuth2.0认证授权_v1.1.pdf"
   ]
 }
