@@ -18,9 +18,9 @@ tags:
 首先说一下, 证书的三种分类.
 证书可以简单分为 两种:
 `CA 证书`:  用于签发其他 client证书的证书, 称为CA证书, 也成为 根证书
-`client certificate`:  有 CA 颁发的 client 证书.
+`client certificate`:  由 CA 颁发的 client 证书.
 再细分, 就是`CA`还有一种.  
-`intermediate CA`: 即有 根证书(root CA) 签发的 中间证书.  中间证书也可用于签发 client 证书.
+`intermediate CA`: 即由 根证书(root CA) 签发的 中间证书.  中间证书也可用于签发 client 证书.
 
 > 从下图可以看到,  root CA 是属于自签名的证书
 ![](./images/2-root-ca.png)
@@ -54,7 +54,7 @@ tags:
 以一个栗子来说明校验的流程. 
 假设server端发送以下的一个证书链
 ```shell
-1.end-user-cert  issued to: baidu.com - issued by: Authority1
+1.end-user-cert        issued to: baidu.com - issued by: Authority1
 2.Authority1-cert      issued to: Authority1 - issued by: Authority2
 3.Authority2-cert      issued to: Authority2 - issued by: root CA1
 ```
@@ -91,6 +91,13 @@ tags:
 client 会通过 server证书中的 `issuer`来查找对应的 CA.
 
 ### 7. 当server端要校验client端证书, 而且客户端keystore中有多个entry,  客户端如何知道要选择哪一个 entry? 
+1. 如果使用springboot可以通过 `-Dserver.ssl.key-alias=your_preffered_alias` 来指定要使用的证书
+2. 服务器会发送多种限制条件:
+	1) 证书类型
+	2) 签名算法类型
+	![](./images/certificateRequest.png)
+
+那么client从会符合这些限制条件的 entry中选择一个(**选择的逻辑要再深入确定, 是随机选择, 还是排序后选择**).
 
 
 ### 8. what need to do when CA certificate expires?   (如果CA证书过期了, 那么怎么做?)
@@ -117,6 +124,12 @@ method 2:
 当然`stunnel`中的实现中, 可能对此种情况有处理. (没有深入了解此部分)
 
 
+### 11. alias 解释
+```shell
+ALIAS
+
+To answer your immediate question, the alias field should be a unique string to identify the key entry. This applies to all types such a trusted and intermediate.
+```
 
 
 

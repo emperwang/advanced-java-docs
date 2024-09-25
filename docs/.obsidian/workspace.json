@@ -6,9 +6,28 @@
       {
         "id": "1ac0771c5585d7e6",
         "type": "tabs",
+        "dimension": 80.95558546433378,
         "children": [
           {
-            "id": "65386472e3f0c2b3",
+            "id": "3a6e3b6cfbe85fe5",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "kanban/2024/10/2024-01-goals.md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false
+                  ]
+                }
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "760e42084504131e",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -22,19 +41,36 @@
             }
           },
           {
-            "id": "3a6e3b6cfbe85fe5",
+            "id": "eded2bbfa0b113fd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/command/4-su命令的-参数.md",
+                "file": "IDE/Obsidian/5-open-outline.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
+      },
+      {
+        "id": "bc13068d394187da",
+        "type": "tabs",
+        "dimension": 19.044414535666217,
+        "children": [
+          {
+            "id": "aa53a3eecf50bbf9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "IDE/Obsidian/5-open-outline.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -63,7 +99,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "pip.con",
+                "query": "tag: #CA ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -100,7 +136,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "linux/command/4-su命令的-参数.md",
+                "file": "IDE/Obsidian/5-open-outline.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +153,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "linux/command/4-su命令的-参数.md",
+                "file": "IDE/Obsidian/5-open-outline.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +176,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "linux/command/4-su命令的-参数.md"
+                "file": "IDE/Obsidian/5-open-outline.md"
               }
             }
           },
@@ -153,7 +189,7 @@
             }
           },
           {
-            "id": "5117107d8c2898a9",
+            "id": "81643ee2b8102c48",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -183,13 +219,37 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "3a6e3b6cfbe85fe5",
+  "active": "eded2bbfa0b113fd",
   "lastOpenFiles": [
+    "IDE/Obsidian/images/outline2.png",
+    "IDE/Obsidian/images/outline1.png",
+    "IDE/Obsidian/images/outline.png",
+    "IDE/Obsidian/1-link的使用.md",
+    "IDE/Obsidian/5-open-outline.md",
+    "IDE/Obsidian/2-metadata的使用.md",
+    "IDE/Obsidian/3-Obsidian-debug.md",
+    "IDE/Obsidian/4-shortcut.md",
+    "https/SSL/5-CA-verify-GO.md",
+    "https/SSL/1-SSL-TLS协议简介.md",
+    "image/https/certificateRequest.png",
+    "HomePage.md",
+    "https/SSL/4-unknow-CA.md",
+    "https/SSL/images/ca-true.png",
+    "https/SSL/2-SSL-question.md",
+    "https/SSL/images/certificateRequest.png",
+    "https/wireShark解析https报文.md",
+    "IDE/chrome/1-chrome之Search.md",
+    "IDE/chrome/images/search.png",
+    "IDE/chrome/images",
+    "IDE/chrome/新建文件夹",
+    "IDE/chrome",
+    "kanban/2024/10/2024-01-goals.md",
+    "https/SSL/3-renew-CA.md",
+    "linux/command/4-su命令的-参数.md",
+    "kanban/2024/10/Untitled.md",
     "linux/command/3-shell中--功能.md",
     "linux/command/images/--.png",
     "linux/command/5-ssh远程执行复杂命令.md",
-    "linux/command/4-su命令的-参数.md",
-    "HomePage.md",
     "linux/openssl/0-black.md",
     "kanban/2024/09/2024-09-03周(02-16).md",
     "kanban/2024/09/2024-09-02周(02-09).md",
@@ -200,35 +260,14 @@
     "linux/lvm/images/6-resizelv.png",
     "linux/lvm/images/6-resizefs.png",
     "linux/lvm/images/5-add-vg.png",
-    "linux/lvm/images/5-add-pv.png",
-    "linux/lvm/images/4-new-sdb1.png",
-    "linux/lvm/images/3-display-lv.png",
-    "linux/lvm/images/3-display1.png",
-    "linux/lvm/images/2-lsblk.png",
-    "linux/lvm/images/1-add-ide.png",
     "linux/lvm/images",
     "linux/lvm/新建文件夹",
     "linux/lvm/Untitled.md",
     "Excalidraw/music_backend.canvas",
-    "Excalidraw/Drawing 2024-09-07 07.36.21.excalidraw.md",
-    "devOps/excaliDraw/devOps_component.md",
-    "devOps/jenkins/deploy-flow.md",
-    "linux/network/network_namespace/network_namespace_base_cmd.md",
     "linux/lvm",
-    "python/15-pip.conf.md",
-    "python/Django/1-环境搭建.md",
-    "linux/kail/1-install-error.md",
     "linux/kail",
-    "https/SSL/2-SSL-question.md",
-    "https/SSL/3-renew-CA.md",
-    "https/make-certificate.md",
-    "https/SSL/1-SSL-TLS协议简介.md",
-    "devOps/jenkins/3-jenkins-部署包含symbolic的文件.md",
-    "linux/command/2-linux中压缩symbolic-link文件.md",
     "https/SSL/images",
     "https/SSL/新建文件夹",
-    "README.md",
-    "https/SSL",
-    "Spring Security OAuth2.0认证授权_v1.1.pdf"
+    "https/SSL"
   ]
 }
