@@ -6,7 +6,6 @@
       {
         "id": "1ac0771c5585d7e6",
         "type": "tabs",
-        "dimension": 80.95558546433378,
         "children": [
           {
             "id": "3a6e3b6cfbe85fe5",
@@ -44,33 +43,22 @@
             "id": "eded2bbfa0b113fd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "kanban",
               "state": {
-                "file": "IDE/Obsidian/5-open-outline.md",
-                "mode": "source",
-                "source": false
+                "file": "kanban/2024/09/2024-09-04周(23-29).md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
               }
             }
           }
         ],
         "currentTab": 2
-      },
-      {
-        "id": "bc13068d394187da",
-        "type": "tabs",
-        "dimension": 19.044414535666217,
-        "children": [
-          {
-            "id": "aa53a3eecf50bbf9",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "IDE/Obsidian/5-open-outline.md"
-              }
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -136,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "IDE/Obsidian/5-open-outline.md",
+                "file": "kanban/2024/09/2024-09-04周(23-29).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "IDE/Obsidian/5-open-outline.md",
+                "file": "kanban/2024/09/2024-09-04周(23-29).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -176,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IDE/Obsidian/5-open-outline.md"
+                "file": "kanban/2024/09/2024-09-04周(23-29).md"
               }
             }
           },
@@ -221,18 +209,25 @@
   },
   "active": "eded2bbfa0b113fd",
   "lastOpenFiles": [
+    "kanban/2024/09/2024-09-03周(02-16).md",
+    "kanban/2024/09/2024-09-04周(23-29).md",
+    "IDE/emacs/1-emacs-keyshort.md",
+    "IDE/Obsidian/5-open-outline.md",
+    "IDE/vim/1-vim.md",
+    "kanban/2024/10/2024-01-goals.md",
+    "IDE/emacs",
+    "IDE/vim",
+    "HomePage.md",
     "IDE/Obsidian/images/outline2.png",
     "IDE/Obsidian/images/outline1.png",
     "IDE/Obsidian/images/outline.png",
     "IDE/Obsidian/1-link的使用.md",
-    "IDE/Obsidian/5-open-outline.md",
     "IDE/Obsidian/2-metadata的使用.md",
     "IDE/Obsidian/3-Obsidian-debug.md",
     "IDE/Obsidian/4-shortcut.md",
     "https/SSL/5-CA-verify-GO.md",
     "https/SSL/1-SSL-TLS协议简介.md",
     "image/https/certificateRequest.png",
-    "HomePage.md",
     "https/SSL/4-unknow-CA.md",
     "https/SSL/images/ca-true.png",
     "https/SSL/2-SSL-question.md",
@@ -243,7 +238,6 @@
     "IDE/chrome/images",
     "IDE/chrome/新建文件夹",
     "IDE/chrome",
-    "kanban/2024/10/2024-01-goals.md",
     "https/SSL/3-renew-CA.md",
     "linux/command/4-su命令的-参数.md",
     "kanban/2024/10/Untitled.md",
@@ -251,23 +245,17 @@
     "linux/command/images/--.png",
     "linux/command/5-ssh远程执行复杂命令.md",
     "linux/openssl/0-black.md",
-    "kanban/2024/09/2024-09-03周(02-16).md",
     "kanban/2024/09/2024-09-02周(02-09).md",
     "linux/openssl/3-ssl-verify-mode.md",
     "linux/lvm/1-extends-vm-storage.md",
     "linux/lvm/lvm_command.canvas",
-    "kanban/2024/09/2024-09-01周(02-08).md",
     "linux/lvm/images/6-resizelv.png",
     "linux/lvm/images/6-resizefs.png",
-    "linux/lvm/images/5-add-vg.png",
     "linux/lvm/images",
     "linux/lvm/新建文件夹",
-    "linux/lvm/Untitled.md",
     "Excalidraw/music_backend.canvas",
     "linux/lvm",
     "linux/kail",
-    "https/SSL/images",
-    "https/SSL/新建文件夹",
-    "https/SSL"
+    "https/SSL/images"
   ]
 }
