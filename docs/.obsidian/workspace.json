@@ -8,24 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "3a6e3b6cfbe85fe5",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "kanban/2024/10/2024-01-goals.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false
-                  ]
-                }
-              },
-              "pinned": true
-            }
-          },
-          {
             "id": "760e42084504131e",
             "type": "leaf",
             "pinned": true,
@@ -40,12 +22,66 @@
             }
           },
           {
-            "id": "eded2bbfa0b113fd",
+            "id": "71b7fa3972b2c4ee",
             "type": "leaf",
             "state": {
               "type": "kanban",
               "state": {
-                "file": "kanban/2024/09/2024-09-04周(23-29).md",
+                "file": "kanban/2024/10/2024-10-01周(01-06).md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "id": "ebcd6c7128aef749",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "kanban/2024/10/2024-10-02周(07-13).md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "id": "a06eebe072b89080",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "kanban/2024/10/2024-10-03周(14-20).md",
+                "kanbanViewState": {
+                  "kanban-plugin": "board",
+                  "list-collapse": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "id": "72af1194986495db",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "kanban/2024/10/2024-10-04周(21-27).md",
                 "kanbanViewState": {
                   "kanban-plugin": "board",
                   "list-collapse": [
@@ -58,7 +94,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -124,7 +160,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kanban/2024/09/2024-09-04周(23-29).md",
+                "file": "kanban/2024/10/2024-10-04周(21-27).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +177,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "kanban/2024/09/2024-09-04周(23-29).md",
+                "file": "kanban/2024/10/2024-10-04周(21-27).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +200,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kanban/2024/09/2024-09-04周(23-29).md"
+                "file": "kanban/2024/10/2024-10-04周(21-27).md"
               }
             }
           },
@@ -177,7 +213,7 @@
             }
           },
           {
-            "id": "81643ee2b8102c48",
+            "id": "74ea1332ad1e8af0",
             "type": "leaf",
             "state": {
               "type": "timeline",
@@ -207,17 +243,22 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "eded2bbfa0b113fd",
+  "active": "72af1194986495db",
   "lastOpenFiles": [
+    "kanban/2024/10/2024-01-goals.md",
+    "kanban/2024/10/2024-10-04周(21-27).md",
+    "kanban/2024/10/2024-10-03周(14-20).md",
+    "kanban/2024/10/2024-10-02周(07-13).md",
+    "kanban/2024/10/2024-10-01周(01-06).md",
+    "HomePage.md",
+    "kanban/2024/10/Untitled.md",
+    "kanban/2024/09/2024-09-04周(23-30).md",
     "kanban/2024/09/2024-09-03周(02-16).md",
-    "kanban/2024/09/2024-09-04周(23-29).md",
     "IDE/emacs/1-emacs-keyshort.md",
     "IDE/Obsidian/5-open-outline.md",
     "IDE/vim/1-vim.md",
-    "kanban/2024/10/2024-01-goals.md",
     "IDE/emacs",
     "IDE/vim",
-    "HomePage.md",
     "IDE/Obsidian/images/outline2.png",
     "IDE/Obsidian/images/outline1.png",
     "IDE/Obsidian/images/outline.png",
@@ -240,14 +281,8 @@
     "IDE/chrome",
     "https/SSL/3-renew-CA.md",
     "linux/command/4-su命令的-参数.md",
-    "kanban/2024/10/Untitled.md",
     "linux/command/3-shell中--功能.md",
     "linux/command/images/--.png",
-    "linux/command/5-ssh远程执行复杂命令.md",
-    "linux/openssl/0-black.md",
-    "kanban/2024/09/2024-09-02周(02-09).md",
-    "linux/openssl/3-ssl-verify-mode.md",
-    "linux/lvm/1-extends-vm-storage.md",
     "linux/lvm/lvm_command.canvas",
     "linux/lvm/images/6-resizelv.png",
     "linux/lvm/images/6-resizefs.png",
