@@ -8,7 +8,43 @@
         "type": "tabs",
         "children": [
           {
-            "id": "760e42084504131e",
+            "id": "71b7fa3972b2c4ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "https/SSL/server-日志.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ebdd8ea4d093b67a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "https/SSL/6-zookeeper-ssl-test.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e7631c7665e533fa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "https/SSL/zookeeper-client-certificate-select.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a06eebe072b89080",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -20,81 +56,9 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "71b7fa3972b2c4ee",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "kanban/2024/10/2024-10-01周(01-06).md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
-              }
-            }
-          },
-          {
-            "id": "ebcd6c7128aef749",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "kanban/2024/10/2024-10-02周(07-13).md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
-              }
-            }
-          },
-          {
-            "id": "a06eebe072b89080",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "kanban/2024/10/2024-10-03周(14-20).md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
-              }
-            }
-          },
-          {
-            "id": "72af1194986495db",
-            "type": "leaf",
-            "state": {
-              "type": "kanban",
-              "state": {
-                "file": "kanban/2024/10/2024-10-04周(21-27).md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
-              }
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -123,7 +87,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag: #CA ",
+                "query": "keytool",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -160,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kanban/2024/10/2024-10-04周(21-27).md",
+                "file": "https/SSL/6-zookeeper-ssl-test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -177,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "kanban/2024/10/2024-10-04周(21-27).md",
+                "file": "https/SSL/6-zookeeper-ssl-test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -200,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kanban/2024/10/2024-10-04周(21-27).md"
+                "file": "https/SSL/6-zookeeper-ssl-test.md"
               }
             }
           },
@@ -243,14 +207,28 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "72af1194986495db",
+  "active": "ebdd8ea4d093b67a",
   "lastOpenFiles": [
-    "kanban/2024/10/2024-01-goals.md",
-    "kanban/2024/10/2024-10-04周(21-27).md",
-    "kanban/2024/10/2024-10-03周(14-20).md",
-    "kanban/2024/10/2024-10-02周(07-13).md",
+    "images/tls.md",
+    "https/SSL/6-zookeeper-ssl-test.md",
+    "https/SSL/zookeeper-client-certificate-select.md",
+    "https/SSL/images/certificateRequestExample.png",
+    "https/SSL/make-certificate-safe.md",
+    "images",
+    "https/SSL/images/tls_client_cert.png",
+    "https/SSL/client-日志.md",
+    "https/SSL/server-日志.md",
+    "https/SSL/日志1.md",
+    "https/make-certificate.md",
+    "https/SSL/2-SSL-question.md",
+    "https/SSL/5-CA-verify-GO.md",
+    "https/SSL/4-unknow-CA.md",
     "kanban/2024/10/2024-10-01周(01-06).md",
     "HomePage.md",
+    "kanban/2024/10/2024-10-04周(21-27).md",
+    "kanban/2024/10/2024-01-goals.md",
+    "kanban/2024/10/2024-10-03周(14-20).md",
+    "kanban/2024/10/2024-10-02周(07-13).md",
     "kanban/2024/10/Untitled.md",
     "kanban/2024/09/2024-09-04周(23-30).md",
     "kanban/2024/09/2024-09-03周(02-16).md",
@@ -264,33 +242,19 @@
     "IDE/Obsidian/images/outline.png",
     "IDE/Obsidian/1-link的使用.md",
     "IDE/Obsidian/2-metadata的使用.md",
-    "IDE/Obsidian/3-Obsidian-debug.md",
-    "IDE/Obsidian/4-shortcut.md",
-    "https/SSL/5-CA-verify-GO.md",
-    "https/SSL/1-SSL-TLS协议简介.md",
     "image/https/certificateRequest.png",
-    "https/SSL/4-unknow-CA.md",
     "https/SSL/images/ca-true.png",
-    "https/SSL/2-SSL-question.md",
     "https/SSL/images/certificateRequest.png",
-    "https/wireShark解析https报文.md",
-    "IDE/chrome/1-chrome之Search.md",
     "IDE/chrome/images/search.png",
     "IDE/chrome/images",
     "IDE/chrome/新建文件夹",
     "IDE/chrome",
-    "https/SSL/3-renew-CA.md",
-    "linux/command/4-su命令的-参数.md",
-    "linux/command/3-shell中--功能.md",
     "linux/command/images/--.png",
     "linux/lvm/lvm_command.canvas",
-    "linux/lvm/images/6-resizelv.png",
-    "linux/lvm/images/6-resizefs.png",
     "linux/lvm/images",
     "linux/lvm/新建文件夹",
     "Excalidraw/music_backend.canvas",
     "linux/lvm",
-    "linux/kail",
-    "https/SSL/images"
+    "linux/kail"
   ]
 }

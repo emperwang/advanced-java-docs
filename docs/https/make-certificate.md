@@ -1,4 +1,5 @@
 # 证书的创建
+# 证书的创建
 
 ## root证书
 
@@ -28,7 +29,7 @@
 3.证书生成
 
 ```shell
-> openssl x509  -req  -days  3650  -sha1  -extensions v3_ca -sigkey root.key -in root.csr  -out  root.crt
+> openssl x509  -req  -days  3650  -sha1  -extensions v3_ca -signkey root.key -in root.csr  -out  root.crt
 ```
 
 ![](../image/https/certificate/openssl-crt.png)
@@ -219,8 +220,16 @@ S4g=
 > keytool -import -alias name1 -keystore clientTrust.key  -file root.crt -storepass 123456 
 ```
 
+## verify
 
+```shell
+openssl verify -CAfile root.crt server.crt client.crt
+```
 
+```shell
+# java ssl debug parameter
+-Djavax.net.debug=all
+```
 ## 测试
 
 ```shell
