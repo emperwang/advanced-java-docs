@@ -9,9 +9,50 @@ tags:
 config:
 
 ```
+# server
+RPATH=/mnt/apache-zookeeper-3.8.4-bin/bin/certs
+PASS=123456
+#echo "CLASSPATH=$CLASSPATH"
+export SERVER_JVMFLAGS="
+-Dzookeeper.serverCnxnFactory=org.apache.zookeeper.server.NettyServerCnxnFactory
+-Dzookeeper.ssl.keyStore.location=${RPATH}/server.p12
+-Dzookeeper.ssl.keyStore.password=1234
+-Dzookeeper.ssl.trustStore.location=${RPATH}/server_trust.jks
+-Dzookeeper.ssl.trustStore.password=${PASS}
+-Dzookeeper.ssl.hostnameVerification=false
+-Dzookeeper.ssl.quorum.hostnameVerification=false
+-Djavax.net.debug=all
+"
+
+
+# client
+export CLIENT_JVMFLAGS="
+-Dzookeeper.clientCnxnSocket=org.apache.zookeeper.ClientCnxnSocketNetty
+-Dzookeeper.client.secure=true
+-Dzookeeper.ssl.keyStore.location=${RPATH}/client.p12
+-Dzookeeper.ssl.keyStore.password=1234
+-Dzookeeper.ssl.trustStore.location=${RPATH}/client_trust.jks
+-Dzookeeper.ssl.trustStore.password=${PASS}
+-Dzookeeper.ssl.hostnameVerification=false
+-Dzookeeper.ssl.quorum.hostnameVerification=false
+-Djavax.net.debug=all
+"
 
 ```
 
+```cfg
+secureClientPort=2281
+ssl.protocol=TLSv1.2
+ssl.enabledProtocols=TLSv1.2
+ssl.ciphersuites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+serverCnxnFactory=org.apache.zookeeper.server.NettyServerCnxnFactory
+ssl.keyStore.location= /opt/gcache/secure/Certs/keystore.jks
+ssl.keyStore.password= 
+ssl.trustStore.location= /opt/gcache/secure/Certs/truststore.jks
+ssl.trustStore.password= 
+ssl.switch=on 
+    #on表示密码配置密文有效，off表示密码配置明文无效
+```
 
 
 
