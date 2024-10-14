@@ -1,50 +1,14 @@
 {
   "main": {
-    "id": "65114c45647b6f9b",
+    "id": "5324373015726ba8",
     "type": "split",
     "children": [
       {
-        "id": "1ac0771c5585d7e6",
+        "id": "4509724f8bf84da7",
         "type": "tabs",
         "children": [
           {
-            "id": "71b7fa3972b2c4ee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "https/SSL/server-日志.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ebdd8ea4d093b67a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "https/SSL/6-zookeeper-ssl-test.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e7631c7665e533fa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "https/SSL/zookeeper-client-certificate-select.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "a06eebe072b89080",
+            "id": "e7a7b303c61786dc",
             "type": "leaf",
             "pinned": true,
             "state": {
@@ -55,6 +19,18 @@
                 "source": false
               },
               "pinned": true
+            }
+          },
+          {
+            "id": "4325ebdf7406d59a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "production_issue/3-random-port-range.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ],
@@ -108,7 +84,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 357.51190185546875
   },
   "right": {
     "id": "e87587850ad9e032",
@@ -124,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "https/SSL/6-zookeeper-ssl-test.md",
+                "file": "production_issue/3-random-port-range.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "https/SSL/6-zookeeper-ssl-test.md",
+                "file": "production_issue/3-random-port-range.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "https/SSL/6-zookeeper-ssl-test.md"
+                "file": "production_issue/3-random-port-range.md"
               }
             }
           },
@@ -207,10 +183,13 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "ebdd8ea4d093b67a",
+  "active": "4325ebdf7406d59a",
   "lastOpenFiles": [
-    "images/tls.md",
+    "production_issue/images/port-range.png",
+    "HomePage.md",
+    "production_issue/3-random-port-range.md",
     "https/SSL/6-zookeeper-ssl-test.md",
+    "images/tls.md",
     "https/SSL/zookeeper-client-certificate-select.md",
     "https/SSL/images/certificateRequestExample.png",
     "https/SSL/make-certificate-safe.md",
@@ -224,7 +203,6 @@
     "https/SSL/5-CA-verify-GO.md",
     "https/SSL/4-unknow-CA.md",
     "kanban/2024/10/2024-10-01周(01-06).md",
-    "HomePage.md",
     "kanban/2024/10/2024-10-04周(21-27).md",
     "kanban/2024/10/2024-01-goals.md",
     "kanban/2024/10/2024-10-03周(14-20).md",
@@ -241,7 +219,6 @@
     "IDE/Obsidian/images/outline1.png",
     "IDE/Obsidian/images/outline.png",
     "IDE/Obsidian/1-link的使用.md",
-    "IDE/Obsidian/2-metadata的使用.md",
     "image/https/certificateRequest.png",
     "https/SSL/images/ca-true.png",
     "https/SSL/images/certificateRequest.png",
