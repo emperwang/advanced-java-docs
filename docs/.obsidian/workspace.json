@@ -10,7 +10,6 @@
           {
             "id": "e7a7b303c61786dc",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
@@ -18,19 +17,32 @@
                 "mode": "preview",
                 "source": false
               },
-              "pinned": true
+              "icon": "lucide-file",
+              "title": "HomePage"
             }
           },
           {
-            "id": "4325ebdf7406d59a",
+            "id": "5a8f9394f0d1db41",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "production_issue/3-random-port-range.md",
+                "file": "IDE/vmware/1-代理打开-NAT不能访问网络.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "1-代理打开-NAT不能访问网络"
+            }
+          },
+          {
+            "id": "ec9d83a5264ef8b7",
+            "type": "leaf",
+            "state": {
+              "type": "swar8080/AVAILABLE_PLUGIN_UPDATES",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin Updates"
             }
           }
         ],
@@ -54,7 +66,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -69,7 +83,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -77,7 +93,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -100,7 +118,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "production_issue/3-random-port-range.md",
+                "file": "image/directly_mem/1.java-off-heap-memory.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +126,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 1.java-off-heap-memory"
             }
           },
           {
@@ -117,10 +137,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "production_issue/3-random-port-range.md",
+                "file": "image/directly_mem/1.java-off-heap-memory.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 1.java-off-heap-memory"
             }
           },
           {
@@ -131,7 +153,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -140,8 +164,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "production_issue/3-random-port-range.md"
-              }
+                "file": "image/directly_mem/1.java-off-heap-memory.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 1.java-off-heap-memory"
             }
           },
           {
@@ -149,7 +175,9 @@
             "type": "leaf",
             "state": {
               "type": "calendar",
-              "state": {}
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
             }
           },
           {
@@ -157,7 +185,9 @@
             "type": "leaf",
             "state": {
               "type": "timeline",
-              "state": {}
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Timeline"
             }
           }
         ]
@@ -183,11 +213,18 @@
       "obsidian-day-planner:Timeline": false
     }
   },
-  "active": "4325ebdf7406d59a",
+  "active": "5776e522bce60b68",
   "lastOpenFiles": [
-    "production_issue/images/port-range.png",
+    "IDE/vmware/images/proxy.png",
+    "IDE/vmware/images",
+    "IDE/vmware/0-vmware-index.md",
+    "IDE/vmware/1-代理打开-NAT不能访问网络.md",
+    "IDE/vmware",
     "HomePage.md",
+    "image/directly_mem/1.java-off-heap-memory.md",
+    "image/directly_mem",
     "production_issue/3-random-port-range.md",
+    "production_issue/images/port-range.png",
     "https/SSL/6-zookeeper-ssl-test.md",
     "images/tls.md",
     "https/SSL/zookeeper-client-certificate-select.md",
@@ -211,14 +248,11 @@
     "kanban/2024/09/2024-09-04周(23-30).md",
     "kanban/2024/09/2024-09-03周(02-16).md",
     "IDE/emacs/1-emacs-keyshort.md",
-    "IDE/Obsidian/5-open-outline.md",
-    "IDE/vim/1-vim.md",
     "IDE/emacs",
     "IDE/vim",
     "IDE/Obsidian/images/outline2.png",
     "IDE/Obsidian/images/outline1.png",
     "IDE/Obsidian/images/outline.png",
-    "IDE/Obsidian/1-link的使用.md",
     "image/https/certificateRequest.png",
     "https/SSL/images/ca-true.png",
     "https/SSL/images/certificateRequest.png",
@@ -226,12 +260,8 @@
     "IDE/chrome/images",
     "IDE/chrome/新建文件夹",
     "IDE/chrome",
-    "linux/command/images/--.png",
     "linux/lvm/lvm_command.canvas",
     "linux/lvm/images",
-    "linux/lvm/新建文件夹",
-    "Excalidraw/music_backend.canvas",
-    "linux/lvm",
-    "linux/kail"
+    "Excalidraw/music_backend.canvas"
   ]
 }
