@@ -8,14 +8,16 @@
   "folder": "Excalidraw",
   "libraryFolderPath": "Excalidraw/Libraries",
   "libraryFileName": "local-library",
-  "libraryStorageMode": "data-json",
-  "libraryMigrationStatus": "later",
-  "libraryMigrationSnoozeUntil": 1787667112025,
+  "libraryStorageMode": "vault",
+  "libraryMigrationStatus": "completed",
+  "libraryMigrationSnoozeUntil": 0,
   "cropFolder": "",
   "annotateFolder": "",
   "embedUseExcalidrawFolder": false,
   "templateFilePath": "Excalidraw/Template.excalidraw",
   "scriptFolderPath": "Excalidraw/Scripts",
+  "allowJavaScriptFiles": false,
+  "storeScriptFilesAsJavaScript": false,
   "fontAssetsPath": "Excalidraw/CJK Fonts",
   "loadChineseFonts": false,
   "loadJapaneseFonts": false,
@@ -23,8 +25,6 @@
   "compress": true,
   "decompressForMDView": false,
   "onceOffCompressFlagReset": true,
-  "onceOffGPTVersionReset": true,
-  "autosave": true,
   "autosaveIntervalDesktop": 15000,
   "autosaveIntervalMobile": 10000,
   "drawingFilenamePrefix": "Drawing ",
@@ -127,61 +127,7 @@
     "type": "excalidrawlib",
     "version": 2,
     "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.26.4",
-    "libraryItems": [
-      {
-        "status": "unpublished",
-        "elements": [
-          {
-            "type": "arrow",
-            "version": 53,
-            "versionNonce": 1538649504,
-            "index": "a0",
-            "isDeleted": false,
-            "id": "Sr4qJupo-4Hsyi3pgPBiu",
-            "fillStyle": "hachure",
-            "strokeWidth": 1,
-            "strokeStyle": "solid",
-            "roughness": 1,
-            "opacity": 100,
-            "angle": 0,
-            "x": -485.1772681346083,
-            "y": 709.6853999709775,
-            "strokeColor": "#000000",
-            "backgroundColor": "transparent",
-            "width": 72.17726813460831,
-            "height": 118.96804885635436,
-            "seed": 889549057,
-            "groupIds": [],
-            "frameId": null,
-            "roundness": {
-              "type": 2
-            },
-            "boundElements": [],
-            "updated": 1725665709013,
-            "link": null,
-            "locked": false,
-            "startBinding": null,
-            "endBinding": null,
-            "lastCommittedPoint": null,
-            "startArrowhead": null,
-            "endArrowhead": "arrow",
-            "points": [
-              [
-                0,
-                0
-              ],
-              [
-                72.17726813460831,
-                118.96804885635436
-              ]
-            ],
-            "hasTextLink": false
-          }
-        ],
-        "id": "vbLxmnBCxaNmHYmw_ekqG",
-        "created": 1709046003687
-      }
-    ]
+    "libraryItems": []
   },
   "imageElementNotice": true,
   "mdSVGwidth": 500,
@@ -213,9 +159,13 @@
       }
     }
   },
+  "markdownImageDeletionPreference": "ask",
   "scriptEngineSettings": {},
-  "previousRelease": "2.26.4",
+  "autostartScripts": {},
+  "autostartScriptFailures": {},
+  "previousRelease": "2.27.3",
   "showReleaseNotes": true,
+  "useDeclarativeSettings": true,
   "excalidrawMasteryPromoCollapsed": false,
   "compareManifestToPluginVersion": true,
   "showNewVersionNotification": true,
@@ -748,6 +698,7 @@
     }
   },
   "aiDefaultTextModel": "gpt-3.5-turbo-1106",
+  "aiDefaultMultimodalModel": "gpt-5-mini",
   "aiDefaultImageGenerationModel": "dall-e-3",
   "aiDefaultMaxOutgoingTokens": 0,
   "aiDefaultMaxResponseTokens": 4096,
@@ -1072,6 +1023,8 @@
     "margin": "normal"
   },
   "disableContextMenu": false,
+  "onceOffGPTVersionReset": true,
+  "autosave": true,
   "isDebugMode": false,
   "defaultTrayMode": false,
   "compactModeOnTablets": true,
